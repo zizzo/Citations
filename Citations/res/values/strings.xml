@@ -4,4 +4,75 @@
     <string name="app_name">Citations</string>
     <string name="action_settings">Settings</string>
     
+<!-- This is the part dedicated App's Citations -->
+<!-- Citations are divided by categories, feel free to add any citation/category or change  -->
+<!-- the ones that alrady exist; while doing so though, -->
+<!-- keep in mind that the general approach is few categories-many citations.  -->
+<!-- Also please remember that as of today (09/12/13) twitter allows only 160 charachters on tweets so -->
+<!-- mind the length! -->
+
+<!--     CITATIONS -->
+
+	<!-- 	LOVE -->
+
+
+	<!-- FUN -->
+
+
+	<!-- POLITICS -->
+	
+	
+	<!-- 	LIFE -->
+	    <string name="lifeWilde1">"To live is the rarest thing in the world. Most people exist, that is all - O. Wilde"</string>
+	    <string name="lifeWilde2">"A grapefruit is a lemon who had an opportunity and seized it - O. Wilde"</string>
+		<string name="lifeWilde3">"Sometimes it is better to be silent and looks stupid rather then talking, taking off every doubt - O. Wilde"</string>
+	    <string name="lifeGandhi1">"Live as if you were to die tomorrow. Learn as if you were to live forever - M. Gandhi"</string>
+		<string name="lifeWest1">"You only live once, but if you do it right, once is enough - M. West"</string>
+		<string name="lifeBattaglia1">"Time is like a snowflake, disappears while we are deciding what to do with it", "R. Battaglia"</string>
+	    <string name="lifeCheGuevara1">"How can you be alive and happy if there in the world people who can't? - Che Guevara"</string>
+		<string name="lifeBacon1">"The hope is a perfect breakfast but a bitter dinner - F. Bacon"</string>
+		<string name="lifeDelacroix1">"Two things you must learn from experience: the first is that you need to correct much; the second is that you don't need to correct too much - E. Delacroix"</string>
+		<string name="lifeButturini1">"Ricorda di non confondere mai la gentilezza e la disponibilità con la debolezza - C. Butturini"</string>
+		<string name="lifeTiburzi1">"To think of knowing is like looking at the sea believing it ends at the horizon - L. Tiburzi"</string>
+		<string name="lifeChineseProverb1">We can choose what to sow but we are obliged to pick up what we planted - Proverbio Cinese</string>
+		<string name="lifeMizner1">"Who is able to listen not only is pleasing to everyone, but after a while he even ends up learning something - W. Mizner"</string>
+		<string name="lifeDeBono1">"Often we are able of seeing an opportunity only after someone has picked it up - E. De Bono"</string>
+		<string name="lifeGoethe1">"Everything you can imagine doing, or can dream of, do it now. Audacity has genius and magic - J. W. Goethe"</string>
+															    		
+					
+	<!-- INSPIRING -->
+		<string name="inspiringNietzsche1">"That which does not kill us makes us stronger - F. Nietzsche"</string>    
+	    <string name="inspiringCaesar1">"Veni, vidi, vici - Caesar"</string>
+	    <string name="inspiringCaesar2">"Alea iacta est - Caesar"</string>
+	    <string name="inspiringAnonymous1">"Ad augusta per angusta - Anonymous"</string>
+	    <string name="inspiringSeneca1">"Per aspera ad astra - Seneca"</string>
+		<string name="inspiringChesterton1">"Without education we incur in the risk of taking seriously all educated people - G. K. Chesterton"</string>
+		<string name="inspiringLec1">"A limited brain contains and unlimited quantity of stupid things - S. Lec"</string>
+		<string name="inspiringUltang1">"Half of the beauty depends on the landscape, the other half on the man who looks at it - L. Ultang"</string>
+		<string name="inspiringBacon1">"Monuments to intelligence survive to monuments to power - F. Bacon"</string>
+		<string name="inspiringChesterfield1">"Everything that deserves being done, deserves being done well - P. D. S. Chesterfield"</string>
+		<string name="inspiringSFrancesco1">"A sunray can delete millions of shadows - S. Francesco"</string>
+		<string name="inspiringTertulliano1">"Want to be happy for a moment? Avenge. Want to be happy forever? Forgive - Tertulliano"</string>
+		<string name="inspiringCheGuevara1">"Who fights can lose, who doesn't already has - Che Guevara"</string>
+		<string name="inspiringCheGuevara2">"Backward? Not even to take a run! - Che Guevara"</string>
+		<string name="inspiringKing1">"I do not fear the violents' words, rather the honests' silence - M. L. King"</string>	
+		<string name="inspiringFord1">"To meet each other is a beginning, to remain together is a progress, to work together is a success - H. Ford"</string>
+		<string name="inspiringEsopo1">"It is easy to be courageous at safety distance - Esopo"</string>
+		<string name="inspiringShaw1">"Don't wait for the right moment, make it! - G. B. Shaw"</string>
+		<string name="inspiringChurchill1">"The courage is the first of human qualities, because it makes all the others possible - W. Churchill"</string>
+		<string name="inspiringChurchill2">"A pessimist sees difficulty in every opportunity; an optimist sees opportunity in every difficulty - W. Churchill"</string>
+		<string name="inspiringEinstein1">"Imagination is more important than knowledge - A. Einstein"</string>	
+		<string name="inspiringKennedy1">"Many people see how things are and say: why? I see how things could be and say: why not? - R. Kennedy"</string>
+		<string name="inspiringGoethe1">"It is not strong the one who never falls, but the one who falling manage to rise again - J. W. Goethe"</string>
+		<string name="inspiringGoethe2">"Happy and great is only the one who, to be someone, needs neither to dictate nor to obey - J. W. Goethe"</string>
+		<string name="inspiringRoosvelt1">"The future is in the hands of the people who believe in their dreams - E. Roosevelt"</string>
+		<string name="inspiringAristotele1">"We are what we do daily, so excellence is not in a single act but in the behavior - Aristotele"</string>
+		<string name="inspiringCoelho1">"Only one thing makes a dream impossible. the fear of failing - P. Coelho"</string>
+		<string name="inspiringTwain1">"I have never allowed school to interfere with my education - M. Twain"</string>
+		<string name="inspiringJohnson1">"A very few things are impossible if you are diligent and capable. Big things are done not with strength but with perseverance - S. Johnson"</string>
+	
 </resources>
+
+
+
+
