@@ -3,6 +3,9 @@
 
     <string name="app_name">Citations</string>
     <string name="action_settings">Settings</string>
+    
+<!--     CONTENT DESCRIPTION -->
+    <string name="sharingButton">Bottone per Sharing</string>
 
 <!-- This is the part dedicated App's Citations -->
 <!-- Citations are divided by categories, feel free to add any citation/category or change  -->
