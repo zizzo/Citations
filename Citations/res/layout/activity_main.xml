@@ -13,16 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:paddingRight="10dp"
-        android:paddingLeft="10dp" 
-        android:text="a very long text I need to try to see if the layout is correctly programmed, It is not easy to talk for a long time yet I'm trying my best. Should be enough now"/>
+        android:paddingLeft="10dp" />
 
     <TextView
         android:id="@+id/activity_main_TextViewAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:paddingRight="10dp"
-        android:text="Author" />
+        android:paddingRight="10dp" />
 
     <LinearLayout
         android:id="@+id/activity_main_LinearLayoutButtons"

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity
 {
+	private final CitationsManager citationsData = new CitationsManager(this);
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -27,7 +29,9 @@ public class MainActivity extends Activity
 	 */
 	private void drawLayout()
 	{
-		String[] citation = pickRandomCitationInCategory().split("-");
+		citationsData.setCategoryInUse("inspiringCategory");
+
+		String[] citation = citationsData.getRandomStringInCategory().split("-");
 
 		TextView textView = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textView.setText(citation[0]);
@@ -35,20 +39,8 @@ public class MainActivity extends Activity
 		textView = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 		textView.setText(citation[1]);
 
-	}
+	}// end drawLayout
 
-
-	/**
-	 * @return a String containing a whole (sentence + author) random citation
-	 *         within a category
-	 */
-	private String pickRandomCitationInCategory()
-	{
-		int randomNumber = 0;
-
-		return getString(R.string.inspiringAnonymous1);
-
-	}
 
 
 
