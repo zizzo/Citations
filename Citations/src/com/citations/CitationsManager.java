@@ -31,21 +31,28 @@ public class CitationsManager
 	public CitationsManager(Context context)
 	{
 		this.context = context;
+		// categories.put("loveCategory", new String[0]);
+		// categories.put("politicsCategory", new String[0]);
+		// categories.put("funCategory", new String[0]);
+		categories.put("lifeCategory", getLifeCategoryStrings());
+		categories.put("inspiringCategory", getInspiringCategoryStrings());
 	}
 
 
-	@SuppressWarnings("serial")
-	private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>()
-	{
-		{
-			put("loveCategory", new String[0]);
-			put("politicsCategory", new String[0]);
-			put("funCategory", new String[0]);
-			put("lifeCategory", getLifeCategoryStrings());
-			put("inspiringCategory", getInspiringCategoryStrings());
+	// @SuppressWarnings("serial")
+	private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
 
-		}
-	};
+
+	// {
+	// {
+	// put("loveCategory", new String[0]);
+	// put("politicsCategory", new String[0]);
+	// put("funCategory", new String[0]);
+	// put("lifeCategory", getLifeCategoryStrings());
+	// put("inspiringCategory", getInspiringCategoryStrings());
+	//
+	// }
+	// };
 
 
 	/**

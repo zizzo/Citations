@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity
 {
-	private final CitationsManager citationsData = new CitationsManager(this);
+	private CitationsManager citationsData;
 
 
 	@Override
@@ -19,6 +19,8 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		citationsData = new CitationsManager(getApplicationContext());
 
 		drawLayout();
 	}
