@@ -49,7 +49,8 @@ public class CitationsManager
 	public String getRandomStringInCategory()
 	{
 		String[] citationsOfCategory = categories.get(categoryInUse);
-		int randS = (int) (Math.random() * (citationsOfCategory.length));
+		int upperMaximum = citationsOfCategory.length - 1;
+		int randS = (int) (Math.random() * upperMaximum);
 
 		return citationsOfCategory[randS];
 	}
@@ -60,7 +61,8 @@ public class CitationsManager
 	 */
 	public String getRandomString()
 	{
-		int randC = (int) (Math.random() * (categories.size()));
+//		int upperMaximum = categories.size() - 1;
+		int randC = (int) (Math.random() * categories.size());
 		switch (randC)
 		{
 		case 0:
