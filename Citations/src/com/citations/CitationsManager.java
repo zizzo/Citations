@@ -43,28 +43,13 @@ public class CitationsManager
 	private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
 
 
-	// {
-	// {
-	// put("loveCategory", new String[0]);
-	// put("politicsCategory", new String[0]);
-	// put("funCategory", new String[0]);
-	// put("lifeCategory", getLifeCategoryStrings());
-	// put("inspiringCategory", getInspiringCategoryStrings());
-	//
-	// }
-	// };
-
-
 	/**
-	 * @param categoryInUse
-	 *            category which is now in use
 	 * @return a random string within the category in use
 	 */
 	public String getRandomStringInCategory()
 	{
 		String[] citationsOfCategory = categories.get(categoryInUse);
-		int randS = (int) (Math.random() * (citationsOfCategory.length + 1));
-
+		int randS = (int) (Math.random() * (citationsOfCategory.length));
 
 		return citationsOfCategory[randS];
 	}
@@ -75,12 +60,21 @@ public class CitationsManager
 	 */
 	public String getRandomString()
 	{
-		int randC = (int) (Math.random() * (categories.size() + 1));
-		String[] category = categories.get(randC);
+		int randC = (int) (Math.random() * (categories.size()));
+		switch (randC)
+		{
+		case 0:
+			setCategoryInUse("lifeCategory");
+			break;
+		
+		case 1:
+			setCategoryInUse("inspiringCategory");
 
-		int randS = (int) (Math.random() * (category.length + 1));
+		default:
+			break;
+		}
 
-		return category[randS];
+		return getRandomStringInCategory();
 	}
 
 
