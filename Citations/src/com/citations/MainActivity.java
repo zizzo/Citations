@@ -1,12 +1,17 @@
 package com.citations;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends Activity
@@ -100,6 +105,24 @@ public class MainActivity extends Activity
 		String[] citation = citationsData.getRandomStringInCategory()
 				.split("-");
 		setCitation(citation);
+
+		ImageButton buttonTwitter = (ImageButton) findViewById(R.id.activity_mainImageButtonTwitter);
+		buttonTwitter.setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				String tweetText = textViewSentence.getText() + "\n"
+						+ textViewAuthor.getText();
+				String tweetUrl = "https://twitter.com/intent/tweet?text="
+						+ tweetText + "&url="
+						+ "https://www.google.com";
+				Uri uri = Uri.parse(tweetUrl);
+				startActivity(new Intent(Intent.ACTION_VIEW, uri));
+
+			}
+		});// end onClick
 
 	}// end drawLayout
 
