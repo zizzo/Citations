@@ -116,8 +116,8 @@ public class MainActivity extends Activity
 				String tweetText = textViewSentence.getText() + "\n"
 						+ textViewAuthor.getText();
 				String tweetUrl = "https://twitter.com/intent/tweet?text="
-						+ tweetText + "&url="
-						+ "https://www.google.com";
+						+ tweetText
+ + "&related=@Fra_Pochetti";
 				Uri uri = Uri.parse(tweetUrl);
 				startActivity(new Intent(Intent.ACTION_VIEW, uri));
 
