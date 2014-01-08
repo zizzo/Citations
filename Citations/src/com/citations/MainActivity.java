@@ -2,7 +2,6 @@ package com.citations;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
@@ -106,23 +105,23 @@ public class MainActivity extends Activity
 				.split("-");
 		setCitation(citation);
 
-		ImageButton buttonTwitter = (ImageButton) findViewById(R.id.activity_mainImageButtonTwitter);
-		buttonTwitter.setOnClickListener(new OnClickListener()
+		ImageButton buttonShare = (ImageButton) findViewById(R.id.activity_mainImageButtonShare);
+		buttonShare.setOnClickListener(new OnClickListener()
 		{
 
 			@Override
 			public void onClick(View v)
 			{
-				String tweetText = textViewSentence.getText() + "\n"
+				String shareMessage = textViewSentence.getText() + "\n"
 						+ textViewAuthor.getText();
-				String tweetUrl = "https://twitter.com/intent/tweet?text="
-						+ tweetText
-						+ "&related=LuigiTiburzi,Fra_Pochetti,gabrielelanaro";
-				Uri uri = Uri.parse(tweetUrl);
-				startActivity(new Intent(Intent.ACTION_VIEW, uri));
-
+				Intent shareIntent = new Intent(Intent.ACTION_SEND);
+				shareIntent.setType("text/plain"); 
+				shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+				startActivity(Intent.createChooser(shareIntent, "Share..."));
 			}
-		});// end onClick
+		});
+
+
 
 	}// end drawLayout
 

@@ -30,26 +30,13 @@
         android:layout_height="wrap_content" >
 
         <ImageButton
-            android:id="@+id/activity_mainImageButtonFacebook"
+            android:id="@+id/activity_mainImageButtonShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:src="@drawable/ic_launcher" android:contentDescription="@string/sharingButton"/>
 
-        <ImageButton
-            android:id="@+id/activity_mainImageButtonTwitter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_launcher" android:contentDescription="@string/sharingButton"/>
-
-        <ImageButton
-            android:id="@+id/activity_mainImageButtonGooglePlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_launcher" android:contentDescription="@string/sharingButton"/>
-
+        
     </LinearLayout>
 
 </LinearLayout>
