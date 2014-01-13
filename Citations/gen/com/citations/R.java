@@ -40,51 +40,49 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int inspiringAnonymous1=0x7f050016;
-        public static final int inspiringAristotele1=0x7f05002c;
-        public static final int inspiringBacon1=0x7f05001b;
-        public static final int inspiringCaesar1=0x7f050014;
-        public static final int inspiringCaesar2=0x7f050015;
-        public static final int inspiringCheGuevara1=0x7f05001f;
-        public static final int inspiringCheGuevara2=0x7f050020;
-        public static final int inspiringChesterfield1=0x7f05001c;
-        public static final int inspiringChesterton1=0x7f050018;
-        public static final int inspiringChurchill1=0x7f050025;
-        public static final int inspiringChurchill2=0x7f050026;
-        public static final int inspiringCoelho1=0x7f05002d;
-        public static final int inspiringEinstein1=0x7f050027;
-        public static final int inspiringEsopo1=0x7f050023;
-        public static final int inspiringFord1=0x7f050022;
-        public static final int inspiringGoethe1=0x7f050029;
-        public static final int inspiringGoethe2=0x7f05002a;
+        public static final int inspiringAnonymous1=0x7f050018;
+        public static final int inspiringAristotele1=0x7f05002e;
+        public static final int inspiringBacon1=0x7f05001d;
+        public static final int inspiringCaesar1=0x7f050016;
+        public static final int inspiringCaesar2=0x7f050017;
+        public static final int inspiringCheGuevara1=0x7f050021;
+        public static final int inspiringCheGuevara2=0x7f050022;
+        public static final int inspiringChesterfield1=0x7f05001e;
+        public static final int inspiringChesterton1=0x7f05001a;
+        public static final int inspiringChurchill1=0x7f050027;
+        public static final int inspiringChurchill2=0x7f050028;
+        public static final int inspiringCoelho1=0x7f05002f;
+        public static final int inspiringEinstein1=0x7f050029;
+        public static final int inspiringEsopo1=0x7f050025;
+        public static final int inspiringFord1=0x7f050024;
+        public static final int inspiringGoethe1=0x7f05002b;
+        public static final int inspiringGoethe2=0x7f05002c;
+        public static final int inspiringJesus1=0x7f050014;
+        public static final int inspiringJohnson1=0x7f050031;
+        public static final int inspiringKennedy1=0x7f05002a;
+        public static final int inspiringKing1=0x7f050023;
+        public static final int inspiringLec1=0x7f05001b;
         /**  INSPIRING 
  INSPIRING 
          */
-        public static final int inspiringJesus1=0x7f050012;
-        public static final int inspiringJohnson1=0x7f05002f;
-        public static final int inspiringKennedy1=0x7f050028;
-        public static final int inspiringKing1=0x7f050021;
-        public static final int inspiringLec1=0x7f050019;
-        public static final int inspiringNietzsche1=0x7f050013;
-        public static final int inspiringRoosvelt1=0x7f05002b;
-        public static final int inspiringSFrancesco1=0x7f05001d;
-        public static final int inspiringSeneca1=0x7f050017;
-        public static final int inspiringShaw1=0x7f050024;
-        public static final int inspiringTertulliano1=0x7f05001e;
-        public static final int inspiringTwain1=0x7f05002e;
-        public static final int inspiringUltang1=0x7f05001a;
-        public static final int lifeBacon1=0x7f05000a;
-        public static final int lifeBattaglia1=0x7f050008;
-        public static final int lifeButturini1=0x7f05000c;
-        public static final int lifeCheGuevara1=0x7f050009;
-        public static final int lifeChineseProverb1=0x7f05000e;
-        public static final int lifeDeBono1=0x7f050010;
-        public static final int lifeDelacroix1=0x7f05000b;
-        public static final int lifeGandhi1=0x7f050006;
-        public static final int lifeGoethe1=0x7f050011;
-        public static final int lifeMizner1=0x7f05000f;
-        public static final int lifeTiburzi1=0x7f05000d;
-        public static final int lifeWest1=0x7f050007;
+        public static final int inspiringLiKaShing1=0x7f050013;
+        public static final int inspiringNietzsche1=0x7f050015;
+        public static final int inspiringRoosvelt1=0x7f05002d;
+        public static final int inspiringSFrancesco1=0x7f05001f;
+        public static final int inspiringSeneca1=0x7f050019;
+        public static final int inspiringShaw1=0x7f050026;
+        public static final int inspiringTertulliano1=0x7f050020;
+        public static final int inspiringTwain1=0x7f050030;
+        public static final int inspiringUltang1=0x7f05001c;
+        public static final int lifeBacon1=0x7f05000b;
+        public static final int lifeBattaglia1=0x7f050009;
+        public static final int lifeButturini1=0x7f05000d;
+        public static final int lifeCheGuevara1=0x7f05000a;
+        public static final int lifeChineseProverb1=0x7f05000f;
+        public static final int lifeDeBono1=0x7f050011;
+        public static final int lifeDelacroix1=0x7f05000c;
+        public static final int lifeGandhi1=0x7f050007;
+        public static final int lifeGoethe1=0x7f050012;
         /**  This is the part dedicated App's Citations 
  Citations are divided by categories, feel free to add any citation/category or change  
  the ones that alrady exist; while doing so though, 
@@ -108,9 +106,13 @@ public final class R {
  POLITICS 
  	LIFE 
          */
-        public static final int lifeWilde1=0x7f050003;
-        public static final int lifeWilde2=0x7f050004;
-        public static final int lifeWilde3=0x7f050005;
+        public static final int lifeLeopardi1=0x7f050003;
+        public static final int lifeMizner1=0x7f050010;
+        public static final int lifeTiburzi1=0x7f05000e;
+        public static final int lifeWest1=0x7f050008;
+        public static final int lifeWilde1=0x7f050004;
+        public static final int lifeWilde2=0x7f050005;
+        public static final int lifeWilde3=0x7f050006;
         /**      CONTENT DESCRIPTION 
      CONTENT DESCRIPTION 
          */

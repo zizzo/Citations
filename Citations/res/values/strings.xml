@@ -27,6 +27,7 @@
 	
 	
 	<!-- 	LIFE -->
+		<string name="lifeLeopardi1">"The most busy life is the most happy - G. Leopardi"</string>
 	    <string name="lifeWilde1">"To live is the rarest thing in the world. Most people exist, that is all - O. Wilde"</string>
 	    <string name="lifeWilde2">"A grapefruit is a lemon who had an opportunity and seized it - O. Wilde"</string>
 		<string name="lifeWilde3">"Sometimes it is better to be silent and looks stupid rather then talking, taking off every doubt - O. Wilde"</string>
@@ -45,6 +46,7 @@
 															    		
 					
 	<!-- INSPIRING -->
+		<string name="inspiringLiKaShing1">"If you don't have a big heart you'll not succeed - Li Ka Shing"</string>
 		<string name="inspiringJesus1">"Who aims at being great, be the servant of everyone - Jesus"</string>
 		<string name="inspiringNietzsche1">"That which does not kill us makes us stronger - F. Nietzsche"</string>    
 	    <string name="inspiringCaesar1">"Veni, vidi, vici - Caesar"</string>

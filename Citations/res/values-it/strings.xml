@@ -27,6 +27,7 @@
 	
 	
 	<!-- 	LIFE -->
+		<string name="lifeLeopardi1">"La vita più impegnata è la più felice - G. Leopardi"</string>
 	    <string name="lifeWilde1">"Vivere è la cosa più rara del mondo. Molte persone esistono solamente - O. Wilde"</string>
 	    <string name="lifeWilde2">"Un pompelmo è un limone che ha avuto un’opportunità e ne ha approfittato - O. Wilde"</string>
 		<string name="lifeWilde3">"A volte è meglio tacere e sembrare stupidi che aprir bocca e togliere ogni dubbio - O. Wilde"</string>
@@ -45,6 +46,7 @@
 															    		
 					
 	<!-- INSPIRING -->
+		<string name="inspiringLiKaShing1">"Se non hai un grande cuore non avrai successo - Li Ka Shing"</string>
 		<string name="inspiringJesus1">"Chi vuole essere grande sia servo di tutti - Gesù"</string>
 		<string name="inspiringNietzsche1">"Quello che non ci uccide ci rende più forti - F. Nietzsche"</string>    
 	    <string name="inspiringCaesar1">"Veni, vidi, vici - Caesar"</string>

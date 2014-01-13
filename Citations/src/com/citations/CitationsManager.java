@@ -86,6 +86,7 @@ public class CitationsManager
 	private String[] getInspiringCategoryStrings()
 	{
 		String[] inspiringStrings = {
+				context.getString(R.string.inspiringLiKaShing1),
 				context.getString(R.string.inspiringAnonymous1),
 				context.getString(R.string.inspiringAristotele1),
 				context.getString(R.string.inspiringBacon1),
@@ -125,7 +126,8 @@ public class CitationsManager
 	 */
 	private String[] getLifeCategoryStrings()
 	{
-		String[] lifeStrings = { context.getString(R.string.lifeBacon1),
+		String[] lifeStrings = { context.getString(R.string.lifeLeopardi1),
+				context.getString(R.string.lifeBacon1),
 				context.getString(R.string.lifeBattaglia1),
 				context.getString(R.string.lifeButturini1),
 				context.getString(R.string.lifeCheGuevara1),
