@@ -1,9 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_LinearLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="top"
     android:orientation="vertical"
     tools:context=".MainActivity" >
     
@@ -12,31 +12,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp" />
+        android:layout_marginTop="40pt"
+        android:text="Tristo e quel discepolo che non avanza il suo maestro."
+        android:textSize="25dp"
+        android:paddingRight="30pt"
+        android:paddingLeft="30pt" />
 
     <TextView
         android:id="@+id/activity_main_TextViewAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:paddingRight="10dp" />
-
-    <LinearLayout
-        android:id="@+id/activity_main_LinearLayoutButtons"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Leonardo Da Vinci"
+        android:paddingRight="10dp"
+        android:layout_marginBottom="80pt"
+        android:textStyle="bold"
+        />
 
         <ImageButton
             android:id="@+id/activity_mainImageButtonShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_launcher" android:contentDescription="@string/sharingButton"/>
+            android:layout_margin="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/share" android:contentDescription="@string/sharingButton"/>
 
-        
-    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
