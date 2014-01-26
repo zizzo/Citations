@@ -1,8 +1,19 @@
 package com.citations;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Canvas;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -11,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity
@@ -120,7 +132,38 @@ public class MainActivity extends Activity
 				startActivity(Intent.createChooser(shareIntent, "Share..."));
 			}
 		});
+		
+		ImageButton buttonTwitter = (ImageButton) findViewById(R.id.activity_mainImageButtonTwitter);
+		buttonTwitter.setOnClickListener(new OnClickListener()
+		{
 
+			@Override
+			public void onClick(View v)
+			{
+				String tweetText = textViewSentence.getText() + "\n"
+						+ textViewAuthor.getText();
+				String tweetUrl = "https://twitter.com/intent/tweet?text="
+						+ tweetText
+						+ "&related=LuigiTiburzi,gabrielelanaro,Fra_Pochetti";
+				Uri uri = Uri.parse(tweetUrl);
+				startActivity(new Intent(Intent.ACTION_VIEW, uri));
+
+			}
+		});// end onClick
+
+		ImageButton buttonFacebook = (ImageButton) findViewById(R.id.activity_mainImageButtonFacebook);
+		buttonFacebook.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				LinearLayout linearLayout = (LinearLayout) findViewById(R.id.activity_mainLinearLayout);
+				int width = linearLayout.getWidth();
+				int height = linearLayout.getHeight();
+				Bitmap bitmap = loadBitmapFromView(linearLayout, width, height);
+				storeImage(bitmap, "pippo");
+			}
+		});// end onClick
 
 
 	}// end drawLayout
@@ -143,4 +186,44 @@ public class MainActivity extends Activity
 		return true;
 	}
 
-}
+	private Bitmap loadBitmapFromView(View v, int width, int height)
+	{
+		Bitmap b = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+		Canvas c = new Canvas(b);
+		v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
+		v.draw(c);
+		return b;
+	}
+
+	private boolean storeImage(Bitmap imageData, String filename) {
+		//get path to external storage (SD card)
+		File iconsStoragePath = Environment.getExternalStorageDirectory();
+		// + "/myAppDir/myImages/";
+		// File sdIconStorageDir = new File(iconsStoragePath);
+
+		//create storage directories, if they don't exist
+		// sdIconStorageDir.mkdirs();
+
+		try {
+			String filePath = iconsStoragePath.toString() + filename;
+			FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+
+			BufferedOutputStream bos = new BufferedOutputStream(fileOutputStream);
+
+			imageData.compress(CompressFormat.PNG, 100, bos);
+
+			bos.flush();
+			bos.close();
+
+		} catch (FileNotFoundException e) {
+			Log.e("TAG", "Error saving image file: " + e.getMessage());
+			return false;
+		} catch (IOException e) {
+			Log.e("TAG", "Error saving image file: " + e.getMessage());
+			return false;
+		}
+
+		return true;
+	}
+
+}// end MainActivity
