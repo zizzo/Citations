@@ -35,6 +35,8 @@ public class MainActivity extends Activity
 	private GestureDetectorCompat mDetector;
 	private TextView textViewSentence;
 	private TextView textViewAuthor;
+	private String[] citation; // I need it here because after the FB sharing I
+								// must put back the original sentence
 	private final double SWIPE_RATIO = 4.5;
 
 	@Override
@@ -117,7 +119,7 @@ public class MainActivity extends Activity
 		// The first String is going to come from the Inspiring category
 		citationsData.setCategoryInUse("inspiringCategory");
 
-		String[] citation = citationsData.getRandomStringInCategory()
+		citation = citationsData.getRandomStringInCategory()
 				.split("-");
 		setCitation(citation);
 
@@ -165,14 +167,12 @@ public class MainActivity extends Activity
 				int width = linearLayout.getWidth();
 				int height = linearLayout.getHeight();
 				Bitmap bitmap = loadBitmapFromView(linearLayout, width, height);
-				storeImage(bitmap, "pippo.png");
+				storeImage(bitmap, "imageToShare.png");
 				String imagePath =
-						Environment
-.getExternalStorageDirectory()
-						.toString()
-						+ File.separator
- + "pippo.png";
+ Environment.getExternalStorageDirectory()
+						.toString() + File.separator + "imageToShare.png";
 				shareOnFb(imagePath);
+				setCitation(citation);
 			}
 		});// end onClick
 
@@ -206,6 +206,11 @@ public class MainActivity extends Activity
 		return b;
 	}
 
+	/**
+	 * @param bitmap
+	 * @param filename
+	 *            Store the image on the SD card
+	 */
 	private void storeImage(Bitmap bitmap, String filename)
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
