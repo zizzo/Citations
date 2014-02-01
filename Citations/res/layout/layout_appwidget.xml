@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_appwidget_LinearLayoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:padding="@dimen/widget_margin">
+
+    <ImageButton
+        android:id="@+id/layout_appwidgetImageButtonTwitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/layout_appwidgetImageButtonShare"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="62dp"
+        android:contentDescription="@string/twitterButton"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageButton
+        android:id="@+id/layout_appwidgetImageButtonFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/layout_appwidgetImageButtonTwitter"
+        android:layout_toRightOf="@+id/layout_appwidgetImageButtonTwitter"
+        android:contentDescription="@string/twitterButton"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageButton
+        android:id="@+id/layout_appwidgetImageButtonShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="27dp"
+        android:layout_toRightOf="@+id/layout_appwidgetImageButtonFacebook"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/sharingButton"
+        android:src="@drawable/share" />
+
+    <LinearLayout
+        android:id="@+id/layout_appwidgetLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="94dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/layout_appwidget_TextViewSentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text=""
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/layout_appwidget_TextViewAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:padding="10dp"
+            android:text=""
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>

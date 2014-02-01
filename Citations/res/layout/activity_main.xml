@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:text="Tristo e quel discepolo che non avanza il suo maestro."
+            android:text=""
             android:textSize="25sp" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:padding="10dp"
-            android:text="Leonardo Da Vinci"
+            android:text=""
             android:textStyle="bold" />
     </LinearLayout>
 
