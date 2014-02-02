@@ -16,6 +16,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 										// sentence
 
 	public static String SHARE_ON_TWITTER = "shareOnTwitter";
+	public static String SHARE_ON_FACEBOOK = "shareOnFacebook";
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -45,6 +46,17 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		views.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonTwitter,
 				pendingIntentTwitter);
 
+
+		Intent intentFacebook = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentFacebook.setAction(SHARE_ON_FACEBOOK);
+		PendingIntent pendingIntentFacebook = PendingIntent.getBroadcast(
+				context, 0, intentFacebook, 0);
+
+		views.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonFacebook,
+				pendingIntentFacebook);
+
+
 		appWidgetManager.updateAppWidget(appWidgetIds, views);
 		
 	}// end onUpdate
@@ -65,6 +77,20 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			Intent intentTweet = new Intent(Intent.ACTION_VIEW, uri);
 			intentTweet.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(intentTweet);
+		}
+
+		if (intent.getAction().equals(SHARE_ON_FACEBOOK))
+		{
+			// LinearLayout linearLayout = (LinearLayout)
+			// findViewById(R.id.layout_appwidget_LinearLayoutMain);
+			// int width = linearLayout.getWidth();
+			// int height = linearLayout.getHeight();
+			// Bitmap bitmap = loadBitmapFromView(linearLayout, width, height);
+			// storeImage(bitmap, "imageToShare.png");
+			// String imagePath = Environment.getExternalStorageDirectory()
+			// .toString() + File.separator + "imageToShare.png";
+			// shareOnFb(imagePath);
+			// setCitation(citation);
 		}
 
 	}// end onReceive

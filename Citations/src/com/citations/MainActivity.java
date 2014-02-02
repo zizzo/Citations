@@ -168,8 +168,7 @@ public class MainActivity extends Activity
 				int height = linearLayout.getHeight();
 				Bitmap bitmap = loadBitmapFromView(linearLayout, width, height);
 				storeImage(bitmap, "imageToShare.png");
-				String imagePath =
- Environment.getExternalStorageDirectory()
+				String imagePath = Environment.getExternalStorageDirectory()
 						.toString() + File.separator + "imageToShare.png";
 				shareOnFb(imagePath);
 				setCitation(citation);
