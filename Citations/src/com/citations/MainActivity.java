@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,7 +27,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity
@@ -163,15 +163,13 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				LinearLayout linearLayout = (LinearLayout) findViewById(R.id.activity_mainLinearLayout);
-				int width = linearLayout.getWidth();
-				int height = linearLayout.getHeight();
-				Bitmap bitmap = loadBitmapFromView(linearLayout, width, height);
+
+				Bitmap bitmap = drawBitmap();
 				storeImage(bitmap, "imageToShare.png");
 				String imagePath = Environment.getExternalStorageDirectory()
 						.toString() + File.separator + "imageToShare.png";
 				shareOnFb(imagePath);
-				setCitation(citation);
+
 			}
 		});// end onClick
 
@@ -196,13 +194,34 @@ public class MainActivity extends Activity
 		return true;
 	}
 
-	private Bitmap loadBitmapFromView(View v, int width, int height)
+	private Bitmap drawBitmap()
 	{
-		Bitmap b = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-		Canvas c = new Canvas(b);
-		v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
-		v.draw(c);
-		return b;
+		Bitmap bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+		Canvas c = new Canvas(bitmap);
+
+		Paint paint = new Paint();
+		paint.setTextSize(20);
+
+		String categoryInUse = citationsData.getCategoryInUse();
+		if (categoryInUse.equals("inspiringCategory"))
+			c.drawColor(getResources().getColor(R.color.inspiringCategoryColor));
+		else if (categoryInUse.equals("lifeCategory"))
+			c.drawColor(getResources().getColor(R.color.lifeCategoryColor));
+		else if (categoryInUse.equals("politicsCategory"))
+			c.drawColor(getResources().getColor(R.color.politicsCategoryColor));
+		else if (categoryInUse.equals("funCategory"))
+			c.drawColor(getResources().getColor(R.color.funCategoryColor));
+		else if (categoryInUse.equals("loveCategory"))
+			c.drawColor(getResources().getColor(R.color.loveCategoryColor));
+
+		String bitmapText = textViewSentence.getText() + "\n"
+				+ textViewAuthor.getText();
+
+		c.drawText(bitmapText, 30, 30, paint);
+
+		c.drawBitmap(bitmap, 0, 0, null);
+
+		return bitmap;
 	}
 
 	/**
