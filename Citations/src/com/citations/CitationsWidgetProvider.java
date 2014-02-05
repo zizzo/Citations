@@ -25,13 +25,14 @@ import android.widget.RemoteViews;
 
 public class CitationsWidgetProvider extends AppWidgetProvider
 {
-	private CitationsManager citationsData;
+	private static CitationsManager citationsData;
 	private static String[] citation; // I need it here because after the FB
 										// sharing I must put back the original
 										// sentence
 
 	public static String SHARE_ON_TWITTER = "shareOnTwitter";
 	public static String SHARE_ON_FACEBOOK = "shareOnFacebook";
+	public static String SHARE_GENERIC = "shareGeneric";
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -72,6 +73,14 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				pendingIntentFacebook);
 
 
+		Intent intentShare = new Intent(context, CitationsWidgetProvider.class);
+		intentShare.setAction(SHARE_GENERIC);
+		PendingIntent pendingIntentShare = PendingIntent.getBroadcast(context,
+				0, intentShare, 0);
+
+		views.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
+				pendingIntentShare);
+
 		appWidgetManager.updateAppWidget(appWidgetIds, views);
 		
 	}// end onUpdate
@@ -102,6 +111,16 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 					.toString() + File.separator + "imageToShare.png";
 			shareOnFb(imagePath, context);
 
+		}
+
+		if (intent.getAction().equals(SHARE_GENERIC))
+		{
+			String shareMessage = citation[0] + "\n" + citation[1];
+			Intent shareIntent = new Intent(Intent.ACTION_SEND);
+			shareIntent.setType("text/plain");
+			shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+			context.startActivity(Intent.createChooser(shareIntent, "Share...")
+					.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 		}
 
 	}// end onReceive
