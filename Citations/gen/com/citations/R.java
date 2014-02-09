@@ -35,7 +35,7 @@ public final class R {
         public static final int share=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000e;
+        public static final int action_settings=0x7f0a0019;
         public static final int activity_mainImageButtonFacebook=0x7f0a0003;
         public static final int activity_mainImageButtonShare=0x7f0a0002;
         public static final int activity_mainImageButtonTwitter=0x7f0a0001;
@@ -43,13 +43,24 @@ public final class R {
         public static final int activity_main_LinearLayoutMain=0x7f0a0000;
         public static final int activity_main_TextViewAuthor=0x7f0a0006;
         public static final int activity_main_TextViewSentence=0x7f0a0005;
-        public static final int layout_appwidgetImageButtonFacebook=0x7f0a000a;
-        public static final int layout_appwidgetImageButtonShare=0x7f0a0009;
-        public static final int layout_appwidgetImageButtonTwitter=0x7f0a0008;
-        public static final int layout_appwidgetLinearLayout=0x7f0a000b;
+        public static final int layout_appwidgetImageButtonFacebook=0x7f0a0017;
+        public static final int layout_appwidgetImageButtonShare=0x7f0a0018;
+        public static final int layout_appwidgetImageButtonTwitter=0x7f0a0016;
+        public static final int layout_appwidgetLinearLayoutButtonsChangeCat=0x7f0a000c;
+        public static final int layout_appwidgetLinearLayoutButtonsShare=0x7f0a0015;
         public static final int layout_appwidget_LinearLayoutMain=0x7f0a0007;
-        public static final int layout_appwidget_TextViewAuthor=0x7f0a000d;
-        public static final int layout_appwidget_TextViewSentence=0x7f0a000c;
+        public static final int layout_appwidget_TextViewAuthor=0x7f0a000a;
+        public static final int layout_appwidget_TextViewSentence=0x7f0a0009;
+        public static final int layout_appwidget_imageButtonNext=0x7f0a000e;
+        public static final int layout_appwidget_imageButtonPrevious=0x7f0a000d;
+        public static final int layout_appwidget_imageButtonRefresh=0x7f0a000f;
+        public static final int layout_appwidget_imageViewFunPoint=0x7f0a0014;
+        public static final int layout_appwidget_imageViewInspiringPoint=0x7f0a0011;
+        public static final int layout_appwidget_imageViewLifePoint=0x7f0a0010;
+        public static final int layout_appwidget_imageViewLovePoint=0x7f0a0013;
+        public static final int layout_appwidget_imageViewPoliticsPoint=0x7f0a0012;
+        public static final int layout_appwidget_linearLayoutButtons=0x7f0a000b;
+        public static final int layout_appwidget_linearLayoutText=0x7f0a0008;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
