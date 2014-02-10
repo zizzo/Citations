@@ -7,6 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -15,8 +18,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.view.GestureDetectorCompat;
@@ -26,6 +31,8 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -37,6 +44,7 @@ public class MainActivity extends Activity
 	private TextView textViewAuthor;
 	private String[] citation; // I need it here because after the FB sharing I
 								// must put back the original sentence
+    private Integer currentColor;
 	private final double SWIPE_RATIO = 4.5;
 
 	@Override
@@ -113,11 +121,13 @@ public class MainActivity extends Activity
 	 */
 	private void drawLayout()
 	{
+
 		textViewSentence = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textViewAuthor = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 
 		// The first String is going to come from the Inspiring category
 		citationsData.setCategoryInUse("inspiringCategory");
+        currentColor = citationsData.getCategoryInUseColor();
 
 		citation = citationsData.getRandomStringInCategory()
 				.split("-");
@@ -180,10 +190,29 @@ public class MainActivity extends Activity
 	 * @param citation
 	 *            to be set on the TextViews
 	 */
-	private void setCitation(String[] citation)
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void setCitation(String[] citation)
 	{
+
 		textViewSentence.setText(citation[0]);
 		textViewAuthor.setText(citation[1]);
+
+        Animation slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text);
+        textViewSentence.startAnimation(slideout);
+
+        Log.d("MAIN", citationsData.getCategoryInUse());
+        // Set the proper background
+
+        Integer startColor = currentColor;
+        Integer endColor = citationsData.getCategoryInUseColor();
+        ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout), "backgroundColor",
+                startColor, endColor);
+        anim.setDuration(500);
+        anim.setEvaluator(new ArgbEvaluator());
+        anim.start();
+
+        currentColor = endColor;
+
 	}
 
 	@Override
@@ -203,6 +232,8 @@ public class MainActivity extends Activity
 		paint.setTextSize(20);
 
 		String categoryInUse = citationsData.getCategoryInUse();
+
+        // TODO: change this to use citationsData.getCategoryInUseColor()
 		if (categoryInUse.equals("inspiringCategory"))
 			c.drawColor(getResources().getColor(R.color.inspiringCategoryColor));
 		else if (categoryInUse.equals("lifeCategory"))
