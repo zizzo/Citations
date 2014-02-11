@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lifeCategoryColor">#C0C0C0</color>
- 	<color name="inspiringCategoryColor">#000080</color>
+    <color name="lifeCategoryColor">#FCF0B4</color>
+ 	<color name="inspiringCategoryColor">#B9D7D9</color>
  	<color name="loveCategoryColor">#FF0000</color>
  	<color name="politicsCategoryColor">#FFFF00</color>
  	<color name="funCategoryColor">#008000</color>
+
+    <color name="lifeCategoryForeground">#3F2B44</color>
+    <color name="inspiringCategoryForeground">#493736</color>
 </resources>

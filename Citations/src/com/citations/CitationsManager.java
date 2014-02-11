@@ -3,6 +3,7 @@
  */
 package com.citations;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import android.content.Context;
@@ -22,6 +23,10 @@ public class CitationsManager
 	private final Context context;
 	private String categoryInUse;
 
+    private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
+    private final HashMap<String, Integer> colormap = new HashMap<String, Integer>();
+
+
 	public CitationsManager(Context context)
 	{
 		this.context = context;
@@ -30,10 +35,14 @@ public class CitationsManager
 		// categories.put("funCategory", new String[0]);
 		categories.put("lifeCategory", getLifeCategoryStrings());
 		categories.put("inspiringCategory", getInspiringCategoryStrings());
+
+        // Populating color map
+
+        colormap.put("lifeCategory", context.getResources().getColor(R.color.lifeCategoryColor));
+        colormap.put("inspiringCategory", context.getResources().getColor(R.color.inspiringCategoryColor));
 	}
 
 	// @SuppressWarnings("serial")
-	private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
 
 	/**
 	 * @return a random string within the category in use
@@ -79,6 +88,8 @@ public class CitationsManager
 	{
 		return categoryInUse;
 	}
+
+    public Integer getCategoryInUseColor() { return colormap.get(getCategoryInUse()); }
 
 	/**
 	 * @return the array with the strings for the category
@@ -145,5 +156,6 @@ public class CitationsManager
 
 		return lifeStrings;
 	}
+
 
 }// end CitationsData

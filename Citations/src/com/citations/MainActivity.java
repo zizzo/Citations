@@ -7,6 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -15,8 +18,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.view.GestureDetectorCompat;
@@ -26,6 +31,9 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -37,7 +45,13 @@ public class MainActivity extends Activity
 	private TextView textViewAuthor;
 	private String[] citation; // I need it here because after the FB sharing I
 								// must put back the original sentence
+
+    private String[] currentCitation;
+    private Integer currentColor;
 	private final double SWIPE_RATIO = 4.5;
+
+    public enum CitationChangeType {INIT, SWIPE_LEFT, SWIPE_RIGHT};
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -90,13 +104,13 @@ public class MainActivity extends Activity
 			{
 				String[] citation = citationsData.getRandomStringInCategory()
 						.split("-");
-				setCitation(citation);
+				setCitation(citation, CitationChangeType.SWIPE_LEFT);
 			}
 			// swipe up/down
 			else if (dyAbs / dxAbs > SWIPE_RATIO)
 			{
 				String[] citation = citationsData.getRandomString().split("-");
-				setCitation(citation);
+				setCitation(citation, CitationChangeType.INIT);
 			}
 			// swipe not valid
 			else
@@ -113,15 +127,19 @@ public class MainActivity extends Activity
 	 */
 	private void drawLayout()
 	{
+
 		textViewSentence = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textViewAuthor = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 
 		// The first String is going to come from the Inspiring category
 		citationsData.setCategoryInUse("inspiringCategory");
+        currentColor = citationsData.getCategoryInUseColor();
 
 		citation = citationsData.getRandomStringInCategory()
 				.split("-");
-		setCitation(citation);
+        currentCitation = citation;
+
+		setCitation(citation, CitationChangeType.INIT);
 
 		ImageButton buttonShare = (ImageButton) findViewById(R.id.activity_mainImageButtonShare);
 		buttonShare.setOnClickListener(new OnClickListener()
@@ -180,10 +198,62 @@ public class MainActivity extends Activity
 	 * @param citation
 	 *            to be set on the TextViews
 	 */
-	private void setCitation(String[] citation)
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void setCitation(String[] citation, CitationChangeType mode)
 	{
-		textViewSentence.setText(citation[0]);
-		textViewAuthor.setText(citation[1]);
+
+        if (mode == CitationChangeType.INIT) {
+            textViewSentence.setText(citation[0]);
+            textViewAuthor.setText(citation[1]);
+        }
+
+
+        if (mode == CitationChangeType.SWIPE_LEFT) {
+            final Animation slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text);
+            final Animation slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+
+
+            slidein.setDuration(100);
+            slideout.setDuration(100);
+            final String[] cittext = citation;
+
+            slideout.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    textViewSentence.setText(cittext[0]);
+                    textViewSentence.startAnimation(slidein);
+                    textViewAuthor.setText(cittext[1]);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+
+            textViewSentence.startAnimation(slideout);
+
+        }
+
+
+        Log.d("MAIN", citationsData.getCategoryInUse());
+        // Set the proper background
+
+        Integer startColor = currentColor;
+        Integer endColor = citationsData.getCategoryInUseColor();
+        ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout), "backgroundColor",
+                startColor, endColor);
+        anim.setDuration(500);
+        anim.setEvaluator(new ArgbEvaluator());
+        anim.start();
+
+        currentColor = endColor;
+
 	}
 
 	@Override
@@ -203,6 +273,8 @@ public class MainActivity extends Activity
 		paint.setTextSize(20);
 
 		String categoryInUse = citationsData.getCategoryInUse();
+
+        // TODO: change this to use citationsData.getCategoryInUseColor()
 		if (categoryInUse.equals("inspiringCategory"))
 			c.drawColor(getResources().getColor(R.color.inspiringCategoryColor));
 		else if (categoryInUse.equals("lifeCategory"))
