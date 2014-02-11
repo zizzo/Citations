@@ -209,21 +209,25 @@ public class MainActivity extends Activity
 
 
         if (mode == CitationChangeType.SWIPE_LEFT) {
-            Animation slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text);
-            Animation slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+            final Animation slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text);
+            final Animation slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in);
 
 
-            final String cittext = citation[0];
+            slidein.setDuration(100);
+            slideout.setDuration(100);
+            final String[] cittext = citation;
 
-            slidein.setAnimationListener(new Animation.AnimationListener() {
+            slideout.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
-                    textViewSentence.setText(cittext);
+
                 }
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    //textViewSentence.setText(cittext);
+                    textViewSentence.setText(cittext[0]);
+                    textViewSentence.startAnimation(slidein);
+                    textViewAuthor.setText(cittext[1]);
                 }
 
                 @Override
@@ -232,18 +236,7 @@ public class MainActivity extends Activity
                 }
             });
 
-            slideout.setDuration(500);
-            slidein.setDuration(500);
-            AnimationSet as = new AnimationSet(true);
-
-            // as.setStartOffset(250);
-            as.addAnimation(slideout);
-            //
-            as.setStartOffset(1000);
-            as.addAnimation(slidein);
-            //
-
-            textViewSentence.startAnimation(as);
+            textViewSentence.startAnimation(slideout);
 
         }
 
