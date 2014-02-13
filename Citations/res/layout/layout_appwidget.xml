@@ -17,7 +17,7 @@
             android:id="@+id/layout_appwidget_TextViewSentence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fkfhskladfhaks iifhasiudfhas kasfudhaskf sukldfh afhdklshf sdkfhaskldfhail"
+            android:text=""
             android:textSize="15sp" />
 
         <TextView
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:padding="10dp"
-            android:text="Zizzo"
+            android:text=""
             android:textSize="15sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -41,7 +41,7 @@
             android:id="@+id/layout_appwidgetLinearLayoutButtonsChangeCat"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingRight="10dp"
+            android:padding="10dp"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -75,37 +75,38 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
                 android:gravity="center" >
 
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewInspiringPoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" 
+                    android:background="@color/inspiringCategoryColor"
                     android:contentDescription="@string/contentDescriptionInspiringPoint"/>
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewLifePoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" 
+                    android:background="@color/lifeCategoryColor"
                     android:contentDescription="@string/contentDescriptionLifePoint"/>
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewPoliticsPoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" 
+                    android:background="@color/politicsCategoryColor"
                     android:contentDescription="@string/contentDescriptionPoliticsPoint"/>
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewLovePoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" 
+                    android:background="@color/loveCategoryColor"
                     android:contentDescription="@string/contentDescriptionLovePoint"/>
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewFunPoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" 
+                    android:background="@color/funCategoryColor"
                     android:contentDescription="@string/contentDescriptionFunPoint"/>
 
             </LinearLayout>

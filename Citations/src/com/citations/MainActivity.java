@@ -18,7 +18,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
@@ -32,7 +31,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -46,7 +44,7 @@ public class MainActivity extends Activity
 	private String[] citation; // I need it here because after the FB sharing I
 								// must put back the original sentence
 
-    private String[] currentCitation;
+	// private String[] currentCitation;
     private Integer currentColor;
 	private final double SWIPE_RATIO = 4.5;
 
@@ -137,7 +135,7 @@ public class MainActivity extends Activity
 
 		citation = citationsData.getRandomStringInCategory()
 				.split("-");
-        currentCitation = citation;
+		// currentCitation = citation;
 
 		setCitation(citation, CitationChangeType.INIT);
 

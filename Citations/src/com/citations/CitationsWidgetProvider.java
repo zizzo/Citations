@@ -29,10 +29,16 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	private static String[] citation; // I need it here because after the FB
 										// sharing I must put back the original
 										// sentence
+	public static int categoryNumber; // 0-4 --> inspiring, life, politics,
+										// love, fun
 
 	public static String SHARE_ON_TWITTER = "shareOnTwitter";
 	public static String SHARE_ON_FACEBOOK = "shareOnFacebook";
 	public static String SHARE_GENERIC = "shareGeneric";
+
+	public static String SET_RANDOM_CITATION = "setRandomCitation";
+	public static String SET_NEXT_CATEGORY = "setNextCategory";
+	public static String SET_PREVIOUS_CATEGORY = "setPreviousCategory";
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -42,24 +48,63 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		citationsData = new CitationsManager(context);
 		citationsData.setCategoryInUse("inspiringCategory");
+		categoryNumber = 0;
 
 		citation = citationsData.getRandomStringInCategory().split("-");
 
-		RemoteViews views = new RemoteViews(context.getPackageName(),
+		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
 
-		views.setTextViewText(R.id.layout_appwidget_TextViewSentence,
+		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewSentence,
 				citation[0]);
-		views.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
+		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
 				citation[1]);
 
+		layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
+				"setBackgroundResource", R.color.inspiringCategoryColor);
+		layoutAppWidget.setInt(R.id.layout_appwidget_imageViewInspiringPoint,
+				"setBackgroundResource", R.color.lifeCategoryColorActive);
+
+		// Manage citations and categories
+		Intent intentPreviousCategory = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentPreviousCategory.setAction(SET_PREVIOUS_CATEGORY);
+		PendingIntent pendingIntentPreviousCategory = PendingIntent
+				.getBroadcast(context, 0, intentPreviousCategory, 0);
+
+		layoutAppWidget.setOnClickPendingIntent(
+				R.id.layout_appwidget_imageButtonPrevious,
+				pendingIntentPreviousCategory);
+
+		Intent intentNextCategory = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentNextCategory.setAction(SET_NEXT_CATEGORY);
+		PendingIntent pendingIntentNextCategory = PendingIntent.getBroadcast(
+				context, 0, intentNextCategory, 0);
+
+		layoutAppWidget.setOnClickPendingIntent(
+				R.id.layout_appwidget_imageButtonNext,
+				pendingIntentNextCategory);
+
+
+		Intent intentRandomCitation = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentRandomCitation.setAction(SET_RANDOM_CITATION);
+		PendingIntent pendingIntentRandomCitation = PendingIntent.getBroadcast(
+				context, 0, intentRandomCitation, 0);
+
+		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidget_imageButtonRefresh,
+				pendingIntentRandomCitation);
+
+
+		// Sharing on the social networks
 		Intent intentTwitter = new Intent(context,
 				CitationsWidgetProvider.class);
 		intentTwitter.setAction(SHARE_ON_TWITTER);
 		PendingIntent pendingIntentTwitter = PendingIntent.getBroadcast(
 				context, 0, intentTwitter, 0);
 
-		views.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonTwitter,
+		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonTwitter,
 				pendingIntentTwitter);
 
 
@@ -69,7 +114,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		PendingIntent pendingIntentFacebook = PendingIntent.getBroadcast(
 				context, 0, intentFacebook, 0);
 
-		views.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonFacebook,
+		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonFacebook,
 				pendingIntentFacebook);
 
 
@@ -78,17 +123,156 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		PendingIntent pendingIntentShare = PendingIntent.getBroadcast(context,
 				0, intentShare, 0);
 
-		views.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
+		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
 				pendingIntentShare);
 
-		appWidgetManager.updateAppWidget(appWidgetIds, views);
+		// Update any modification
+		appWidgetManager.updateAppWidget(appWidgetIds, layoutAppWidget);
 		
 	}// end onUpdate
+
 
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
 		super.onReceive(context, intent);
+
+		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
+				R.layout.layout_appwidget);
+
+		if (intent.getAction().equals(SET_PREVIOUS_CATEGORY))
+		{
+			categoryNumber--;
+			// Enter one of these alternatives, set the color of the background,
+			// change the one of the active button and restore the previous one
+			// to the default
+			if (categoryNumber < 0)
+			{
+				citationsData.setCategoryInUse("funCategory");
+				categoryNumber = 4;
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 0, 4);
+
+			} else if (categoryNumber == 3)
+			{
+				citationsData.setCategoryInUse("loveCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 4, 3);
+
+			} else if (categoryNumber == 2)
+			{
+				citationsData.setCategoryInUse("politicsCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 3, 2);
+
+			} else if (categoryNumber == 1)
+			{
+				citationsData.setCategoryInUse("lifeCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 2, 1);
+
+			} else if (categoryNumber == 0)
+			{
+				citationsData.setCategoryInUse("inspiringCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 1, 0);
+
+			}
+
+		}// end SET_PREVIOUS_CATEGORY
+
+		if (intent.getAction().equals(SET_NEXT_CATEGORY))
+		{
+			categoryNumber++;
+			// Enter one of these alternatives, set the color of the background,
+			// change the one of the active button and restore the previous one
+			// to the default
+			if (categoryNumber > 4)
+			{
+				citationsData.setCategoryInUse("inspiringCategory");
+				categoryNumber = 0;
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 4, 0);
+
+			} else if (categoryNumber == 4)
+			{
+				citationsData.setCategoryInUse("funCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 3, 4);
+
+			} else if (categoryNumber == 3)
+			{
+				citationsData.setCategoryInUse("loveCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 2, 3);
+
+			} else if (categoryNumber == 2)
+			{
+				citationsData.setCategoryInUse("politicsCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 1, 2);
+
+			} else if (categoryNumber == 1)
+			{
+				citationsData.setCategoryInUse("lifeCategory");
+
+				citation = citationsData.getRandomStringInCategory().split("-");
+
+				setText(layoutAppWidget);
+
+				setColorsOnButtons(layoutAppWidget, 0, 1);
+			}
+
+		}// end SET_NEXT_CATEGORY
+
+		if (intent.getAction().equals(SET_RANDOM_CITATION))
+		{
+			citation = citationsData.getRandomStringInCategory().split("-");
+
+			layoutAppWidget.setTextViewText(
+					R.id.layout_appwidget_TextViewSentence,
+					citation[0]);
+			layoutAppWidget.setTextViewText(
+					R.id.layout_appwidget_TextViewAuthor,
+					citation[1]);
+
+		}// end SET_RANDOM_CITATION
 
 		if (intent.getAction().equals(SHARE_ON_TWITTER))
 		{
@@ -101,7 +285,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			Intent intentTweet = new Intent(Intent.ACTION_VIEW, uri);
 			intentTweet.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(intentTweet);
-		}
+		}// end SHARE_ON_TWITTER
 
 		if (intent.getAction().equals(SHARE_ON_FACEBOOK))
 		{
@@ -111,7 +295,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 					.toString() + File.separator + "imageToShare.png";
 			shareOnFb(imagePath, context);
 
-		}
+		}// end SHARE_ON_FACEBOOK
 
 		if (intent.getAction().equals(SHARE_GENERIC))
 		{
@@ -121,18 +305,128 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
 			context.startActivity(Intent.createChooser(shareIntent, "Share...")
 					.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-		}
+		}// end SHARE_GENERIC
+
+
+		// Update the widget
+		ComponentName componentName = new ComponentName(context,
+				CitationsWidgetProvider.class);
+		AppWidgetManager.getInstance(context).updateAppWidget(componentName,
+				layoutAppWidget);
 
 	}// end onReceive
 
+	/**
+	 * @param layoutAppWidget
+	 * @param previous
+	 *            the number of the previous category 0-4 --> inspiring, life,
+	 *            politics, love, fun
+	 * @param current
+	 *            the number of the current category 0-4 --> inspiring, life,
+	 *            politics, love, fun
+	 * 
+	 *            set the proper colors on the small point in the widget
+	 */
+	private void setColorsOnButtons(RemoteViews layoutAppWidget, int previous,
+			int current)
+	{
 
+		if (previous == 0)
+		{
+			layoutAppWidget.setInt(
+					R.id.layout_appwidget_imageViewInspiringPoint,
+					"setBackgroundResource", R.color.inspiringCategoryColor);
+		} else if (previous == 1)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLifePoint,
+					"setBackgroundResource", R.color.lifeCategoryColor);
+
+		} else if (previous == 2)
+		{
+			layoutAppWidget.setInt(
+					R.id.layout_appwidget_imageViewPoliticsPoint,
+					"setBackgroundResource", R.color.politicsCategoryColor);
+		} else if (previous == 3)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLovePoint,
+					"setBackgroundResource", R.color.loveCategoryColor);
+		} else if (previous == 4)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewFunPoint,
+					"setBackgroundResource", R.color.funCategoryColor);
+		}
+
+		if (current == 0)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
+					"setBackgroundResource", R.color.inspiringCategoryColor);
+
+			layoutAppWidget.setInt(
+					R.id.layout_appwidget_imageViewInspiringPoint,
+					"setBackgroundResource",
+					R.color.inspiringCategoryColorActive);
+
+		} else if (current == 1)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
+					"setBackgroundResource", R.color.lifeCategoryColor);
+
+			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLifePoint,
+					"setBackgroundResource", R.color.lifeCategoryColorActive);
+
+		} else if (current == 2)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
+					"setBackgroundResource", R.color.politicsCategoryColor);
+
+			layoutAppWidget.setInt(
+					R.id.layout_appwidget_imageViewPoliticsPoint,
+					"setBackgroundResource",
+					R.color.politicsCategoryColorActive);
+
+		} else if (current == 3)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
+					"setBackgroundResource", R.color.loveCategoryColor);
+
+			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLovePoint,
+					"setBackgroundResource", R.color.loveCategoryColorActive);
+
+		} else if (current == 4)
+		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
+					"setBackgroundResource", R.color.funCategoryColor);
+
+			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewFunPoint,
+					"setBackgroundResource", R.color.funCategoryColorActive);
+
+		}
+
+	}// end setColorsOnButtons
+
+	/**
+	 * @param layoutAppWidget
+	 *            set the proper text on the widget
+	 */
+	private void setText(RemoteViews layoutAppWidget)
+	{
+		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewSentence,
+				citation[0]);
+		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
+				citation[1]);
+	}
+
+	/**
+	 * @param context
+	 * @return the drawn bitmap
+	 */
 	private Bitmap drawBitmap(Context context)
 	{
-		Bitmap bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+		Bitmap bitmap = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_8888);
 		Canvas c = new Canvas(bitmap);
 
 		Paint paint = new Paint();
-		paint.setTextSize(20);
+		paint.setTextSize(5);
 
 		String categoryInUse = citationsData.getCategoryInUse();
 		if (categoryInUse.equals("inspiringCategory"))
