@@ -53,19 +53,22 @@
                     android:id="@+id/layout_appwidget_imageButtonPrevious"
                     android:layout_width="28dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionButtonPrevious"/>
 
                 <ImageButton
                     android:id="@+id/layout_appwidget_imageButtonNext"
                     android:layout_width="34dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionButtonNext"/>
 
                 <ImageButton
                     android:id="@+id/layout_appwidget_imageButtonRefresh"
                     android:layout_width="30dp"
                     android:layout_height="26dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionButtonRefresh"/>
 
             </LinearLayout>
 
@@ -75,30 +78,35 @@
                 android:gravity="center" >
 
                 <ImageView
-                    android:id="@+id/layout_appwidget_imageViewLifePoint"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" />
-                <ImageView
                     android:id="@+id/layout_appwidget_imageViewInspiringPoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionInspiringPoint"/>
+                <ImageView
+                    android:id="@+id/layout_appwidget_imageViewLifePoint"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionLifePoint"/>
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewPoliticsPoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionPoliticsPoint"/>
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewLovePoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionLovePoint"/>
                 <ImageView
                     android:id="@+id/layout_appwidget_imageViewFunPoint"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher" 
+                    android:contentDescription="@string/contentDescriptionFunPoint"/>
 
             </LinearLayout>
 

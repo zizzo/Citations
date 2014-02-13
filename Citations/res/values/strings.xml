@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <string name="app_name">Citations</string>
     <string name="action_settings">Settings</string>
@@ -7,9 +7,17 @@
 <!--     CONTENT DESCRIPTION -->
     <string name="sharingButton">Sharing</string>
     <string name="twitterButton">Twitter</string>
-    <string name="facebookButton">Twitter</string>
-    
-    
+    <string name="facebookButton">Facebook</string>
+    <string name="contentDescriptionButtonPrevious">Previous Category</string>
+	<string name="contentDescriptionButtonNext">Next Category</string>
+	<string name="contentDescriptionButtonRefresh">Random Citation</string>
+    <string name="contentDescriptionInspiringPoint">Inspiring Category</string>
+	<string name="contentDescriptionLifePoint">Life Category</string>
+	<string name="contentDescriptionPoliticsPoint">Politics Category</string>
+	<string name="contentDescriptionLovePoint">Love Category</string>
+	<string name="contentDescriptionFunPoint">Fun Category</string>
+	
+	
 <!-- This is the part dedicated App's Citations -->
 <!-- Citations are divided by categories, feel free to add any citation/category or change  -->
 <!-- the ones that alrady exist; while doing so though, -->
@@ -20,14 +28,24 @@
 <!--     CITATIONS -->
 
 	<!-- 	LOVE -->
-
-
+		<string name="loveTzu1">"Being deeply loved by someone gives you strength, while loving someone deeply gives you courage - L. Tzu"</string>
+		<string name="loveWilde1">"Keep love in your heart. A life without it is like a sunless garden when the flowers are dead - O. Wilde"</string>
+		
+		
+		
+		
 	<!-- FUN -->
+		<string name="funTurner1">"A successful man is one who makes more money than his wife can spend. A successful woman is one who can find such a man - L. Turner"</string>
+		<string name="funTomlin1">"I always wanted to be somebody, but now I realize I should have been more specific - L. Tomlin"</string>
 
-
+		
+		
 	<!-- POLITICS -->
+		<string name="politicsPlato1">"One of the penalties for refusing to participate in politics is that you end up being governed by your inferiors - Plato"</string>
+		<string name="politicsDante1">"The darkest places in hell are reserved for those who maintain their neutrality in times of moral crisis - D. Alighieri"</string>
 	
-	
+		
+		
 	<!-- 	LIFE -->
 		<string name="lifeLeopardi1">"The most busy life is the most happy - G. Leopardi"</string>
 	    <string name="lifeWilde1">"To live is the rarest thing in the world. Most people exist, that is all - O. Wilde"</string>

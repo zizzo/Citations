@@ -7,7 +7,16 @@
 <!--     CONTENT DESCRIPTION -->
     <string name="sharingButton">Sharing</string>
 	<string name="twitterButton">Twitter</string>
-	<string name="facebookButton">Twitter</string>
+	<string name="facebookButton">Facebook</string>
+	<string name="contentDescriptionButtonPrevious">Categoria Precedente</string>
+	<string name="contentDescriptionButtonNext">Categoria Successiva</string>
+	<string name="contentDescriptionButtonRefresh">Citazione Casuale</string>
+	<string name="contentDescriptionInspiringPoint">Categoria Ispirazione</string>
+	<string name="contentDescriptionLifePoint">Categoria Vita</string>
+	<string name="contentDescriptionPoliticsPoint">Categoria Politica</string>
+	<string name="contentDescriptionLovePoint">Categoria Amore</string>
+	<string name="contentDescriptionFunPoint">Categoria Divertimento</string>
+	
 	
 	
 <!-- This is the part dedicated App's Citations -->
@@ -21,14 +30,22 @@
 <!--     CITATIONS -->
 
 	<!-- 	LOVE -->
+		<string name="loveTzu1">"Essere profondamente amati da qualcuno ci dà forza, amare profondamente qualcuno ci dà coraggio - L. Tzu"</string>
+		<string name="loveWilde1">"Conserva amore nel tuo cuore. Una vita senza, è come un giardino senza sole quando i fiori son morti - O. Wilde"</string>
 
-
+		
+		
 	<!-- FUN -->
-
-
+		<string name="funTurner1">"Un uomo di successo è uno che riesca a guadagnere più soldi di quanti ne spenda la moglie. Una donna di successo è una che riesca a trovare un tale uomo - L. Turner"</string>
+		<string name="funTomlin1">"Ho sempre desiderato essere qualcuno, ora ho realizzato che sarei dovuto essere più specifico - L. Tomlin"</string>
+		
+		
 	<!-- POLITICS -->
+		<string name="politicsPlato1">"Uno dei risvolti negativi del non partecipare alla vita politica è quello di finire per essere governati dai propri inferiori - Platone"</string>
+		<string name="politicsDante1">"I posti più bui dell'inferno sono riservati a coloro che mantengono la propria neutralità in tempi di crisi morale - D. Alighieri"</string>
 	
-	
+		
+		
 	<!-- 	LIFE -->
 		<string name="lifeLeopardi1">"La vita più impegnata è la più felice - G. Leopardi"</string>
 	    <string name="lifeWilde1">"Vivere è la cosa più rara del mondo. Molte persone esistono solamente - O. Wilde"</string>

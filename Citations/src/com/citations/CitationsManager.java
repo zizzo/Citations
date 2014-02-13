@@ -30,16 +30,21 @@ public class CitationsManager
 	public CitationsManager(Context context)
 	{
 		this.context = context;
-		// categories.put("loveCategory", new String[0]);
-		// categories.put("politicsCategory", new String[0]);
-		// categories.put("funCategory", new String[0]);
+		categories.put("loveCategory", getLoveCategoryStrings());
+		categories.put("politicsCategory", getPoliticsCategoryStrings());
+		categories.put("funCategory", getFunCategoryStrings());
 		categories.put("lifeCategory", getLifeCategoryStrings());
 		categories.put("inspiringCategory", getInspiringCategoryStrings());
 
         // Populating color map
-
         colormap.put("lifeCategory", context.getResources().getColor(R.color.lifeCategoryColor));
         colormap.put("inspiringCategory", context.getResources().getColor(R.color.inspiringCategoryColor));
+		colormap.put("loveCategory",
+				context.getResources().getColor(R.color.loveCategoryColor));
+		colormap.put("politicsCategory",
+				context.getResources().getColor(R.color.politicsCategoryColor));
+		colormap.put("funCategory",
+				context.getResources().getColor(R.color.funCategoryColor));
 	}
 
 	// @SuppressWarnings("serial")
@@ -71,6 +76,19 @@ public class CitationsManager
 
 		case 1:
 			setCategoryInUse("inspiringCategory");
+			break;
+
+		case 2:
+			setCategoryInUse("loveCategory");
+			break;
+
+		case 3:
+			setCategoryInUse("funCategory");
+			break;
+
+		case 4:
+			setCategoryInUse("politicsCategory");
+			break;
 
 		default:
 			break;
@@ -155,6 +173,41 @@ public class CitationsManager
 				context.getString(R.string.lifeWilde3) };
 
 		return lifeStrings;
+	}
+
+	/**
+	 * @return the strings about politics
+	 */
+	private String[] getPoliticsCategoryStrings()
+	{
+		String[] politicsStrings = {
+				context.getString(R.string.politicsDante1),
+				context.getString(R.string.politicsPlato1) };
+
+		return politicsStrings;
+	}
+
+	/**
+	 * @return the strings about love
+	 */
+	private String[] getLoveCategoryStrings()
+	{
+		String[] loveStrings = { context.getString(R.string.loveTzu1),
+				context.getString(R.string.loveWilde1) };
+
+		return loveStrings;
+	}
+
+
+	/**
+	 * @return fun category strings
+	 */
+	private String[] getFunCategoryStrings()
+	{
+		String[] funCategory = { context.getString(R.string.funTomlin1),
+				context.getString(R.string.funTurner1) };
+
+		return funCategory;
 	}
 
 
