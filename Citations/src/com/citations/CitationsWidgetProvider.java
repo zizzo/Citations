@@ -21,24 +21,23 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 public class CitationsWidgetProvider extends AppWidgetProvider
 {
-	private static CitationsManager citationsData;
-	private static String[] citation; // I need it here because after the FB
-										// sharing I must put back the original
-										// sentence
-	public static int categoryNumber; // 0-4 --> inspiring, life, politics,
+	// private CitationsManager citationsData;
+	// private String[] citation;
+	// public int categoryNumber; // 0-4 --> inspiring, life, politics,
 										// love, fun
 
-	public static String SHARE_ON_TWITTER = "shareOnTwitter";
-	public static String SHARE_ON_FACEBOOK = "shareOnFacebook";
-	public static String SHARE_GENERIC = "shareGeneric";
+	public final String SHARE_ON_TWITTER = "shareOnTwitter";
+	public final String SHARE_ON_FACEBOOK = "shareOnFacebook";
+	public final String SHARE_GENERIC = "shareGeneric";
 
-	public static String SET_RANDOM_CITATION = "setRandomCitation";
-	public static String SET_NEXT_CATEGORY = "setNextCategory";
-	public static String SET_PREVIOUS_CATEGORY = "setPreviousCategory";
+	public final String SET_RANDOM_CITATION = "setRandomCitation";
+	public final String SET_NEXT_CATEGORY = "setNextCategory";
+	public final String SET_PREVIOUS_CATEGORY = "setPreviousCategory";
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -136,6 +135,9 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	public void onReceive(Context context, Intent intent)
 	{
 		super.onReceive(context, intent);
+
+		Log.d("CitationsWidgetProvider", "Value of citationsData: "
+				+ citationsData);
 
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
@@ -251,7 +253,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 1)
 			{
 				citationsData.setCategoryInUse("lifeCategory");
-
+				
 				citation = citationsData.getRandomStringInCategory().split("-");
 
 				setText(layoutAppWidget);

@@ -101,56 +101,55 @@ public final class R {
  FUN 
          */
         public static final int funTurner1=0x7f08000f;
-        public static final int inspiringAnonymous1=0x7f080029;
-        public static final int inspiringAristotele1=0x7f08003f;
-        public static final int inspiringBacon1=0x7f08002e;
-        public static final int inspiringCaesar1=0x7f080027;
-        public static final int inspiringCaesar2=0x7f080028;
-        public static final int inspiringCheGuevara1=0x7f080032;
-        public static final int inspiringCheGuevara2=0x7f080033;
-        public static final int inspiringChesterfield1=0x7f08002f;
-        public static final int inspiringChesterton1=0x7f08002b;
-        public static final int inspiringChurchill1=0x7f080038;
-        public static final int inspiringChurchill2=0x7f080039;
-        public static final int inspiringCoelho1=0x7f080040;
+        public static final int inspiringAnonymous1=0x7f080028;
+        public static final int inspiringAristotele1=0x7f08003e;
+        public static final int inspiringBacon1=0x7f08002d;
+        public static final int inspiringCaesar1=0x7f080026;
+        public static final int inspiringCaesar2=0x7f080027;
+        public static final int inspiringCheGuevara1=0x7f080031;
+        public static final int inspiringCheGuevara2=0x7f080032;
+        public static final int inspiringChesterfield1=0x7f08002e;
+        public static final int inspiringChesterton1=0x7f08002a;
+        public static final int inspiringChurchill1=0x7f080037;
+        public static final int inspiringChurchill2=0x7f080038;
+        public static final int inspiringCoelho1=0x7f08003f;
         /**  INSPIRING 
  INSPIRING 
          */
-        public static final int inspiringDaVinci1=0x7f080023;
-        public static final int inspiringEinstein1=0x7f08003a;
-        public static final int inspiringEsopo1=0x7f080036;
-        public static final int inspiringFord1=0x7f080035;
-        public static final int inspiringGoethe1=0x7f08003c;
-        public static final int inspiringGoethe2=0x7f08003d;
-        public static final int inspiringJesus1=0x7f080025;
-        public static final int inspiringJohnson1=0x7f080042;
-        public static final int inspiringKennedy1=0x7f08003b;
-        public static final int inspiringKing1=0x7f080034;
-        public static final int inspiringLec1=0x7f08002c;
-        public static final int inspiringLiKaShing1=0x7f080024;
-        public static final int inspiringNietzsche1=0x7f080026;
-        public static final int inspiringRoosvelt1=0x7f08003e;
-        public static final int inspiringSFrancesco1=0x7f080030;
-        public static final int inspiringSeneca1=0x7f08002a;
-        public static final int inspiringShaw1=0x7f080037;
-        public static final int inspiringTertulliano1=0x7f080031;
-        public static final int inspiringTwain1=0x7f080041;
-        public static final int inspiringUltang1=0x7f08002d;
+        public static final int inspiringDaVinci1=0x7f080022;
+        public static final int inspiringEinstein1=0x7f080039;
+        public static final int inspiringEsopo1=0x7f080035;
+        public static final int inspiringFord1=0x7f080034;
+        public static final int inspiringGoethe1=0x7f08003b;
+        public static final int inspiringGoethe2=0x7f08003c;
+        public static final int inspiringJesus1=0x7f080024;
+        public static final int inspiringJohnson1=0x7f080041;
+        public static final int inspiringKennedy1=0x7f08003a;
+        public static final int inspiringKing1=0x7f080033;
+        public static final int inspiringLec1=0x7f08002b;
+        public static final int inspiringLiKaShing1=0x7f080023;
+        public static final int inspiringNietzsche1=0x7f080025;
+        public static final int inspiringRoosvelt1=0x7f08003d;
+        public static final int inspiringSFrancesco1=0x7f08002f;
+        public static final int inspiringSeneca1=0x7f080029;
+        public static final int inspiringShaw1=0x7f080036;
+        public static final int inspiringTertulliano1=0x7f080030;
+        public static final int inspiringTwain1=0x7f080040;
+        public static final int inspiringUltang1=0x7f08002c;
         public static final int lifeBacon1=0x7f08001b;
         public static final int lifeBattaglia1=0x7f080019;
-        public static final int lifeButturini1=0x7f08001d;
+        public static final int lifeButturini1=0x7f08001c;
         public static final int lifeCheGuevara1=0x7f08001a;
-        public static final int lifeChineseProverb1=0x7f08001f;
-        public static final int lifeDeBono1=0x7f080021;
-        public static final int lifeDelacroix1=0x7f08001c;
+        public static final int lifeChineseProverb1=0x7f08001e;
+        public static final int lifeDeBono1=0x7f080020;
         public static final int lifeGandhi1=0x7f080017;
-        public static final int lifeGoethe1=0x7f080022;
+        public static final int lifeGoethe1=0x7f080021;
         /**  	LIFE 
  	LIFE 
          */
         public static final int lifeLeopardi1=0x7f080013;
-        public static final int lifeMizner1=0x7f080020;
-        public static final int lifeTiburzi1=0x7f08001e;
+        public static final int lifeMizner1=0x7f08001f;
+        public static final int lifeTiburzi1=0x7f08001d;
         public static final int lifeWest1=0x7f080018;
         public static final int lifeWilde1=0x7f080014;
         public static final int lifeWilde2=0x7f080015;

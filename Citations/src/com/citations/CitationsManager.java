@@ -162,7 +162,6 @@ public class CitationsManager
 				context.getString(R.string.lifeCheGuevara1),
 				context.getString(R.string.lifeChineseProverb1),
 				context.getString(R.string.lifeDeBono1),
-				context.getString(R.string.lifeDelacroix1),
 				context.getString(R.string.lifeGandhi1),
 				context.getString(R.string.lifeGoethe1),
 				context.getString(R.string.lifeMizner1),
