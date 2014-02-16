@@ -19,9 +19,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.graphics.Color;
+import android.graphics.Paint.Align;
 import android.net.Uri;
 import android.os.Environment;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.widget.RemoteViews;
 
 public class CitationsWidgetProvider extends AppWidgetProvider
@@ -222,7 +226,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		}// end SET_PREVIOUS_CATEGORY
 
-		if (intent.getAction().equals(SET_NEXT_CATEGORY))
+		else if (intent.getAction().equals(SET_NEXT_CATEGORY))
 		{
 			categoryNumber++;
 			// Enter one of these alternatives, set the color of the background,
@@ -282,7 +286,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		}// end SET_NEXT_CATEGORY
 
-		if (intent.getAction().equals(SET_RANDOM_CITATION))
+		else if (intent.getAction().equals(SET_RANDOM_CITATION))
 		{
 			citationsData.setCategoryInUse(categoryType);
 			citation = citationsData.getRandomStringInCategory().split("-");
@@ -296,7 +300,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		}// end SET_RANDOM_CITATION
 
-		if (intent.getAction().equals(SHARE_ON_TWITTER))
+		else if (intent.getAction().equals(SHARE_ON_TWITTER))
 		{
 
 			String tweetText = citation[0] + "\n" + citation[1];
@@ -309,7 +313,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			context.startActivity(intentTweet);
 		}// end SHARE_ON_TWITTER
 
-		if (intent.getAction().equals(SHARE_ON_FACEBOOK))
+		else if (intent.getAction().equals(SHARE_ON_FACEBOOK))
 		{
 			Bitmap bitmap = drawBitmap(context, citation, categoryType);
 			storeImage(bitmap, "imageToShare.png");
@@ -319,7 +323,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		}// end SHARE_ON_FACEBOOK
 
-		if (intent.getAction().equals(SHARE_GENERIC))
+		else if (intent.getAction().equals(SHARE_GENERIC))
 		{
 			String shareMessage = citation[0] + "\n" + citation[1];
 			Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -453,11 +457,12 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			String categoryInUse)
 	{
 
-		Bitmap bitmap = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_8888);
+		Bitmap bitmap = Bitmap.createBitmap(500, 300, Bitmap.Config.ARGB_8888);
 		Canvas c = new Canvas(bitmap);
 
-		Paint paint = new Paint();
-		paint.setTextSize(5);
+		// Paint paint = new Paint();
+		// paint.setTextAlign(Align.CENTER);
+		// paint.setTextSize(18);
 
 		if (categoryInUse.equals("inspiringCategory"))
 			c.drawColor(context.getResources().getColor(
@@ -477,7 +482,18 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		String bitmapText = citation[0] + "\n" + citation[1];
 
-		c.drawText(bitmapText, 30, 30, paint);
+		TextPaint tp = new TextPaint();
+		tp.setColor(Color.BLACK);
+		tp.setTextSize(20);
+		tp.setTextAlign(Align.CENTER);
+		tp.setAntiAlias(true);
+		StaticLayout sl = new StaticLayout(bitmapText, tp, 500,
+				Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+
+		// c.translate(250, 150);
+		sl.draw(c);
+		
+		// c.drawText(bitmapText, 250, 150, paint);
 
 		c.drawBitmap(bitmap, 0, 0, null);
 
