@@ -13,6 +13,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -21,7 +22,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 public class CitationsWidgetProvider extends AppWidgetProvider
@@ -31,13 +31,18 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	// public int categoryNumber; // 0-4 --> inspiring, life, politics,
 										// love, fun
 
-	public final String SHARE_ON_TWITTER = "shareOnTwitter";
-	public final String SHARE_ON_FACEBOOK = "shareOnFacebook";
-	public final String SHARE_GENERIC = "shareGeneric";
+	public static final String SHARE_ON_TWITTER = "shareOnTwitter";
+	public static final String SHARE_ON_FACEBOOK = "shareOnFacebook";
+	public static final String SHARE_GENERIC = "shareGeneric";
 
-	public final String SET_RANDOM_CITATION = "setRandomCitation";
-	public final String SET_NEXT_CATEGORY = "setNextCategory";
-	public final String SET_PREVIOUS_CATEGORY = "setPreviousCategory";
+	public static final String SET_RANDOM_CITATION = "setRandomCitation";
+	public static final String SET_NEXT_CATEGORY = "setNextCategory";
+	public static final String SET_PREVIOUS_CATEGORY = "setPreviousCategory";
+
+	public static final String SHARED_PREF_CITATIONS = "sharedPrefsCitations";
+	public static final String CATEGORY_TYPE = "categoryType";
+	public static final String CATEGORY_NUMBER = "categoryNumber";
+	public static final String CITATION_STRING = "citationString";
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -45,11 +50,20 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	{
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 
-		citationsData = new CitationsManager(context);
+		CitationsManager citationsData = new CitationsManager(context);
 		citationsData.setCategoryInUse("inspiringCategory");
-		categoryNumber = 0;
+		int categoryNumber = 0;
 
-		citation = citationsData.getRandomStringInCategory().split("-");
+		String[] citation = citationsData.getRandomStringInCategory()
+				.split("-");
+
+		SharedPreferences settings = context.getSharedPreferences(
+				SHARED_PREF_CITATIONS, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putInt(CATEGORY_NUMBER, categoryNumber);
+		editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
+		editor.putString(CATEGORY_TYPE, "inspiringCategory");
+		editor.commit();
 
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
@@ -62,7 +76,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
 				"setBackgroundResource", R.color.inspiringCategoryColor);
 		layoutAppWidget.setInt(R.id.layout_appwidget_imageViewInspiringPoint,
-				"setBackgroundResource", R.color.lifeCategoryColorActive);
+				"setBackgroundResource", R.color.inspiringCategoryColorActive);
 
 		// Manage citations and categories
 		Intent intentPreviousCategory = new Intent(context,
@@ -136,8 +150,13 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	{
 		super.onReceive(context, intent);
 
-		Log.d("CitationsWidgetProvider", "Value of citationsData: "
-				+ citationsData);
+		CitationsManager citationsData = new CitationsManager(context);
+		SharedPreferences settings = context.getSharedPreferences(
+				SHARED_PREF_CITATIONS, 0);
+		int categoryNumber = settings.getInt(CATEGORY_NUMBER, 0);
+		String[] citation = settings.getString(CITATION_STRING, "-")
+				.split("-");
+		String categoryType = settings.getString(CATEGORY_TYPE, "");
 
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
@@ -150,52 +169,52 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			// to the default
 			if (categoryNumber < 0)
 			{
-				citationsData.setCategoryInUse("funCategory");
+				categoryType = "funCategory";
 				categoryNumber = 4;
-
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 0, 4);
 
 			} else if (categoryNumber == 3)
 			{
-				citationsData.setCategoryInUse("loveCategory");
-
+				categoryType = "loveCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 4, 3);
 
 			} else if (categoryNumber == 2)
 			{
-				citationsData.setCategoryInUse("politicsCategory");
-
+				categoryType = "politicsCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 3, 2);
 
 			} else if (categoryNumber == 1)
 			{
-				citationsData.setCategoryInUse("lifeCategory");
-
+				categoryType = "lifeCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 2, 1);
 
 			} else if (categoryNumber == 0)
 			{
-				citationsData.setCategoryInUse("inspiringCategory");
-
+				categoryType = "inspiringCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 1, 0);
 
@@ -211,52 +230,52 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			// to the default
 			if (categoryNumber > 4)
 			{
-				citationsData.setCategoryInUse("inspiringCategory");
+				categoryType = "inspiringCategory";
 				categoryNumber = 0;
-
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 4, 0);
 
 			} else if (categoryNumber == 4)
 			{
-				citationsData.setCategoryInUse("funCategory");
-
+				categoryType = "funCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 3, 4);
 
 			} else if (categoryNumber == 3)
 			{
-				citationsData.setCategoryInUse("loveCategory");
-
+				categoryType = "loveCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 2, 3);
 
 			} else if (categoryNumber == 2)
 			{
-				citationsData.setCategoryInUse("politicsCategory");
-
+				categoryType = "politicsCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 1, 2);
 
 			} else if (categoryNumber == 1)
 			{
-				citationsData.setCategoryInUse("lifeCategory");
-				
+				categoryType = "lifeCategory";
+				citationsData.setCategoryInUse(categoryType);
 				citation = citationsData.getRandomStringInCategory().split("-");
 
-				setText(layoutAppWidget);
+				setText(layoutAppWidget, citation);
 
 				setColorsOnButtons(layoutAppWidget, 0, 1);
 			}
@@ -265,6 +284,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		if (intent.getAction().equals(SET_RANDOM_CITATION))
 		{
+			citationsData.setCategoryInUse(categoryType);
 			citation = citationsData.getRandomStringInCategory().split("-");
 
 			layoutAppWidget.setTextViewText(
@@ -291,7 +311,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		if (intent.getAction().equals(SHARE_ON_FACEBOOK))
 		{
-			Bitmap bitmap = drawBitmap(context);
+			Bitmap bitmap = drawBitmap(context, citation, categoryType);
 			storeImage(bitmap, "imageToShare.png");
 			String imagePath = Environment.getExternalStorageDirectory()
 					.toString() + File.separator + "imageToShare.png";
@@ -309,6 +329,13 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 					.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 		}// end SHARE_GENERIC
 
+
+		// Update SharedPreferences
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
+		editor.putString(CATEGORY_TYPE, categoryType);
+		editor.putInt(CATEGORY_NUMBER, categoryNumber);
+		editor.commit();
 
 		// Update the widget
 		ComponentName componentName = new ComponentName(context,
@@ -410,7 +437,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	 * @param layoutAppWidget
 	 *            set the proper text on the widget
 	 */
-	private void setText(RemoteViews layoutAppWidget)
+	private void setText(RemoteViews layoutAppWidget, String[] citation)
 	{
 		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewSentence,
 				citation[0]);
@@ -422,15 +449,16 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	 * @param context
 	 * @return the drawn bitmap
 	 */
-	private Bitmap drawBitmap(Context context)
+	private Bitmap drawBitmap(Context context, String[] citation,
+			String categoryInUse)
 	{
+
 		Bitmap bitmap = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_8888);
 		Canvas c = new Canvas(bitmap);
 
 		Paint paint = new Paint();
 		paint.setTextSize(5);
 
-		String categoryInUse = citationsData.getCategoryInUse();
 		if (categoryInUse.equals("inspiringCategory"))
 			c.drawColor(context.getResources().getColor(
 					R.color.inspiringCategoryColor));
