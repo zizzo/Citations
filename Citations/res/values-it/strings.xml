@@ -28,6 +28,7 @@
 
 
 <!--     CITATIONS -->
+<!--     PLEASE MIND THE ALPHABETICAL ORDER!!! -->
 
 	<!-- 	LOVE -->
 		<string name="loveTzu1">"Essere profondamente amati da qualcuno ci dà forza, amare profondamente qualcuno ci dà coraggio - L. Tzu"</string>
@@ -36,68 +37,68 @@
 		
 		
 	<!-- FUN -->
-		<string name="funTurner1">"Un uomo di successo è uno che riesca a guadagnere più soldi di quanti ne spenda la moglie. Una donna di successo è una che riesca a trovare un tale uomo - L. Turner"</string>
 		<string name="funTomlin1">"Ho sempre desiderato essere qualcuno, ora ho realizzato che sarei dovuto essere più specifico - L. Tomlin"</string>
+		<string name="funTurner1">"Un uomo di successo è uno che riesca a guadagnere più soldi di quanti ne spenda la moglie. Una donna di successo è una che riesca a trovare un tale uomo - L. Turner"</string>
+		
 		
 		
 	<!-- POLITICS -->
-		<string name="politicsPlato1">"Uno dei risvolti negativi del non partecipare alla vita politica è quello di finire per essere governati dai propri inferiori - Platone"</string>
 		<string name="politicsDante1">"I posti più bui dell'inferno sono riservati a coloro che mantengono la propria neutralità in tempi di crisi morale - D. Alighieri"</string>
+		<string name="politicsPlato1">"Uno dei risvolti negativi del non partecipare alla vita politica è quello di finire per essere governati dai propri inferiori - Platone"</string>
+		
 	
 		
 		
 	<!-- 	LIFE -->
-		<string name="lifeLeopardi1">"La vita più impegnata è la più felice - G. Leopardi"</string>
-	    <string name="lifeWilde1">"Vivere è la cosa più rara del mondo. Molte persone esistono solamente - O. Wilde"</string>
-	    <string name="lifeWilde2">"Un pompelmo è un limone che ha avuto un’opportunità e ne ha approfittato - O. Wilde"</string>
-		<string name="lifeWilde3">"A volte è meglio tacere e sembrare stupidi che aprir bocca e togliere ogni dubbio - O. Wilde"</string>
-	    <string name="lifeGandhi1">"Vivi come se dovessi morire domani. Impara come se dovessi vivere per sempre - M. Gandhi"</string>
-		<string name="lifeWest1">Si vive una volta sola, ma se lo si fa bene, una volta è abbastanza - M. West"</string>
-		<string name="lifeBattaglia1">"Il tempo è come un fiocco di neve, scompare mentre cerchiamo di decidere che cosa farne - R. Battaglia"</string>
-	    <string name="lifeCheGuevara1">"Come si può essere vivi e felici se nel mondo c'è chi non può esserlo? - Che Guevara"</string>
 		<string name="lifeBacon1">"La speranza è un’ottima colazione, ma una pessima cena - F. Bacon"</string>
+		<string name="lifeBattaglia1">"Il tempo è come un fiocco di neve, scompare mentre cerchiamo di decidere che cosa farne - R. Battaglia"</string>
 		<string name="lifeButturini1">"Ricorda di non confondere mai la gentilezza e la disponibilità con la debolezza - C. Butturini"</string>
-		<string name="lifeTiburzi1">"Pensare di sapere è come credere, guardando il mare, che finisca all'orizzonte - L. Tiburzi"</string>
+		<string name="lifeCheGuevara1">"Come si può essere vivi e felici se nel mondo c'è chi non può esserlo? - Che Guevara"</string>
 		<string name="lifeChineseProverb1">Possiamo scegliere quello che vogliamo seminare, ma siamo obbligati a mietere quello che abbiamo piantato - Proverbio Cinese</string>
-		<string name="lifeMizner1">"Chi sa ascoltare non soltanto è simpatico a tutti, ma dopo un po’ finisce con l’imparare qualcosa - W. Mizner"</string>
 		<string name="lifeDeBono1">"Spesso si riesce a vedere un’opportunità solo dopo che è stata colta da qualcun altro - E. De Bono"</string>
+		<string name="lifeGandhi1">"Vivi come se dovessi morire domani. Impara come se dovessi vivere per sempre - M. Gandhi"</string>
 		<string name="lifeGoethe1">"Qualunque cosa tu possa fare, o sognare di fare, incominciala. L’audacia ha in sé genio, potere e magia. Incomincia adesso - J. W. Goethe"</string>
-															    		
+		<string name="lifeLeopardi1">"La vita più impegnata è la più felice - G. Leopardi"</string>
+		<string name="lifeMizner1">"Chi sa ascoltare non soltanto è simpatico a tutti, ma dopo un po’ finisce con l’imparare qualcosa - W. Mizner"</string>
+		<string name="lifeTiburzi1">"Pensare di sapere è come credere, guardando il mare, che finisca all'orizzonte - L. Tiburzi"</string>
+		<string name="lifeWest1">Si vive una volta sola, ma se lo si fa bene, una volta è abbastanza - M. West"</string>
+		<string name="lifeWilde1">"Vivere è la cosa più rara del mondo. Molte persone esistono solamente - O. Wilde"</string>
+		<string name="lifeWilde2">"Un pompelmo è un limone che ha avuto un’opportunità e ne ha approfittato - O. Wilde"</string>
+		<string name="lifeWilde3">"A volte è meglio tacere e sembrare stupidi che aprir bocca e togliere ogni dubbio - O. Wilde"</string>															    		
 					
 	<!-- INSPIRING -->
-		<string name="inspiringDaVinci1">"Tristo è quel discepolo che non avanza il suo maestro - L. Da Vinci"</string>
-		<string name="inspiringLiKaShing1">"Se non hai un grande cuore non avrai successo - Li Ka Shing"</string>
-		<string name="inspiringJesus1">"Chi vuole essere grande sia servo di tutti - Gesù"</string>
-		<string name="inspiringNietzsche1">"Quello che non ci uccide ci rende più forti - F. Nietzsche"</string>    
-	    <string name="inspiringCaesar1">"Veni, vidi, vici - Caesar"</string>
-	    <string name="inspiringCaesar2">"Alea iacta est - Caesar"</string>
-	    <string name="inspiringAnonymous1">"Ad augusta per angusta - Anonimo"</string>
-	    <string name="inspiringSeneca1">"Per aspera ad astra - Seneca"</string>
-		<string name="inspiringChesterton1">"Senza istruzione corriamo il rischio di prendere sul serio tutte le persone istruite - G. K. Chesterton"</string>
-		<string name="inspiringLec1">"Un cervello limitato contiene una quantità illimitata di idiozie - S. Lec"</string>
-		<string name="inspiringUltang1">"La metà della bellezza dipende dal paesaggio e l’altra metà dall’uomo che la guarda - L. Ultang"</string>
+		<string name="inspiringAnonymous1">"Ad augusta per angusta - Anonimo"</string>
+		<string name="inspiringAristotle1">"Noi siamo ciò che facciamo ripetutamente. Quindi l’eccellenza non sta in un singolo atto, ma nel comportamento - Aristotele"</string>
 		<string name="inspiringBacon1">"I monumenti all’intelligenza sopravvivono ai monumenti al potere - F. Bacon"</string>
-		<string name="inspiringChesterfield1">"Tutto ciò che merita di essere fatto, merita di essere fatto bene - P. D. S. Chesterfield"</string>
-		<string name="inspiringSFrancesco1">"Un raggio di sole può cancellare milioni di ombre - S. Francesco"</string>
-		<string name="inspiringTertulliano1">"Vuoi essere felice per un istante? Vendicati. Vuoi essere felice per sempre? Perdona - Tertulliano"</string>
+		<string name="inspiringCaesar1">"Veni, vidi, vici - Caesar"</string>
+		<string name="inspiringCaesar2">"Alea iacta est - Caesar"</string>
 		<string name="inspiringCheGuevara1">"Chi lotta può perdere. Chi non lotta ha già perso - Che Guevara"</string>
 		<string name="inspiringCheGuevara2">"Indietro? Neanche per prendere la rincorsa! - Che Guevara"</string>
-		<string name="inspiringKing1">"Non ho paura delle parole dei violenti, ma del silenzio degli onesti - M. L. King"</string>	
-		<string name="inspiringFord1">"Trovarsi insieme è un inizio, restare insieme un progresso e lavorare insieme un successo - H. Ford"</string>
-		<string name="inspiringEsopo1">"È facile essere coraggiosi a distanza di sicurezza - Esopo"</string>
-		<string name="inspiringShaw1">"Non aspettare il momento opportuno: crealo! - G. B. Shaw"</string>
+		<string name="inspiringChesterfield1">"Tutto ciò che merita di essere fatto, merita di essere fatto bene - P. D. S. Chesterfield"</string>
+		<string name="inspiringChesterton1">"Senza istruzione corriamo il rischio di prendere sul serio tutte le persone istruite - G. K. Chesterton"</string>
 		<string name="inspiringChurchill1">"Il coraggio è la prima delle qualità umane, perché è quella che garantisce le altre - W. Churchill"</string>
 		<string name="inspiringChurchill2">"Un pessimista vede la difficoltà in ogni opportunità; un ottimista vede l’opportunità in ogni difficoltà - W. Churchill"</string>
-		<string name="inspiringEinstein1">"L'immaginazione è più importante della conoscenza - A. Einstein"</string>	
-		<string name="inspiringKennedy1">"Molte persone vedono le cose come sono e si chiedono: perché? Io vedo le cose come potrebbero essere e mi chiedo: perché no? - R. Kennedy"</string>
+		<string name="inspiringCoelho1">"Soltanto una cosa rende impossibile un sogno: la paura di fallire - P. Coelho"</string>
+		<string name="inspiringDaVinci1">"Tristo è quel discepolo che non avanza il suo maestro - L. Da Vinci"</string>
+		<string name="inspiringEinstein1">"L'immaginazione è più importante della conoscenza - A. Einstein"</string> 
+		<string name="inspiringEsopo1">"È facile essere coraggiosi a distanza di sicurezza - Esopo"</string>
+		<string name="inspiringFord1">"Trovarsi insieme è un inizio, restare insieme un progresso e lavorare insieme un successo - H. Ford"</string>
 		<string name="inspiringGoethe1">"Non è forte colui che non cade mai, ma colui che cadendo si rialza - J. W. Goethe"</string>
 		<string name="inspiringGoethe2">"È felice e grande solo chi, per essere qualcuno, non ha bisogno né di comandare né di ubbidire - J. W. Goethe"</string>
-		<string name="inspiringRoosvelt1">"Il futuro appartiene a coloro che credono ai propri sogni - E. Roosevelt"</string>
-		<string name="inspiringAristotele1">"Noi siamo ciò che facciamo ripetutamente. Quindi l’eccellenza non sta in un singolo atto, ma nel comportamento - Aristotele"</string>
-		<string name="inspiringCoelho1">"Soltanto una cosa rende impossibile un sogno: la paura di fallire - P. Coelho"</string>
-		<string name="inspiringTwain1">"Non ho mai permesso che la scuola interferisse con la mia educazione - M. Twain"</string>
+		<string name="inspiringJesus1">"Chi vuole essere grande sia servo di tutti - Gesù"</string>
 		<string name="inspiringJohnson1">"Poche cose sono impossibili se si è diligenti e dotati di capacità. Le grandi opere si compiono non con la forza ma con la perseveranza - S. Johnson"</string>
-	
+		<string name="inspiringKennedy1">"Molte persone vedono le cose come sono e si chiedono: perché? Io vedo le cose come potrebbero essere e mi chiedo: perché no? - R. Kennedy"</string>
+		<string name="inspiringKing1">"Non ho paura delle parole dei violenti, ma del silenzio degli onesti - M. L. King"</string> 
+		<string name="inspiringLec1">"Un cervello limitato contiene una quantità illimitata di idiozie - S. Lec"</string>
+		<string name="inspiringShing1">"Se non hai un grande cuore non avrai successo - L. K. Shing"</string>
+		<string name="inspiringNietzsche1">"Quello che non ci uccide ci rende più forti - F. Nietzsche"</string> 
+		<string name="inspiringRoosvelt1">"Il futuro appartiene a coloro che credono ai propri sogni - E. Roosevelt"</string>
+		<string name="inspiringSeneca1">"Per aspera ad astra - Seneca"</string>
+		<string name="inspiringSFrancesco1">"Un raggio di sole può cancellare milioni di ombre - S. Francesco"</string>
+		<string name="inspiringShaw1">"Non aspettare il momento opportuno: crealo! - G. B. Shaw"</string>
+		<string name="inspiringTertulliano1">"Vuoi essere felice per un istante? Vendicati. Vuoi essere felice per sempre? Perdona - Tertulliano"</string>
+		<string name="inspiringTwain1">"Non ho mai permesso che la scuola interferisse con la mia educazione - M. Twain"</string>
+		<string name="inspiringUltang1">"La metà della bellezza dipende dal paesaggio e l’altra metà dall’uomo che la guarda - L. Ultang"</string>	
 	
 </resources>
 
