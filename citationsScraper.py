@@ -1,10 +1,10 @@
 import urllib
 import re
 
-CAT_NAME = "life"
+CAT_NAME = "politics"
 OLD_CIT_FILE = "/home/luigi/Dropbox/fraluigab/programming-luigi/citations/citCategory.txt"
 NEW_CIT_FILE = "/home/luigi/Dropbox/fraluigab/programming-luigi/citations/newCitCategory.txt"
-LINK_TO_SCRAPE = "http://www.brainyquote.com/quotes/topics/topic_life7.html"
+LINK_TO_SCRAPE = "http://www.brainyquote.com/quotes/topics/topic_politics9.html"
  
 '''
 Put a file with the citations of the category you wish to enrich. 
@@ -71,7 +71,7 @@ def scrape():
                 number = int(number) + 1
                 newAuthorName = newAuthorName + str(number)
             #Save the formatted string
-            newString = "<string name=\"" + CAT_NAME + newAuthorName + "\">\"" + newQuote[0] + " - "+ authNameInSign +"\"</string>N"
+            newString = "<string name=\"" + CAT_NAME + newAuthorName + "\">\"" + newQuote[0] + " - "+ authNameInSign +"\"</string>"
             oldQuotesStrings.append(newString)
             
     #Sort and write output to a new file

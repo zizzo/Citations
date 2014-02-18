@@ -1,7 +1,7 @@
 import re
 
 
-CAT_NAME = "life"
+CAT_NAME = "politics"
 NEW_CIT_FILE = "/home/luigi/Dropbox/fraluigab/programming-luigi/citations/newCitCategory.txt"
 NEW_IMPORT = "/home/luigi/Dropbox/fraluigab/programming-luigi/citations/newCitImport.txt"
 
