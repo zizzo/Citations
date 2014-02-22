@@ -1,16 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_appwidget_LinearLayoutMain"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/widget_margin" >
 
     <LinearLayout
         android:id="@+id/layout_appwidget_linearLayoutText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
         android:orientation="vertical" >
 
         <TextView
@@ -51,31 +51,39 @@
 
                 <ImageButton
                     android:id="@+id/layout_appwidget_imageButtonPrevious"
-                    android:layout_width="28dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_launcher" 
-                    android:contentDescription="@string/contentDescriptionButtonPrevious"/>
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/contentDescriptionButtonPrevious"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/backward_button_widget" />
 
                 <ImageButton
                     android:id="@+id/layout_appwidget_imageButtonNext"
-                    android:layout_width="34dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_launcher" 
-                    android:contentDescription="@string/contentDescriptionButtonNext"/>
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/contentDescriptionButtonNext"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/forward_button_widget" />
 
                 <ImageButton
                     android:id="@+id/layout_appwidget_imageButtonRefresh"
-                    android:layout_width="30dp"
-                    android:layout_height="26dp"
-                    android:src="@drawable/ic_launcher" 
-                    android:contentDescription="@string/contentDescriptionButtonRefresh"/>
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/contentDescriptionButtonRefresh"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/random_button_widget" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center" >
 
                 <ImageView
@@ -123,22 +131,26 @@
 
             <ImageButton
                 android:id="@+id/layout_appwidgetImageButtonTwitter"
-                android:layout_width="38dp"
-                android:layout_height="34dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
                 android:contentDescription="@string/twitterButton"
-                android:src="@drawable/ic_launcher" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo_tw" />
 
             <ImageButton
                 android:id="@+id/layout_appwidgetImageButtonFacebook"
-                android:layout_width="40dp"
-                android:layout_height="36dp"
-                android:contentDescription="@string/twitterButton"
-                android:src="@drawable/ic_launcher" />
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/facebookButton"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo_fb" />
 
             <ImageButton
                 android:id="@+id/layout_appwidgetImageButtonShare"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/sharingButton"
                 android:src="@drawable/share" />
