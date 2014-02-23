@@ -9,33 +9,37 @@
 
     <ImageButton
         android:id="@+id/activity_mainImageButtonTwitter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignBottom="@+id/activity_mainImageButtonShare"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="62dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/twitterButton"
-        android:src="@drawable/ic_launcher" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_tw" />
 
     <ImageButton
         android:id="@+id/activity_mainImageButtonFacebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignTop="@+id/activity_mainImageButtonTwitter"
         android:layout_toRightOf="@+id/activity_mainImageButtonTwitter"
-        android:contentDescription="@string/twitterButton"
-        android:src="@drawable/ic_launcher" />
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/facebookButton"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_fb" />
 
     <ImageButton
         android:id="@+id/activity_mainImageButtonShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
         android:layout_marginBottom="27dp"
         android:layout_toRightOf="@+id/activity_mainImageButtonFacebook"
         android:background="@android:color/transparent"
         android:contentDescription="@string/sharingButton"
+        android:scaleType="fitCenter"
         android:src="@drawable/share" />
 
     <LinearLayout

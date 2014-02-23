@@ -69,7 +69,7 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/forward_button_widget" />
 
-                <ImageButton
+                <net.shikii.widgets.SAutoBgButton
                     android:id="@+id/layout_appwidget_imageButtonRefresh"
                     android:layout_width="32dp"
                     android:layout_height="32dp"

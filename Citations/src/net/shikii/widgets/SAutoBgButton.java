@@ -34,24 +34,24 @@ public class SAutoBgButton extends ImageButton
 		super(context, attrs, defStyle);
 	}
 
-	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
+	@Override
+	public void setBackground(Drawable d)
+	{
+		SAutoBgButtonBackgroundDrawable layer = new SAutoBgButtonBackgroundDrawable(
+				d);
+		super.setBackground(layer);
+
+	}
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public void setBackgroundDrawable(Drawable d)
 	{
-		// Replace the original background drawable (e.g. image) with a
-		// LayerDrawable that
-		// contains the original drawable.
 		SAutoBgButtonBackgroundDrawable layer = new SAutoBgButtonBackgroundDrawable(
 				d);
-		int sdk = android.os.Build.VERSION.SDK_INT;
-		if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN)
-		{
-			super.setBackgroundDrawable(layer);
-		} else
-		{
-			super.setBackground(layer);
-		}
+		super.setBackgroundDrawable(layer);
+
 	}
 
 	/**
