@@ -10,10 +10,10 @@
     <color name="inspiringCategoryForeground">#493736</color>
     
 <!--     To be used in the widget when the category is in use -->
-    <color name="lifeCategoryColorActive">#000000</color>
- 	<color name="inspiringCategoryColorActive">#000000</color>
- 	<color name="loveCategoryColorActive">#000000</color>
- 	<color name="politicsCategoryColorActive">#000000</color>
- 	<color name="funCategoryColorActive">#000000</color>
+    <color name="lifeCategoryColorActive">#80FCF0B4</color>
+ 	<color name="inspiringCategoryColorActive">#80B9D7D9</color>
+ 	<color name="loveCategoryColorActive">#80FF0000</color>
+ 	<color name="politicsCategoryColorActive">#80FFFF00</color>
+ 	<color name="funCategoryColorActive">#80008000</color>
     
 </resources>

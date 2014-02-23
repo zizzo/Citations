@@ -143,6 +143,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
 				pendingIntentShare);
 
+
 		// Update any modification
 		appWidgetManager.updateAppWidget(appWidgetIds, layoutAppWidget);
 		
@@ -167,6 +168,10 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		if (intent.getAction().equals(SET_PREVIOUS_CATEGORY))
 		{
+			layoutAppWidget.setInt(R.id.layout_appwidget_imageButtonPrevious,
+					"setAlpha", 50);
+
+
 			categoryNumber--;
 			// Enter one of these alternatives, set the color of the background,
 			// change the one of the active button and restore the previous one
@@ -223,6 +228,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				setColorsOnButtons(layoutAppWidget, 1, 0);
 
 			}
+
 
 		}// end SET_PREVIOUS_CATEGORY
 

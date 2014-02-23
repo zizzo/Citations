@@ -30,6 +30,8 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -44,7 +46,7 @@ public class MainActivity extends Activity
 	private String[] citation; // I need it here because after the FB sharing I
 								// must put back the original sentence
 
-	// private String[] currentCitation;
+	private final int ANIMATION_DURATION = 200;
     private Integer currentColor;
 	private final double SWIPE_RATIO = 4.5;
 
@@ -140,6 +142,25 @@ public class MainActivity extends Activity
 		setCitation(citation, CitationChangeType.INIT);
 
 		ImageButton buttonShare = (ImageButton) findViewById(R.id.activity_mainImageButtonShare);
+		buttonShare.setOnTouchListener(new OnTouchListener()
+		{
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				if (event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					AlphaAnimation alpha = new AlphaAnimation(1.0F, 0.3F);
+					alpha.setDuration(ANIMATION_DURATION); // Make animation
+															// instant
+					alpha.setFillAfter(false); // Tell it not to persist after
+												// the animation ends
+					v.startAnimation(alpha);
+				}
+				return false;
+			}
+		});
+
 		buttonShare.setOnClickListener(new OnClickListener()
 		{
 
@@ -156,6 +177,26 @@ public class MainActivity extends Activity
 		});
 		
 		ImageButton buttonTwitter = (ImageButton) findViewById(R.id.activity_mainImageButtonTwitter);
+
+		buttonTwitter.setOnTouchListener(new OnTouchListener()
+		{
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				if (event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					AlphaAnimation alpha = new AlphaAnimation(1.0F, 0.3F);
+					alpha.setDuration(ANIMATION_DURATION); // Make animation
+															// instant
+					alpha.setFillAfter(false); // Tell it not to persist after
+												// the animation ends
+					v.startAnimation(alpha);
+				}
+				return false;
+			}
+		});
+
 		buttonTwitter.setOnClickListener(new OnClickListener()
 		{
 
@@ -174,6 +215,26 @@ public class MainActivity extends Activity
 		});// end onClick
 
 		ImageButton buttonFacebook = (ImageButton) findViewById(R.id.activity_mainImageButtonFacebook);
+
+		buttonFacebook.setOnTouchListener(new OnTouchListener()
+		{
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				if (event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					AlphaAnimation alpha = new AlphaAnimation(1.0F, 0.3F);
+					alpha.setDuration(ANIMATION_DURATION); // Make animation
+															// instant
+					alpha.setFillAfter(false); // Tell it not to persist after
+												// the animation ends
+					v.startAnimation(alpha);
+				}
+				return false;
+			}
+		});
+
 		buttonFacebook.setOnClickListener(new OnClickListener()
 		{
 			@Override
