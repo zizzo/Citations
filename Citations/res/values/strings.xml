@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" >
+<resources xmlns:tools="http://schemas.android.com/tools"  >
 
     <string name="app_name">Citations</string>
     <string name="action_settings">Settings</string>
@@ -36,7 +36,7 @@
 		<string name="loveAristotle1">"Love is composed of a single soul inhabiting two bodies - Aristotle"</string>
 		<string name="loveAssisi1">"Lord, grant that I might not so much seek to be loved as to love - Francis of Assisi"</string>
 		<string name="loveAugustine1">"Love is the beauty of the soul - S. Augustine"</string>
-		<string name="loveBach1">"Can miles truly separate you from friends... If you want to be with someone you love, aren't you already there? - R. Bach"</string>
+		<string name="loveBach1">"Can miles truly separate you from friends&#8230; If you want to be with someone you love, aren't you already there? - R. Bach"</string>
 		<string name="loveBaldwin1">"Love does not begin and end the way we seem to think it does. Love is a battle, love is a war; love is a growing up - J. A. Baldwin"</string>
 		<string name="loveBaldwin2">"Love takes off masks that we fear we cannot live without and know we cannot live within - J. A. Baldwin"</string>
 		<string name="loveBall1">"Love yourself first and everything else falls into line. You really have to love yourself to get anything done in this world - L. Ball"</string>
@@ -93,7 +93,7 @@
 		<string name="loveGarland1">"I can live without money, but I cannot live without love - J. Garland"</string>
 		<string name="loveGibran1">"Life without love is like a tree without blossoms or fruit - K. Gibran"</string>
 		<string name="loveGibran2">"Love possesses not nor will it be possessed, for love is sufficient unto love - K. Gibran"</string>
-		<string name="loveGibran3">"Love... it surrounds every being and extends slowly to embrace all that shall be - K. Gibran"</string>
+		<string name="loveGibran3">"Love&#8230; it surrounds every being and extends slowly to embrace all that shall be - K. Gibran"</string>
 		<string name="loveGoethe1">"Love does not dominate; it cultivates - J. W. v. Goethe"</string>
 		<string name="loveGoethe2">"To witness two lovers is a spectacle for the gods - J. W. v. Goethe"</string>
 		<string name="loveGogh1">"The way to know life is to love many things - V. V. Gogh"</string>
@@ -104,7 +104,7 @@
 		<string name="loveHugo2">"To love another person is to see the face of God - V. Hugo"</string>
 		<string name="loveHugo3">"Life is the flower for which love is the honey - V. Hugo"</string>
 		<string name="loveHurston1">"Love makes your soul crawl out from its hiding place - Z. N. Hurston"</string>
-		<string name="loveJavan1">"Love can sometimes be magic. But magic can sometimes... just be an illusion - Javan"</string>
+		<string name="loveJavan1">"Love can sometimes be magic. But magic can sometimes&#8230; just be an illusion - Javan"</string>
 		<string name="loveJones1">"Love doesn't make the world go 'round. Love is what makes the ride worthwhile - F. P. Jones"</string>
 		<string name="loveJoubert1">"A part of kindness consists in loving people more than they deserve - J. Joubert"</string>
 		<string name="loveJr1">"I have decided to stick with love. Hate is too great a burden to bear - M. L. K. Jr."</string>
@@ -127,7 +127,7 @@
 		<string name="loveMenninger1">"Love cures people - both the ones who give it and the ones who receive it - K. A. Menninger"</string>
 		<string name="loveMiller1">"The one thing we can never get enough of is love. And the one thing we never give enough is love - H. Miller"</string>
 		<string name="loveMonson1">"Choose your love, Love your choice - T. S. Monson"</string>
-		<string name="loveMoody1">"Faith makes all things possible... love makes all things easy - D. L. Moody"</string>
+		<string name="loveMoody1">"Faith makes all things possible&#8230; love makes all things easy - D. L. Moody"</string>
 		<string name="loveMuller1">"A flower cannot blossom without sunshine, and man cannot live without love - M. Muller"</string>
 		<string name="loveMurdoch1">"We can only learn to love by loving - I. Murdoch"</string>
 		<string name="loveNathan1">"Love is an emotion experienced by the many and enjoyed by the few - G. J. Nathan"</string>
@@ -170,7 +170,7 @@
 		<string name="loveTennyson1">"'Tis better to have loved and lost than never to have loved at all - A. L. Tennyson"</string>
 		<string name="loveTeresa1">"I have found the paradox, that if you love until it hurts, there can be no more hurt, only more love - M. Teresa"</string>
 		<string name="loveTeresa2">"Let us always meet each other with smile, for the smile is the beginning of love - M. Teresa"</string>
-		<string name="loveTeresa3">"Love begins at home, and it is not how much we do... but how much love we put in that action - M. Teresa"</string>
+		<string name="loveTeresa3">"Love begins at home, and it is not how much we do&#8230; but how much love we put in that action - M. Teresa"</string>
 		<string name="loveTeresa4">"The hunger for love is much more difficult to remove than the hunger for bread - M. Teresa"</string>
 		<string name="loveThoreau1">"There is no remedy for love but to love more - H. D. Thoreau"</string>
 		<string name="loveTillich1">"The first duty of love is to listen - P. Tillich"</string>
@@ -247,11 +247,11 @@
 		<string name="funHedberg1">"My fake plants died because I did not pretend to water them - M. Hedberg"</string>
 		<string name="funHedberg2">"A waffle is like a pancake with a syrup trap - M. Hedberg"</string>
 		<string name="funHedberg3">"I drank some boiling water because I wanted to whistle - M. Hedberg"</string>
-		<string name="funHedberg4">"I wear a necklace, cause I wanna know when I'm upside down - M. Hedberg"</string>
-		<string name="funHedberg5">"This shirt is dry clean only. Which means... it's dirty - M. Hedberg"</string>
+		<string name="funHedberg4">"I wear a necklace, cause I want to know when I'm upside down - M. Hedberg"</string>
+		<string name="funHedberg5">"This shirt is dry clean only. Which means&#8230; it's dirty - M. Hedberg"</string>
 		<string name="funHepburn1">"Life is hard. After all, it kills you - K. Hepburn"</string>
 		<string name="funHerford1">"A woman's mind is cleaner than a man's: She changes it more often - O. Herford"</string>
-		<string name="funHope1">"I love to go to Washington - if only to be near my money - B. Hope"</string>
+		<string name="funHope1">"I love to go to Washington, if only to be near my money - B. Hope"</string>
 		<string name="funHubbard1">"Do not take life too seriously. You will never get out of it alive - E. Hubbard"</string>
 		<string name="funHugo1">"Fashions have done more harm than revolutions - V. Hugo"</string>
 		<string name="funKissinger1">"There cannot be a crisis next week. My schedule is already full - H. A. Kissinger"</string>
@@ -263,7 +263,7 @@
 		<string name="funMarquis1">"Procrastination is the art of keeping up with yesterday - D. Marquis"</string>
 		<string name="funMarquis2">"A pessimist is a person who has had to listen to too many optimists - D. Marquis"</string>
 		<string name="funMartin1">"A day without sunshine is like, you know, night - S. Martin"</string>
-		<string name="funMartin2">"I wanna make a jigsaw puzzle that's 40,000 pieces. And when you finish it, it says 'go outside.' - D. Martin"</string>
+		<string name="funMartin2">"I want to make a jigsaw puzzle that's 40,000 pieces. And when you finish it, it says 'go outside.' - D. Martin"</string>
 		<string name="funMarx1">"I refuse to join any club that would have me as a member - G. Marx"</string>
 		<string name="funMarx2">"Anyone who says he can see through women is missing a lot - G. Marx"</string>
 		<string name="funMarx3">"A child of five would understand this. Send someone to fetch a child of five - G. Marx"</string>
@@ -324,7 +324,7 @@
 		<string name="funWells1">"Every time I see an adult on a bicycle, I no longer despair for the future of the human race - H. G. Wells"</string>
 		<string name="funWest1">"Between two evils, I always pick the one I never tried before - M. West"</string>
 		<string name="funWest2">"I used to be Snow White, but I drifted - M. West"</string>
-		<string name="funWhite1">"The next time you have a thought... let it go - R. White"</string>
+		<string name="funWhite1">"The next time you have a thought&#8230; let it go - R. White"</string>
 		<string name="funWhitman1">"I no doubt deserved my enemies, but I don't believe I deserved my friends - W. Whitman"</string>
 		<string name="funWilliams1">"Why do they call it rush hour when nothing moves? - R. Williams"</string>
 		<string name="funWilliams2">"I'm sorry, if you were right, I'd agree with you - R. Williams"</string>
@@ -411,7 +411,7 @@
 		<string name="politicsGlasow1">"An idea not coupled with action will never get any bigger than the brain cell it occupied - A. H. Glasow"</string>
 		<string name="politicsGlass1">"A liberal is a man who is willing to spend somebody else's money - C. Glass"</string>
 		<string name="politicsGoldman1">"If voting changed anything, they'd make it illegal - E. Goldman"</string>
-		<string name="politicsGoldman2">"No real social change has ever been brought about without a revolution... revolution is but thought carried into action - E. Goldman"</string>
+		<string name="politicsGoldman2">"No real social change has ever been brought about without a revolution&#8230; revolution is but thought carried into action - E. Goldman"</string>
 		<string name="politicsGregory1">"In most places in the country, voting is looked upon as a right and a duty, but in Chicago it's a sport - D. Gregory"</string>
 		<string name="politicsGross1">"We live in a world in which politics has replaced philosophy - M. L. Gross"</string>
 		<string name="politicsHamilton1">"Those who stand for nothing fall for anything - A. Hamilton"</string>
@@ -543,7 +543,7 @@
 		<string name="lifeCicero1">"While there's life, there's hope - M. T. Cicero"</string>
 		<string name="lifeColette1">"What a wonderful life I've had! I only wish I'd realized it sooner - S. G. Colette"</string>
 		<string name="lifeConfucius1">"Life is really simple, but we insist on making it complicated - Confucius"</string>
-		<string name="lifeCovey1">"There are three constants in life... change, choice and principles - S. Covey"</string>
+		<string name="lifeCovey1">"There are three constants in life&#8230; change, choice and principles - S. Covey"</string>
 		<string name="lifeCurie1">"Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less - M. Curie"</string>
 		<string name="lifeDarwin1">"A man who dares to waste one hour of time has not discovered the value of life - C. Darwin"</string>
 		<string name="lifeDeBono1">"Often we are able of seeing an opportunity only after someone has picked it up - E. De Bono"</string>

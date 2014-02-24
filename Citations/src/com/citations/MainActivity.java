@@ -45,6 +45,8 @@ public class MainActivity extends Activity
 	private TextView textViewAuthor;
 	private String[] citation; // I need it here because after the FB sharing I
 								// must put back the original sentence
+	private final String CATEGORY_TYPE = "categoryType";
+	private final String CITATION_STRING = "citationString";
 
 	private final int ANIMATION_DURATION = 200;
     private Integer currentColor;
@@ -131,15 +133,23 @@ public class MainActivity extends Activity
 		textViewSentence = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textViewAuthor = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 
-		// The first String is going to come from the Inspiring category
-		citationsData.setCategoryInUse("inspiringCategory");
-        currentColor = citationsData.getCategoryInUseColor();
-
-		citation = citationsData.getRandomStringInCategory()
-				.split("-");
-		// currentCitation = citation;
-
+		Intent widgetIntent = getIntent();
+		boolean startFromWidget = widgetIntent.getBooleanExtra(
+				"start_from_widget", false);
+		if (startFromWidget)
+		{
+			citationsData.setCategoryInUse(widgetIntent
+					.getStringExtra(CATEGORY_TYPE));
+			citation = widgetIntent.getStringExtra(CITATION_STRING).split("-");
+		} else
+		{
+			// The first String is going to come from the Inspiring category
+			citationsData.setCategoryInUse("inspiringCategory");
+			citation = citationsData.getRandomStringInCategory().split("-");
+		}
+		currentColor = citationsData.getCategoryInUseColor();
 		setCitation(citation, CitationChangeType.INIT);
+
 
 		ImageButton buttonShare = (ImageButton) findViewById(R.id.activity_mainImageButtonShare);
 		buttonShare.setOnTouchListener(new OnTouchListener()
@@ -407,7 +417,8 @@ public class MainActivity extends Activity
 						activity.applicationInfo.packageName, activity.name);
 				shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 				shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-						| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+						| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+						| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				shareIntent.setComponent(name);
 				startActivity(shareIntent);
 				break;

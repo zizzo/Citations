@@ -57,7 +57,7 @@
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/contentDescriptionButtonPrevious"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/backward_button_widget" />
+                    android:src="@drawable/imagebuttonbackward" />
 
                 <ImageButton
                     android:id="@+id/layout_appwidget_imageButtonNext"
@@ -67,7 +67,7 @@
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/contentDescriptionButtonNext"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/forward_button_widget" />
+                    android:src="@drawable/imagebuttonforward" />
 
                 <ImageButton
                     android:id="@+id/layout_appwidget_imageButtonRefresh"
@@ -76,7 +76,7 @@
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/contentDescriptionButtonRefresh"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/random_button_widget" />
+                    android:src="@drawable/imagebuttonrandom" />
 
             </LinearLayout>
 
@@ -136,7 +136,7 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/twitterButton"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo_tw" />
+                android:src="@drawable/imagebuttontwitter" />
 
             <ImageButton
                 android:id="@+id/layout_appwidgetImageButtonFacebook"
@@ -145,7 +145,7 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/facebookButton"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo_fb" />
+                android:src="@drawable/imagebuttonfacebook" />
 
             <ImageButton
                 android:id="@+id/layout_appwidgetImageButtonShare"
@@ -153,7 +153,7 @@
                 android:layout_height="32dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/sharingButton"
-                android:src="@drawable/share" />
+                android:src="@drawable/imagebuttonshare" />
         </LinearLayout>
 
 	</LinearLayout>

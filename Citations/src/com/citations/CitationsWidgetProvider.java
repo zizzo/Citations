@@ -48,6 +48,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	public static final String CATEGORY_NUMBER = "categoryNumber";
 	public static final String CITATION_STRING = "citationString";
 
+	public static final String OPEN_APP = "openApp";
+
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds)
@@ -143,6 +145,16 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
 				pendingIntentShare);
 
+		// Open Application
+		Intent intentOpenApp = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentOpenApp.setAction(OPEN_APP);
+		PendingIntent pendingIntentOpenApp = PendingIntent.getBroadcast(
+				context, 0, intentOpenApp, 0);
+
+		layoutAppWidget.setOnClickPendingIntent(
+				R.id.layout_appwidget_linearLayoutText, pendingIntentOpenApp);
+
 
 		// Update any modification
 		appWidgetManager.updateAppWidget(appWidgetIds, layoutAppWidget);
@@ -168,9 +180,6 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		if (intent.getAction().equals(SET_PREVIOUS_CATEGORY))
 		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_imageButtonPrevious,
-					"setAlpha", 50);
-
 
 			categoryNumber--;
 			// Enter one of these alternatives, set the color of the background,
@@ -339,6 +348,20 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 					.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 		}// end SHARE_GENERIC
 
+
+		else if (intent.getAction().equals(OPEN_APP))
+		{
+			Intent appIntent = new Intent(context, MainActivity.class);
+			appIntent.putExtra("start_from_widget", true);
+			appIntent
+					.putExtra(CITATION_STRING, citation[0] + "-" + citation[1]);
+			appIntent.putExtra(CATEGORY_TYPE, categoryType);
+
+			appIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+					| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+					| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			context.startActivity(appIntent);
+		}
 
 		// Update SharedPreferences
 		SharedPreferences.Editor editor = settings.edit();
@@ -557,7 +580,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 						activity.applicationInfo.packageName, activity.name);
 				shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 				shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-						| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+						| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+						| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				shareIntent.setComponent(name);
 				context.startActivity(shareIntent);
 				break;
