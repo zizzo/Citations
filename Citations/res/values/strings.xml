@@ -229,7 +229,7 @@
 		<string name="funDangerfield1">"I found there was only one way to look thin: hang out with fat people - R. Dangerfield"</string>
 		<string name="funDangerfield2">"I haven't spoken to my wife in years. I didn't want to interrupt her - R. Dangerfield"</string>
 		<string name="funDangerfield3">"I looked up my family tree and found out I was the sap - R. Dangerfield"</string>
-		<string name="funDawkins1">"By all means let's be open-minded, but not so open-minded that our brains drop out - R. Dawkins"</string>
+		<string name="funDawkins1">"By all means let's be open minded, but not so open-minded that our brains drop out - R. Dawkins"</string>
 		<string name="funDiller1">"Housework can't kill you, but why take a chance? - P. Diller"</string>
 		<string name="funDiller2">"Best way to get rid of kitchen odors: Eat out - P. Diller"</string>
 		<string name="funDiller3">"The only time I ever enjoyed ironing was the day I accidentally got gin in the steam iron - P. Diller"</string>
@@ -238,7 +238,7 @@
 		<string name="funEinstein1">"If the facts don't fit the theory, change the facts - A. Einstein"</string>
 		<string name="funFields1">"I cook with wine, sometimes I even add it to the food - W. C. Fields"</string>
 		<string name="funFields2">"I never drink water because of the disgusting things that fish do in it - W. C. Fields"</string>
-		<string name="funFields3">"I like children - fried - W. C. Fields"</string>
+		<string name="funFields3">"I like children, fried - W. C. Fields"</string>
 		<string name="funFranklin1">"Wine is constant proof that God loves us and loves to see us happy - B. Franklin"</string>
 		<string name="funFry1">"I don't need you to remind me of my age. I have a bladder to do that for me - S. Fry"</string>
 		<string name="funGabor1">"He taught me housekeeping; when I divorce I keep the house - Z. Z. Gabor"</string>
@@ -311,8 +311,7 @@
 		<string name="funStengel1">"All right everyone, line up alphabetically according to your height - C. Stengel"</string>
 		<string name="funStone1">"What contemptible scoundrel has stolen the cork to my lunch? - W. C. Stone"</string>
 		<string name="funTomlin1">"I always wanted to be somebody, but now I realize I should have been more specific - L. Tomlin"</string>
-		<string name="funTomlin2">"I always wanted to be somebody, but now I realize I should have been more specific - L. Tomlin"</string>
-		<string name="funTomlin3">"If love is the answer, could you please rephrase the question? - L. Tomlin"</string>
+		<string name="funTomlin2">"If love is the answer, could you please rephrase the question? - L. Tomlin"</string>
 		<string name="funTurner1">"A successful man is one who makes more money than his wife can spend. A successful woman is one who can find such a man - L. Turner"</string>
 		<string name="funTwain1">"Go to Heaven for the climate, Hell for the company - M. Twain"</string>
 		<string name="funTwain2">"Get your facts first, then you can distort them as you please - M. Twain"</string>

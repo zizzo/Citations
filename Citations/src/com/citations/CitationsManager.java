@@ -899,7 +899,6 @@ public class CitationsManager
 				context.getString(R.string.funStone1),
 				context.getString(R.string.funTomlin1),
 				context.getString(R.string.funTomlin2),
-				context.getString(R.string.funTomlin3),
 				context.getString(R.string.funTurner1),
 				context.getString(R.string.funTwain1),
 				context.getString(R.string.funTwain2),
