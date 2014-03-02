@@ -206,6 +206,7 @@ public class CitationsManager
 				context.getString(R.string.inspiringOnassis1),
 				context.getString(R.string.inspiringPaine1),
 				context.getString(R.string.inspiringPascal1),
+				context.getString(R.string.inspiringPauling1),
 				context.getString(R.string.inspiringPeale1),
 				context.getString(R.string.inspiringPele1),
 				context.getString(R.string.inspiringPlato1),
