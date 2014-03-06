@@ -131,6 +131,37 @@ public class CitationsManager
 
 		return citAndCat;
 	}
+	
+	public void shareOnTwitter(Context context, String[] citation)
+	{
+		String tweetText = citation[0] + "\n" + citation[1];
+		String tweetUrl = "https://twitter.com/intent/tweet?text=" + tweetText
+				+ "&related=LuigiTiburzi,gabrielelanaro,Fra_Pochetti";
+		Uri uri = Uri.parse(tweetUrl);
+		Intent intentTweet = new Intent(Intent.ACTION_VIEW, uri);
+		intentTweet.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		context.startActivity(intentTweet);
+	}
+
+	public void shareOnFacebook(Context context, String[] citation,
+			String categoryType)
+	{
+		Bitmap bitmap = drawBitmap(context, citation, categoryType);
+		storeImage(bitmap, "imageToShare.png");
+		String imagePath = Environment.getExternalStorageDirectory().toString()
+				+ File.separator + "imageToShare.png";
+		shareOnFb(imagePath, context);
+	}
+
+	public void shareGeneric(Context context, String[] citation)
+	{
+		String shareMessage = citation[0] + "\n" + citation[1];
+		Intent shareIntent = new Intent(Intent.ACTION_SEND);
+		shareIntent.setType("text/plain");
+		shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+		context.startActivity(Intent.createChooser(shareIntent, "Share...")
+				.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+	}
 
 	public Bitmap drawBitmap(Context context, String[] citation,
 			String categoryInUse)

@@ -1,7 +1,5 @@
 package com.citations;
 
-import java.io.File;
-
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -9,9 +7,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Environment;
 import android.widget.RemoteViews;
 
 public class CitationsWidgetProvider extends AppWidgetProvider
@@ -303,35 +298,21 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		else if (intent.getAction().equals(SHARE_ON_TWITTER))
 		{
 
-			String tweetText = citation[0] + "\n" + citation[1];
-			String tweetUrl = "https://twitter.com/intent/tweet?text="
-					+ tweetText
-					+ "&related=LuigiTiburzi,gabrielelanaro,Fra_Pochetti";
-			Uri uri = Uri.parse(tweetUrl);
-			Intent intentTweet = new Intent(Intent.ACTION_VIEW, uri);
-			intentTweet.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			context.startActivity(intentTweet);
+			citationsData.shareOnTwitter(context, citation);
+
 		}// end SHARE_ON_TWITTER
 
 		else if (intent.getAction().equals(SHARE_ON_FACEBOOK))
 		{
-			Bitmap bitmap = citationsData.drawBitmap(context, citation,
-					categoryType);
-			citationsData.storeImage(bitmap, "imageToShare.png");
-			String imagePath = Environment.getExternalStorageDirectory()
-					.toString() + File.separator + "imageToShare.png";
-			citationsData.shareOnFb(imagePath, context);
+			citationsData.shareOnFacebook(context, citation, categoryType);
+
 
 		}// end SHARE_ON_FACEBOOK
 
 		else if (intent.getAction().equals(SHARE_GENERIC))
 		{
-			String shareMessage = citation[0] + "\n" + citation[1];
-			Intent shareIntent = new Intent(Intent.ACTION_SEND);
-			shareIntent.setType("text/plain");
-			shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-			context.startActivity(Intent.createChooser(shareIntent, "Share...")
-					.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+			citationsData.shareGeneric(context, citation);
+
 		}// end SHARE_GENERIC
 
 

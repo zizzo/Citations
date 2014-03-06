@@ -1,17 +1,12 @@
 package com.citations;
 
-import java.io.File;
-
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -34,7 +29,7 @@ public class MainActivity extends Activity
 	private TextView textViewAuthor;
 	private String[] citation; // I need it here because after the FB sharing I
 								// must put back the original sentence
-	private String categoryInUse;
+	private String categoryType;
 	private final String CATEGORY_TYPE = "categoryType";
 	private final String CITATION_STRING = "citationString";
 
@@ -95,7 +90,7 @@ public class MainActivity extends Activity
 			if (dxAbs / dyAbs > SWIPE_RATIO)
 			{
 				String[] citation = citationsData.getRandomStringInCategory(
-						categoryInUse)
+						categoryType)
 						.split("-");
 				setCitation(citation, CitationChangeType.SWIPE_LEFT);
 			}
@@ -104,7 +99,7 @@ public class MainActivity extends Activity
 			{
 				String[] citAndCat = citationsData.getRandomString();
 				String[] citation = citAndCat[0].split("-");
-				categoryInUse = citAndCat[1];
+				categoryType = citAndCat[1];
 				setCitation(citation, CitationChangeType.INIT);
 			}
 			// swipe not valid
@@ -132,16 +127,16 @@ public class MainActivity extends Activity
 				"start_from_widget", false);
 		if (startFromWidget)
 		{
-			categoryInUse = widgetIntent.getStringExtra(CATEGORY_TYPE);
+			categoryType = widgetIntent.getStringExtra(CATEGORY_TYPE);
 			citation = widgetIntent.getStringExtra(CITATION_STRING).split("-");
 		} else
 		{
 			// The first String is going to come from the Inspiring category
-			categoryInUse = "inspiringCategory";
-			citation = citationsData.getRandomStringInCategory(categoryInUse)
+			categoryType = "inspiringCategory";
+			citation = citationsData.getRandomStringInCategory(categoryType)
 					.split("-");
 		}
-		currentColor = citationsData.getCategoryInUseColor(categoryInUse);
+		currentColor = citationsData.getCategoryInUseColor(categoryType);
 		setCitation(citation, CitationChangeType.INIT);
 
 
@@ -171,12 +166,7 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				String shareMessage = textViewSentence.getText() + "\n"
-						+ textViewAuthor.getText();
-				Intent shareIntent = new Intent(Intent.ACTION_SEND);
-				shareIntent.setType("text/plain"); 
-				shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-				startActivity(Intent.createChooser(shareIntent, "Share..."));
+				citationsData.shareGeneric(getApplicationContext(), citation);
 			}
 		});
 		
@@ -207,13 +197,7 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				String tweetText = textViewSentence.getText() + "\n"
-						+ textViewAuthor.getText();
-				String tweetUrl = "https://twitter.com/intent/tweet?text="
-						+ tweetText
-						+ "&related=LuigiTiburzi,gabrielelanaro,Fra_Pochetti";
-				Uri uri = Uri.parse(tweetUrl);
-				startActivity(new Intent(Intent.ACTION_VIEW, uri));
+				citationsData.shareOnTwitter(getApplicationContext(), citation);
 
 			}
 		});// end onClick
@@ -244,14 +228,8 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-
-				Bitmap bitmap = citationsData.drawBitmap(
-						getApplicationContext(), citation, categoryInUse);
-				citationsData.storeImage(bitmap, "imageToShare.png");
-				String imagePath = Environment.getExternalStorageDirectory()
-						.toString() + File.separator + "imageToShare.png";
-				citationsData.shareOnFb(imagePath, getApplicationContext());
-
+				citationsData.shareOnFacebook(getApplicationContext(),
+						citation, categoryType);
 			}
 		});// end onClick
 
@@ -308,7 +286,7 @@ public class MainActivity extends Activity
         // Set the proper background
 
         Integer startColor = currentColor;
-		Integer endColor = citationsData.getCategoryInUseColor(categoryInUse);
+		Integer endColor = citationsData.getCategoryInUseColor(categoryType);
         ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout), "backgroundColor",
                 startColor, endColor);
         anim.setDuration(500);
