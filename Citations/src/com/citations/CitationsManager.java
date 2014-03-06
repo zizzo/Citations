@@ -3,10 +3,30 @@
  */
 package com.citations;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint.Align;
+import android.net.Uri;
+import android.os.Environment;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 
 /**
  * @author luigi
@@ -21,7 +41,6 @@ import android.content.Context;
 public class CitationsManager
 {
 	private final Context context;
-	// private String categoryInUse;
 
     private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
     private final HashMap<String, Integer> colormap = new HashMap<String, Integer>();
@@ -113,11 +132,94 @@ public class CitationsManager
 		return citAndCat;
 	}
 
+	public Bitmap drawBitmap(Context context, String[] citation,
+			String categoryInUse)
+	{
+
+		Bitmap bitmap = Bitmap.createBitmap(500, 300, Bitmap.Config.ARGB_8888);
+		Canvas c = new Canvas(bitmap);
+
+		// Paint paint = new Paint();
+		// paint.setTextAlign(Align.CENTER);
+		// paint.setTextSize(18);
+
+		c.drawColor(getCategoryInUseColor(categoryInUse));
+
+		String bitmapText = citation[0] + "\n" + citation[1];
+
+		TextPaint tp = new TextPaint();
+		tp.setColor(Color.BLACK);
+		tp.setTextSize(20);
+		tp.setTextAlign(Align.CENTER);
+		tp.setAntiAlias(true);
+		StaticLayout sl = new StaticLayout(bitmapText, tp, 500,
+				Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+
+		// c.translate(250, 150);
+		sl.draw(c);
+
+		// c.drawText(bitmapText, 250, 150, paint);
+
+		c.drawBitmap(bitmap, 0, 0, null);
+
+		return bitmap;
+	}
 
 	public Integer getCategoryInUseColor(String categoryInUse)
 	{
 		return colormap.get(categoryInUse);
 	}
+
+	public void storeImage(Bitmap bitmap, String filename)
+	{
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+
+		File f = new File(Environment.getExternalStorageDirectory()
+				+ File.separator + filename);
+		try
+		{
+			f.createNewFile();
+			FileOutputStream fo = new FileOutputStream(f);
+			fo.write(bytes.toByteArray());
+			fo.close();
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	}// end storeImage
+
+	public void shareOnFb(String imagePath, Context context)
+	{
+		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+		shareIntent.setType("image/png");
+		shareIntent.putExtra(Intent.EXTRA_STREAM,
+				Uri.fromFile(new File(imagePath)));
+		PackageManager pm = context.getPackageManager();
+		List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent,
+				0);
+		for (final ResolveInfo app : activityList)
+		{
+			if ((app.activityInfo.name).contains("facebook.katana"))
+			{
+				final ActivityInfo activity = app.activityInfo;
+				final ComponentName name = new ComponentName(
+						activity.applicationInfo.packageName, activity.name);
+				shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+				shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+						| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+						| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				shareIntent.setComponent(name);
+				context.startActivity(shareIntent);
+				break;
+			}
+		}
+
+	}// end shareOnFb
 
 	/**
 	 * @return the array with the strings for the category
