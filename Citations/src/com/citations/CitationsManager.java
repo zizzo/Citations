@@ -21,29 +21,37 @@ import android.content.Context;
 public class CitationsManager
 {
 	private final Context context;
-	private String categoryInUse;
+	// private String categoryInUse;
 
     private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
     private final HashMap<String, Integer> colormap = new HashMap<String, Integer>();
+
+	private final String LOVE_CATEGORY = "loveCategory";
+	private final String POLITICS_CATEGORY = "politicsCategory";
+	private final String FUN_CATEGORY = "funCategory";
+	private final String LIFE_CATEGORY = "lifeCategory";
+	private final String INSPIRING_CATEGORY = "inspiringCategory";
 
 
 	public CitationsManager(Context context)
 	{
 		this.context = context;
-		categories.put("loveCategory", getLoveCategoryStrings());
-		categories.put("politicsCategory", getPoliticsCategoryStrings());
-		categories.put("funCategory", getFunCategoryStrings());
-		categories.put("lifeCategory", getLifeCategoryStrings());
-		categories.put("inspiringCategory", getInspiringCategoryStrings());
+		categories.put(LOVE_CATEGORY, getLoveCategoryStrings());
+		categories.put(POLITICS_CATEGORY, getPoliticsCategoryStrings());
+		categories.put(FUN_CATEGORY, getFunCategoryStrings());
+		categories.put(LIFE_CATEGORY, getLifeCategoryStrings());
+		categories.put(INSPIRING_CATEGORY, getInspiringCategoryStrings());
 
         // Populating color map
-        colormap.put("lifeCategory", context.getResources().getColor(R.color.lifeCategoryColor));
-        colormap.put("inspiringCategory", context.getResources().getColor(R.color.inspiringCategoryColor));
-		colormap.put("loveCategory",
+		colormap.put(LIFE_CATEGORY,
+				context.getResources().getColor(R.color.lifeCategoryColor));
+		colormap.put(INSPIRING_CATEGORY,
+				context.getResources().getColor(R.color.inspiringCategoryColor));
+		colormap.put(LOVE_CATEGORY,
 				context.getResources().getColor(R.color.loveCategoryColor));
-		colormap.put("politicsCategory",
+		colormap.put(POLITICS_CATEGORY,
 				context.getResources().getColor(R.color.politicsCategoryColor));
-		colormap.put("funCategory",
+		colormap.put(FUN_CATEGORY,
 				context.getResources().getColor(R.color.funCategoryColor));
 	}
 
@@ -52,7 +60,7 @@ public class CitationsManager
 	/**
 	 * @return a random string within the category in use
 	 */
-	public String getRandomStringInCategory()
+	public String getRandomStringInCategory(String categoryInUse)
 	{
 		String[] citationsOfCategory = categories.get(categoryInUse);
 		int upperMaximum = citationsOfCategory.length - 1;
@@ -62,52 +70,54 @@ public class CitationsManager
 	}
 
 	/**
-	 * @return a completely random string
+	 * @return a completely random string and category
 	 */
-	public String getRandomString()
+	public String[] getRandomString()
 	{
 		int upperMaximum = categories.size() - 1;
 		int randC = StaticData.randInt(0, upperMaximum);
+		String[] citAndCat = new String[2];
 		switch (randC)
 		{
 		case 0:
-			setCategoryInUse("lifeCategory");
+			citAndCat[0] = getRandomStringInCategory(LIFE_CATEGORY);
+			citAndCat[1] = LIFE_CATEGORY;
 			break;
 
 		case 1:
-			setCategoryInUse("inspiringCategory");
+			citAndCat[0] = getRandomStringInCategory(INSPIRING_CATEGORY);
+			citAndCat[1] = INSPIRING_CATEGORY;
 			break;
 
 		case 2:
-			setCategoryInUse("loveCategory");
+			citAndCat[0] = getRandomStringInCategory(LOVE_CATEGORY);
+			citAndCat[1] = LOVE_CATEGORY;
 			break;
 
 		case 3:
-			setCategoryInUse("funCategory");
+			citAndCat[0] = getRandomStringInCategory(FUN_CATEGORY);
+			citAndCat[1] = FUN_CATEGORY;
 			break;
 
 		case 4:
-			setCategoryInUse("politicsCategory");
+			citAndCat[0] = getRandomStringInCategory(POLITICS_CATEGORY);
+			citAndCat[1] = POLITICS_CATEGORY;
 			break;
 
 		default:
+			citAndCat[0] = getRandomStringInCategory(INSPIRING_CATEGORY);
+			citAndCat[1] = INSPIRING_CATEGORY;
 			break;
 		}
 
-		return getRandomStringInCategory();
+		return citAndCat;
 	}
 
-	public void setCategoryInUse(String category)
+
+	public Integer getCategoryInUseColor(String categoryInUse)
 	{
-		categoryInUse = category;
+		return colormap.get(categoryInUse);
 	}
-
-	public String getCategoryInUse()
-	{
-		return categoryInUse;
-	}
-
-    public Integer getCategoryInUseColor() { return colormap.get(getCategoryInUse()); }
 
 	/**
 	 * @return the array with the strings for the category

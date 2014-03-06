@@ -45,6 +45,7 @@ public class MainActivity extends Activity
 	private TextView textViewAuthor;
 	private String[] citation; // I need it here because after the FB sharing I
 								// must put back the original sentence
+	private String categoryInUse;
 	private final String CATEGORY_TYPE = "categoryType";
 	private final String CITATION_STRING = "citationString";
 
@@ -104,14 +105,17 @@ public class MainActivity extends Activity
 			// swipe left/right
 			if (dxAbs / dyAbs > SWIPE_RATIO)
 			{
-				String[] citation = citationsData.getRandomStringInCategory()
+				String[] citation = citationsData.getRandomStringInCategory(
+						categoryInUse)
 						.split("-");
 				setCitation(citation, CitationChangeType.SWIPE_LEFT);
 			}
 			// swipe up/down
 			else if (dyAbs / dxAbs > SWIPE_RATIO)
 			{
-				String[] citation = citationsData.getRandomString().split("-");
+				String[] citAndCat = citationsData.getRandomString();
+				String[] citation = citAndCat[0].split("-");
+				categoryInUse = citAndCat[1];
 				setCitation(citation, CitationChangeType.INIT);
 			}
 			// swipe not valid
@@ -133,21 +137,22 @@ public class MainActivity extends Activity
 		textViewSentence = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textViewAuthor = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 
+
 		Intent widgetIntent = getIntent();
 		boolean startFromWidget = widgetIntent.getBooleanExtra(
 				"start_from_widget", false);
 		if (startFromWidget)
 		{
-			citationsData.setCategoryInUse(widgetIntent
-					.getStringExtra(CATEGORY_TYPE));
+			categoryInUse = widgetIntent.getStringExtra(CATEGORY_TYPE);
 			citation = widgetIntent.getStringExtra(CITATION_STRING).split("-");
 		} else
 		{
 			// The first String is going to come from the Inspiring category
-			citationsData.setCategoryInUse("inspiringCategory");
-			citation = citationsData.getRandomStringInCategory().split("-");
+			categoryInUse = "inspiringCategory";
+			citation = citationsData.getRandomStringInCategory(categoryInUse)
+					.split("-");
 		}
-		currentColor = citationsData.getCategoryInUseColor();
+		currentColor = citationsData.getCategoryInUseColor(categoryInUse);
 		setCitation(citation, CitationChangeType.INIT);
 
 
@@ -310,11 +315,10 @@ public class MainActivity extends Activity
         }
 
 
-        Log.d("MAIN", citationsData.getCategoryInUse());
         // Set the proper background
 
         Integer startColor = currentColor;
-        Integer endColor = citationsData.getCategoryInUseColor();
+		Integer endColor = citationsData.getCategoryInUseColor(categoryInUse);
         ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout), "backgroundColor",
                 startColor, endColor);
         anim.setDuration(500);
@@ -323,7 +327,7 @@ public class MainActivity extends Activity
 
         currentColor = endColor;
 
-	}
+	}// end setCitation
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -341,19 +345,7 @@ public class MainActivity extends Activity
 		Paint paint = new Paint();
 		paint.setTextSize(20);
 
-		String categoryInUse = citationsData.getCategoryInUse();
-
-        // TODO: change this to use citationsData.getCategoryInUseColor()
-		if (categoryInUse.equals("inspiringCategory"))
-			c.drawColor(getResources().getColor(R.color.inspiringCategoryColor));
-		else if (categoryInUse.equals("lifeCategory"))
-			c.drawColor(getResources().getColor(R.color.lifeCategoryColor));
-		else if (categoryInUse.equals("politicsCategory"))
-			c.drawColor(getResources().getColor(R.color.politicsCategoryColor));
-		else if (categoryInUse.equals("funCategory"))
-			c.drawColor(getResources().getColor(R.color.funCategoryColor));
-		else if (categoryInUse.equals("loveCategory"))
-			c.drawColor(getResources().getColor(R.color.loveCategoryColor));
+		c.drawColor(citationsData.getCategoryInUseColor(categoryInUse));
 
 		String bitmapText = textViewSentence.getText() + "\n"
 				+ textViewAuthor.getText();

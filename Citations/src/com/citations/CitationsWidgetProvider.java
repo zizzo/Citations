@@ -57,10 +57,9 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 
 		CitationsManager citationsData = new CitationsManager(context);
-		citationsData.setCategoryInUse("inspiringCategory");
 		int categoryNumber = 0;
-
-		String[] citation = citationsData.getRandomStringInCategory()
+		String[] citation = citationsData.getRandomStringInCategory(
+				"inspiringCategory")
 				.split("-");
 
 		SharedPreferences settings = context.getSharedPreferences(
@@ -189,8 +188,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			{
 				categoryType = "funCategory";
 				categoryNumber = 4;
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -199,8 +198,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 3)
 			{
 				categoryType = "loveCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -209,8 +208,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 2)
 			{
 				categoryType = "politicsCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -219,8 +218,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 1)
 			{
 				categoryType = "lifeCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -229,8 +228,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 0)
 			{
 				categoryType = "inspiringCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -251,8 +250,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			{
 				categoryType = "inspiringCategory";
 				categoryNumber = 0;
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -261,8 +260,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 4)
 			{
 				categoryType = "funCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -271,8 +270,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 3)
 			{
 				categoryType = "loveCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -281,8 +280,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 2)
 			{
 				categoryType = "politicsCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -291,8 +290,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			} else if (categoryNumber == 1)
 			{
 				categoryType = "lifeCategory";
-				citationsData.setCategoryInUse(categoryType);
-				citation = citationsData.getRandomStringInCategory().split("-");
+				citation = citationsData
+						.getRandomStringInCategory(categoryType).split("-");
 
 				setText(layoutAppWidget, citation);
 
@@ -303,8 +302,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		else if (intent.getAction().equals(SET_RANDOM_CITATION))
 		{
-			citationsData.setCategoryInUse(categoryType);
-			citation = citationsData.getRandomStringInCategory().split("-");
+			citation = citationsData.getRandomStringInCategory(categoryType)
+					.split("-");
 
 			layoutAppWidget.setTextViewText(
 					R.id.layout_appwidget_TextViewSentence,
