@@ -27,8 +27,7 @@ public class MainActivity extends Activity
 	private GestureDetectorCompat mDetector;
 	private TextView textViewSentence;
 	private TextView textViewAuthor;
-	private String[] citation; // I need it here because after the FB sharing I
-								// must put back the original sentence
+	private String[] citation;
 	private String categoryType;
 	private final String CATEGORY_TYPE = "categoryType";
 	private final String CITATION_STRING = "citationString";
@@ -89,18 +88,19 @@ public class MainActivity extends Activity
 			// swipe left/right
 			if (dxAbs / dyAbs > SWIPE_RATIO)
 			{
-				String[] citation = citationsData.getRandomStringInCategory(
+				citation = citationsData
+						.getRandomStringInCategory(
 						categoryType)
 						.split("-");
-				setCitation(citation, CitationChangeType.SWIPE_LEFT);
+				setCitation(CitationChangeType.SWIPE_LEFT);
 			}
 			// swipe up/down
 			else if (dyAbs / dxAbs > SWIPE_RATIO)
 			{
 				String[] citAndCat = citationsData.getRandomString();
-				String[] citation = citAndCat[0].split("-");
+				citation = citAndCat[0].split("-");
 				categoryType = citAndCat[1];
-				setCitation(citation, CitationChangeType.INIT);
+				setCitation(CitationChangeType.INIT);
 			}
 			// swipe not valid
 			else
@@ -137,7 +137,7 @@ public class MainActivity extends Activity
 					.split("-");
 		}
 		currentColor = citationsData.getCategoryInUseColor(categoryType);
-		setCitation(citation, CitationChangeType.INIT);
+		setCitation(CitationChangeType.INIT);
 
 
 		ImageButton buttonShare = (ImageButton) findViewById(R.id.activity_mainImageButtonShare);
@@ -241,7 +241,7 @@ public class MainActivity extends Activity
 	 *            to be set on the TextViews
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void setCitation(String[] citation, CitationChangeType mode)
+	private void setCitation(CitationChangeType mode)
 	{
 
         if (mode == CitationChangeType.INIT) {
