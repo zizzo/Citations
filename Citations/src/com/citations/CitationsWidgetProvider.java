@@ -11,11 +11,6 @@ import android.widget.RemoteViews;
 
 public class CitationsWidgetProvider extends AppWidgetProvider
 {
-	// private CitationsManager citationsData;
-	// private String[] citation;
-	// public int categoryNumber; // 0-4 --> inspiring, life, politics,
-										// love, fun
-
 	public static final String SHARE_ON_TWITTER = "shareOnTwitter";
 	public static final String SHARE_ON_FACEBOOK = "shareOnFacebook";
 	public static final String SHARE_GENERIC = "shareGeneric";
