@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 public class CitationsWidgetProvider extends AppWidgetProvider
@@ -32,11 +33,15 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	{
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 
+		Log.d("Widget-onUpdate", "Called onUpdate");
+
 		CitationsManager citationsData = new CitationsManager(context);
 		int categoryNumber = 0;
 		String[] citation = citationsData.getRandomStringInCategory(
 				"inspiringCategory")
 				.split("-");
+
+		Log.d("Widget-onUpdate", "Got starting citation: %s");
 
 		SharedPreferences settings = context.getSharedPreferences(
 				SHARED_PREF_CITATIONS, 0);
@@ -45,6 +50,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
 		editor.putString(CATEGORY_TYPE, "inspiringCategory");
 		editor.commit();
+
+		Log.d("Widget-onUpdate", "citation saved in SharedPreferences");
 
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
@@ -58,6 +65,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				"setBackgroundResource", R.color.inspiringCategoryColor);
 		layoutAppWidget.setInt(R.id.layout_appwidget_imageViewInspiringPoint,
 				"setBackgroundResource", R.color.inspiringCategoryColorActive);
+
+		Log.d("Widget-onUpdate", "Correctly set citation and background");
 
 		// Manage citations and categories
 		Intent intentPreviousCategory = new Intent(context,
@@ -152,6 +161,12 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
+
+		Log.d("Widget-onReceive",
+				String.format(
+						"Called onReceive, before the action the variables' values are: citation: %s category: %s action: %s",
+						citation[0] + citation[1], categoryType,
+						intent.getAction()));
 
 		if (intent.getAction().equals(SET_PREVIOUS_CATEGORY))
 		{
