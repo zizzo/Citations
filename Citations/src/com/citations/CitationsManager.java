@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -45,11 +46,11 @@ public class CitationsManager
     private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
     private final HashMap<String, Integer> colormap = new HashMap<String, Integer>();
 
-	private final String LOVE_CATEGORY = "loveCategory";
-	private final String POLITICS_CATEGORY = "politicsCategory";
-	private final String FUN_CATEGORY = "funCategory";
-	private final String LIFE_CATEGORY = "lifeCategory";
-	private final String INSPIRING_CATEGORY = "inspiringCategory";
+	private static final String LOVE_CATEGORY = "loveCategory";
+	private static final String POLITICS_CATEGORY = "politicsCategory";
+	private static final String FUN_CATEGORY = "funCategory";
+	private static final String LIFE_CATEGORY = "lifeCategory";
+	private static final String INSPIRING_CATEGORY = "inspiringCategory";
 
 
 	public CitationsManager(Context context)
@@ -74,8 +75,19 @@ public class CitationsManager
 				context.getResources().getColor(R.color.funCategoryColor));
 	}
 
+	
+	public static List<String> getCategories() {
+        List<String> categoryList = new ArrayList<String>();
+        categoryList.add(LOVE_CATEGORY);
+        categoryList.add(POLITICS_CATEGORY);
+        categoryList.add(FUN_CATEGORY);
+        categoryList.add(LIFE_CATEGORY);
+        categoryList.add(INSPIRING_CATEGORY);
+        
+        return categoryList;
+	}
+	
 	// @SuppressWarnings("serial")
-
 	/**
 	 * @return a random string within the category in use
 	 */

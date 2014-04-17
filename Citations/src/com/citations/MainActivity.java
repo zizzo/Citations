@@ -1,5 +1,8 @@
 package com.citations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
@@ -8,8 +11,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,7 +23,9 @@ import android.view.View.OnTouchListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity
@@ -31,11 +38,13 @@ public class MainActivity extends Activity
 	private String categoryType;
 	private final String CATEGORY_TYPE = "categoryType";
 	private final String CITATION_STRING = "citationString";
-
+	private DrawerLayout mDrawerLayout;
+	
 	private final int ANIMATION_DURATION = 200;
     private Integer currentColor;
 	private final double SWIPE_RATIO = 4.5;
 
+	
     public enum CitationChangeType {INIT, SWIPE_LEFT, SWIPE_RIGHT};
 
 
@@ -45,7 +54,7 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-
+		
 		citationsData = new CitationsManager(getApplicationContext());
 
 		drawLayout();
@@ -54,7 +63,7 @@ public class MainActivity extends Activity
 	@Override
 	public boolean onTouchEvent(MotionEvent event)
 	{
-		this.mDetector.onTouchEvent(event);
+		//this.mDetector.onTouchEvent(event);
 		return super.onTouchEvent(event);
 	}
 
@@ -232,7 +241,33 @@ public class MainActivity extends Activity
 						citation, categoryType);
 			}
 		});// end onClick
-
+		
+		/* Setup the navigation drawer with all the categories */
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        
+        List<String> categoryList = CitationsManager.getCategories();
+        
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, categoryList));
+		
+        // Set the touch listener to handle touches
+        mDrawerLayout.setOnTouchListener(new View.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (mDetector.onTouchEvent(event)) {
+				//	if (((DrawerLayout) v).isDrawerVisible(Gravity.LEFT)) {
+				//		return false;
+				//	}
+					Log.d("NavigationDrawer", "Intercepting a Touch");
+					return true;
+				}
+				
+				return false;
+			}
+		});
 
 	}// end drawLayout
 
