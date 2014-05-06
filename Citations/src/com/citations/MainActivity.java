@@ -53,6 +53,7 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 		
 		citationsData = new CitationsManager(getApplicationContext());
@@ -60,12 +61,6 @@ public class MainActivity extends Activity
 		drawLayout();
 	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event)
-	{
-		//this.mDetector.onTouchEvent(event);
-		return super.onTouchEvent(event);
-	}
 
 	/**
 	 * @author luigi Customized GestureListener for the Activity
@@ -126,7 +121,19 @@ public class MainActivity extends Activity
 	 */
 	private void drawLayout()
 	{
-
+		View mainLayout = findViewById(R.id.main_layout);
+		
+		mainLayout.setOnTouchListener(new OnTouchListener () {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (mDetector.onTouchEvent(event)) {
+					return true;
+				}
+				return false;
+			}
+			
+		});
+		
 		textViewSentence = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textViewAuthor = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 
@@ -252,22 +259,16 @@ public class MainActivity extends Activity
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, categoryList));
 		
-        // Set the touch listener to handle touches
-        mDrawerLayout.setOnTouchListener(new View.OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (mDetector.onTouchEvent(event)) {
-				//	if (((DrawerLayout) v).isDrawerVisible(Gravity.LEFT)) {
-				//		return false;
-				//	}
-					Log.d("NavigationDrawer", "Intercepting a Touch");
-					return true;
-				}
-				
-				return false;
-			}
-		});
+        
+//        // Set the touch listener to handle touches
+//        mDrawerLayout.setOnTouchListener(new View.OnTouchListener() {
+//			private boolean isOnDrawer = false;
+//			@Override
+//			public boolean onTouch(View v, MotionEvent event) {
+//				// Don't pass the event down
+//				return false;
+//			}
+//		});
 
 	}// end drawLayout
 
