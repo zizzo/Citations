@@ -1,6 +1,7 @@
 package com.citations;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.animation.ArgbEvaluator;
@@ -254,10 +255,10 @@ public class MainActivity extends Activity
         ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
         
         List<String> categoryList = CitationsManager.getCategories();
-        
+        Integer [] catList = {0, 1};
         // Set the adapter for the list view
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, categoryList));
+        mDrawerList.setAdapter(new MenuAdapter(this,
+                R.layout.drawer_list_item, catList));
 		
         
 //        // Set the touch listener to handle touches

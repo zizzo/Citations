@@ -63,8 +63,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
 				"setBackgroundResource", R.color.inspiringCategoryColor);
-		layoutAppWidget.setInt(R.id.layout_appwidget_imageViewInspiringPoint,
-				"setBackgroundResource", R.color.inspiringCategoryColorActive);
+		//layoutAppWidget.setInt(R.id.layout_appwidget_imageViewInspiringPoint,
+		//		"setBackgroundResource", R.color.inspiringCategoryColorActive);
 
 		Log.d("Widget-onUpdate", "Correctly set citation and background");
 
@@ -76,7 +76,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				.getBroadcast(context, 0, intentPreviousCategory, 0);
 
 		layoutAppWidget.setOnClickPendingIntent(
-				R.id.layout_appwidget_imageButtonPrevious,
+				R.id.widget_left_button,
 				pendingIntentPreviousCategory);
 
 		Intent intentNextCategory = new Intent(context,
@@ -86,7 +86,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				context, 0, intentNextCategory, 0);
 
 		layoutAppWidget.setOnClickPendingIntent(
-				R.id.layout_appwidget_imageButtonNext,
+				R.id.widget_right_button,
 				pendingIntentNextCategory);
 
 
@@ -96,38 +96,38 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		PendingIntent pendingIntentRandomCitation = PendingIntent.getBroadcast(
 				context, 0, intentRandomCitation, 0);
 
-		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidget_imageButtonRefresh,
+		layoutAppWidget.setOnClickPendingIntent(R.id.widget_reload_button,
 				pendingIntentRandomCitation);
 
 
 		// Sharing on the social networks
-		Intent intentTwitter = new Intent(context,
-				CitationsWidgetProvider.class);
-		intentTwitter.setAction(SHARE_ON_TWITTER);
-		PendingIntent pendingIntentTwitter = PendingIntent.getBroadcast(
-				context, 0, intentTwitter, 0);
-
-		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonTwitter,
-				pendingIntentTwitter);
-
-
-		Intent intentFacebook = new Intent(context,
-				CitationsWidgetProvider.class);
-		intentFacebook.setAction(SHARE_ON_FACEBOOK);
-		PendingIntent pendingIntentFacebook = PendingIntent.getBroadcast(
-				context, 0, intentFacebook, 0);
-
-		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonFacebook,
-				pendingIntentFacebook);
-
-
-		Intent intentShare = new Intent(context, CitationsWidgetProvider.class);
-		intentShare.setAction(SHARE_GENERIC);
-		PendingIntent pendingIntentShare = PendingIntent.getBroadcast(context,
-				0, intentShare, 0);
-
-		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
-				pendingIntentShare);
+//		Intent intentTwitter = new Intent(context,
+//				CitationsWidgetProvider.class);
+//		intentTwitter.setAction(SHARE_ON_TWITTER);
+//		PendingIntent pendingIntentTwitter = PendingIntent.getBroadcast(
+//				context, 0, intentTwitter, 0);
+//
+//		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonTwitter,
+//				pendingIntentTwitter);
+//
+//
+//		Intent intentFacebook = new Intent(context,
+//				CitationsWidgetProvider.class);
+//		intentFacebook.setAction(SHARE_ON_FACEBOOK);
+//		PendingIntent pendingIntentFacebook = PendingIntent.getBroadcast(
+//				context, 0, intentFacebook, 0);
+//
+//		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonFacebook,
+//				pendingIntentFacebook);
+//
+//
+//		Intent intentShare = new Intent(context, CitationsWidgetProvider.class);
+//		intentShare.setAction(SHARE_GENERIC);
+//		PendingIntent pendingIntentShare = PendingIntent.getBroadcast(context,
+//				0, intentShare, 0);
+//
+//		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
+//				pendingIntentShare);
 
 		// Open Application
 		Intent intentOpenApp = new Intent(context,
