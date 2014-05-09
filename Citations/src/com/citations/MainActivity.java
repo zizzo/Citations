@@ -255,7 +255,7 @@ public class MainActivity extends Activity
         ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
         
         List<String> categoryList = CitationsManager.getCategories();
-        Integer [] catList = {0, 1};
+        Integer [] catList = {0, 1, 2, 3, 4};
         // Set the adapter for the list view
         mDrawerList.setAdapter(new MenuAdapter(this,
                 R.layout.drawer_list_item, catList));

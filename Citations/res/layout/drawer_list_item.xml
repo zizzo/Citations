@@ -8,6 +8,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/app_name"
+        android:padding="12dp"
         android:src="@drawable/love_cat" />
 
     <TextView

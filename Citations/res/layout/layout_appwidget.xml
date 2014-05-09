@@ -30,47 +30,51 @@
             android:text="The Author"
             android:textSize="15sp"
             android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/layout_appwidget_RelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/widget_right_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text=">" />
+
+            <Button
+                android:id="@+id/widget_left_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/widget_right_button"
+                android:text="&lt;" />
+
+            <Button
+                android:id="@+id/widget_reload_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/widget_left_button"
+                android:text="R" />
+
+            <ImageButton
+                android:id="@+id/widget_category_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="false"
+                android:alpha="0.2"
+                android:background="@color/funCategoryColor"
+                android:padding="0dp"
+                android:src="@drawable/fun_cat" />
+
+        </RelativeLayout>
+
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_appwidget_RelativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/widget_category_button"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="CATEGORY" />
-
-        <Button
-            android:id="@+id/widget_right_button"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text=">" />
-
-        <Button
-            android:id="@+id/widget_left_button"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/widget_right_button"
-            android:text="&lt;" />
-
-        <Button
-            android:id="@+id/widget_reload_button"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/widget_left_button"
-            android:text="R" />
-
-    </RelativeLayout>
 	    
 </LinearLayout>
