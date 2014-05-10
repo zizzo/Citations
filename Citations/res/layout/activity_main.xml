@@ -13,40 +13,7 @@
         android:orientation="vertical"
         tools:context=".MainActivity" >
 
-        <ImageButton
-            android:id="@+id/activity_mainImageButtonTwitter"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignBottom="@+id/activity_mainImageButtonShare"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="62dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/twitterButton"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo_tw" />
 
-        <ImageButton
-            android:id="@+id/activity_mainImageButtonFacebook"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignTop="@+id/activity_mainImageButtonTwitter"
-            android:layout_toRightOf="@+id/activity_mainImageButtonTwitter"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/facebookButton"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo_fb" />
-
-        <ImageButton
-            android:id="@+id/activity_mainImageButtonShare"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="27dp"
-            android:layout_toRightOf="@+id/activity_mainImageButtonFacebook"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/sharingButton"
-            android:scaleType="fitCenter"
-            android:src="@drawable/share" />
 
         <LinearLayout
             android:id="@+id/activity_mainLinearLayout"
@@ -76,6 +43,46 @@
                 android:text=""
                 android:textStyle="bold" />
         </LinearLayout>
+        <ImageButton
+            android:id="@+id/activity_mainImageButtonTwitter"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/twitterButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/twitter" />
+
+        <ImageButton
+            android:id="@+id/activity_mainImageButtonFacebook"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            
+            android:layout_alignBottom="@+id/activity_mainImageButtonTwitter"
+            android:layout_toLeftOf="@+id/activity_mainImageButtonTwitter"
+            
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/facebookButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/facebook" />
+        
+        <ImageButton
+            android:id="@+id/activity_mainImageButtonShare"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            
+            android:layout_alignBottom="@+id/activity_mainImageButtonTwitter"
+            android:layout_toRightOf="@+id/activity_mainImageButtonTwitter"
+
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/sharingButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/share" />
+
     </RelativeLayout>
 
     <ListView
