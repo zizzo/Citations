@@ -4,7 +4,7 @@
     <string name="app_name">Citations</string>
     <string name="action_settings">Settings</string>
     
-    <string name="crash_toast_text">A crash occured, sorry. Please send us an email with the details!</string>
+    <string name="crash_toast_text">A crash occurred, sorry. Please send us an email with the details :)</string>
 
 <!--     CONTENT DESCRIPTION -->
     <string name="sharingButton">Sharing</string>
@@ -118,7 +118,7 @@
 		<string name="loveLamartine1">"There is a woman at the beginning of all great things - A. d. Lamartine"</string>
 		<string name="loveLennon1">"Love is the flower you've got to let grow - J. Lennon"</string>
 		<string name="loveLennon2">"Everything is clearer when you're in love - J. Lennon"</string>
-		<string name="loveLewis1">"Affection is responsible for nine-tenths of whatever solid and durable happiness there is in our lives - C. S. Lewis"</string>
+		<string name="loveLewis1">"Affection is responsible for nine tenths of whatever solid and durable happiness there is in our lives - C. S. Lewis"</string>
 		<string name="loveLongfellow1">"It is difficult to know at what moment love begins; it is less difficult to know that it has begun - H. W. Longfellow"</string>
 		<string name="loveLover1">"Come live in my heart, and pay no rent - S. Lover"</string>
 		<string name="loveMacLaine1">"It's useless to hold a person to anything he says while he's in love, drunk, or running for office - S. MacLaine"</string>
