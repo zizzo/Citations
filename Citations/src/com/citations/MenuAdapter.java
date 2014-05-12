@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,12 @@ public class MenuAdapter extends ArrayAdapter<Integer> {
 			R.drawable.inspiring_cat,
 			R.drawable.life_cat);
 	
+	private static final List<Integer> colorList = Arrays.asList(
+			R.color.loveCategoryColor,
+			R.color.politicsCategoryColor,
+			R.color.funCategoryColor,
+			R.color.inspiringCategoryColor,
+			R.color.lifeCategoryColor);
 	
 	
     public MenuAdapter(Context ctx, int layoutResourceId, Integer[] data) {
@@ -52,6 +59,7 @@ public class MenuAdapter extends ArrayAdapter<Integer> {
 		
 		ImageView imViewItem = (ImageView) convertView.findViewById(R.id.nav_ImageView);
 		imViewItem.setImageResource(iconList.get(position));
+
 		// TODO Auto-generated method stub
 		return convertView;
 	}

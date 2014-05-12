@@ -1,20 +1,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:padding="2dp" >
 
     <ImageView
         android:id="@+id/nav_ImageView"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/app_name"
-        android:padding="12dp"
+        android:padding="2dp"
         android:src="@drawable/love_cat" />
 
     <TextView
         android:id="@+id/nav_TextView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_weight="1"
         android:background="?android:attr/activatedBackgroundIndicator"
         android:gravity="center_vertical"
         android:paddingLeft="16dp"
