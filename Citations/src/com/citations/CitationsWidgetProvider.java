@@ -61,33 +61,33 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
 				citation[1]);
 
-		layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
-				"setBackgroundResource", R.color.inspiringCategoryColor);
+		//layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
+		//		"setBackgroundResource", R.color.inspiringCategoryColor);
 		//layoutAppWidget.setInt(R.id.layout_appwidget_imageViewInspiringPoint,
 		//		"setBackgroundResource", R.color.inspiringCategoryColorActive);
 
-		Log.d("Widget-onUpdate", "Correctly set citation and background");
+		Log.d("Widget-onUpdate", "Correctly set citation");
 
 		// Manage citations and categories
 		Intent intentPreviousCategory = new Intent(context,
 				CitationsWidgetProvider.class);
-		intentPreviousCategory.setAction(SET_PREVIOUS_CATEGORY);
-		PendingIntent pendingIntentPreviousCategory = PendingIntent
-				.getBroadcast(context, 0, intentPreviousCategory, 0);
+		//intentPreviousCategory.setAction(SET_PREVIOUS_CATEGORY);
+		//PendingIntent pendingIntentPreviousCategory = PendingIntent
+		//		.getBroadcast(context, 0, intentPreviousCategory, 0);
 
-		layoutAppWidget.setOnClickPendingIntent(
-				R.id.widget_left_button,
-				pendingIntentPreviousCategory);
+		//layoutAppWidget.setOnClickPendingIntent(
+		//		R.id.widget_left_button,
+		//		pendingIntentPreviousCategory);
 
-		Intent intentNextCategory = new Intent(context,
-				CitationsWidgetProvider.class);
-		intentNextCategory.setAction(SET_NEXT_CATEGORY);
-		PendingIntent pendingIntentNextCategory = PendingIntent.getBroadcast(
-				context, 0, intentNextCategory, 0);
+		//Intent intentNextCategory = new Intent(context,
+		//		CitationsWidgetProvider.class);
+		//intentNextCategory.setAction(SET_NEXT_CATEGORY);
+		//PendingIntent pendingIntentNextCategory = PendingIntent.getBroadcast(
+		//		context, 0, intentNextCategory, 0);
 
-		layoutAppWidget.setOnClickPendingIntent(
-				R.id.widget_right_button,
-				pendingIntentNextCategory);
+		//layoutAppWidget.setOnClickPendingIntent(
+		//		R.id.widget_right_button,
+		//		pendingIntentNextCategory);
 
 
 		Intent intentRandomCitation = new Intent(context,
@@ -96,7 +96,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		PendingIntent pendingIntentRandomCitation = PendingIntent.getBroadcast(
 				context, 0, intentRandomCitation, 0);
 
-		layoutAppWidget.setOnClickPendingIntent(R.id.widget_reload_button,
+		layoutAppWidget.setOnClickPendingIntent(R.id.widget_refresh_button,
 				pendingIntentRandomCitation);
 
 
@@ -369,78 +369,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	private void setColorsOnButtons(RemoteViews layoutAppWidget, int previous,
 			int current)
 	{
-
-		if (previous == 0)
-		{
-			layoutAppWidget.setInt(
-					R.id.layout_appwidget_imageViewInspiringPoint,
-					"setBackgroundResource", R.color.inspiringCategoryColor);
-		} else if (previous == 1)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLifePoint,
-					"setBackgroundResource", R.color.lifeCategoryColor);
-
-		} else if (previous == 2)
-		{
-			layoutAppWidget.setInt(
-					R.id.layout_appwidget_imageViewPoliticsPoint,
-					"setBackgroundResource", R.color.politicsCategoryColor);
-		} else if (previous == 3)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLovePoint,
-					"setBackgroundResource", R.color.loveCategoryColor);
-		} else if (previous == 4)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewFunPoint,
-					"setBackgroundResource", R.color.funCategoryColor);
-		}
-
-		if (current == 0)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
-					"setBackgroundResource", R.color.inspiringCategoryColor);
-
-			layoutAppWidget.setInt(
-					R.id.layout_appwidget_imageViewInspiringPoint,
-					"setBackgroundResource",
-					R.color.inspiringCategoryColorActive);
-
-		} else if (current == 1)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
-					"setBackgroundResource", R.color.lifeCategoryColor);
-
-			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLifePoint,
-					"setBackgroundResource", R.color.lifeCategoryColorActive);
-
-		} else if (current == 2)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
-					"setBackgroundResource", R.color.politicsCategoryColor);
-
-			layoutAppWidget.setInt(
-					R.id.layout_appwidget_imageViewPoliticsPoint,
-					"setBackgroundResource",
-					R.color.politicsCategoryColorActive);
-
-		} else if (current == 3)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
-					"setBackgroundResource", R.color.loveCategoryColor);
-
-			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewLovePoint,
-					"setBackgroundResource", R.color.loveCategoryColorActive);
-
-		} else if (current == 4)
-		{
-			layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
-					"setBackgroundResource", R.color.funCategoryColor);
-
-			layoutAppWidget.setInt(R.id.layout_appwidget_imageViewFunPoint,
-					"setBackgroundResource", R.color.funCategoryColorActive);
-
-		}
-
+		
 	}// end setColorsOnButtons
 
 	/**
