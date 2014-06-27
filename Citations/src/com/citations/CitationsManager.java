@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
@@ -45,17 +47,19 @@ public class CitationsManager
 
     private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
     private final HashMap<String, Integer> colormap = new HashMap<String, Integer>();
-
-	private static final String LOVE_CATEGORY = "loveCategory";
-	private static final String POLITICS_CATEGORY = "politicsCategory";
-	private static final String FUN_CATEGORY = "funCategory";
-	private static final String LIFE_CATEGORY = "lifeCategory";
-	private static final String INSPIRING_CATEGORY = "inspiringCategory";
+    private static final HashMap<String, Bitmap> bitmapMap = new HashMap<String, Bitmap>();
+    
+	public static final String LOVE_CATEGORY = "loveCategory";
+	public static final String POLITICS_CATEGORY = "politicsCategory";
+	public static final String FUN_CATEGORY = "funCategory";
+	public static final String LIFE_CATEGORY = "lifeCategory";
+	public static final String INSPIRING_CATEGORY = "inspiringCategory";
 
 
 	public CitationsManager(Context context)
 	{
 		this.context = context;
+		
 		categories.put(LOVE_CATEGORY, getLoveCategoryStrings());
 		categories.put(POLITICS_CATEGORY, getPoliticsCategoryStrings());
 		categories.put(FUN_CATEGORY, getFunCategoryStrings());
@@ -73,6 +77,20 @@ public class CitationsManager
 				context.getResources().getColor(R.color.politicsCategoryColor));
 		colormap.put(FUN_CATEGORY,
 				context.getResources().getColor(R.color.funCategoryColor));
+		
+		// Populating bitmaps
+		bitmapMap.put(LIFE_CATEGORY,
+				BitmapFactory.decodeResource(context.getResources(), R.drawable.life_cat));
+		bitmapMap.put(INSPIRING_CATEGORY,
+				BitmapFactory.decodeResource(context.getResources(), R.drawable.inspiring_cat));
+		bitmapMap.put(LOVE_CATEGORY,
+				BitmapFactory.decodeResource(context.getResources(), R.drawable.love_cat));
+		bitmapMap.put(POLITICS_CATEGORY,
+				BitmapFactory.decodeResource(context.getResources(), R.drawable.politics_cat));
+		bitmapMap.put(FUN_CATEGORY,
+				BitmapFactory.decodeResource(context.getResources(), R.drawable.fun_cat));
+		
+		
 	}
 
 	
@@ -85,6 +103,16 @@ public class CitationsManager
         categoryList.add(INSPIRING_CATEGORY);
         
         return categoryList;
+	}
+	
+	
+	/**
+	 * Return the bitmap corresponding to the category
+	 * @param categoryString
+	 * @return
+	 */
+	public static Bitmap getCategoryBitmap(String categoryString) {
+		return bitmapMap.get(categoryString);
 	}
 	
 	// @SuppressWarnings("serial")

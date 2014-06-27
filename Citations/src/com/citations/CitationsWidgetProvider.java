@@ -7,6 +7,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -27,6 +29,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 	public static final String OPEN_APP = "openApp";
 
+	
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds)
@@ -61,33 +64,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
 				citation[1]);
 
-		//layoutAppWidget.setInt(R.id.layout_appwidget_linearLayoutText,
-		//		"setBackgroundResource", R.color.inspiringCategoryColor);
-		//layoutAppWidget.setInt(R.id.layout_appwidget_imageViewInspiringPoint,
-		//		"setBackgroundResource", R.color.inspiringCategoryColorActive);
 
 		Log.d("Widget-onUpdate", "Correctly set citation");
-
-		// Manage citations and categories
-		Intent intentPreviousCategory = new Intent(context,
-				CitationsWidgetProvider.class);
-		//intentPreviousCategory.setAction(SET_PREVIOUS_CATEGORY);
-		//PendingIntent pendingIntentPreviousCategory = PendingIntent
-		//		.getBroadcast(context, 0, intentPreviousCategory, 0);
-
-		//layoutAppWidget.setOnClickPendingIntent(
-		//		R.id.widget_left_button,
-		//		pendingIntentPreviousCategory);
-
-		//Intent intentNextCategory = new Intent(context,
-		//		CitationsWidgetProvider.class);
-		//intentNextCategory.setAction(SET_NEXT_CATEGORY);
-		//PendingIntent pendingIntentNextCategory = PendingIntent.getBroadcast(
-		//		context, 0, intentNextCategory, 0);
-
-		//layoutAppWidget.setOnClickPendingIntent(
-		//		R.id.widget_right_button,
-		//		pendingIntentNextCategory);
 
 
 		Intent intentRandomCitation = new Intent(context,
@@ -100,34 +78,15 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				pendingIntentRandomCitation);
 
 
-		// Sharing on the social networks
-//		Intent intentTwitter = new Intent(context,
-//				CitationsWidgetProvider.class);
-//		intentTwitter.setAction(SHARE_ON_TWITTER);
-//		PendingIntent pendingIntentTwitter = PendingIntent.getBroadcast(
-//				context, 0, intentTwitter, 0);
-//
-//		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonTwitter,
-//				pendingIntentTwitter);
-//
-//
-//		Intent intentFacebook = new Intent(context,
-//				CitationsWidgetProvider.class);
-//		intentFacebook.setAction(SHARE_ON_FACEBOOK);
-//		PendingIntent pendingIntentFacebook = PendingIntent.getBroadcast(
-//				context, 0, intentFacebook, 0);
-//
-//		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonFacebook,
-//				pendingIntentFacebook);
-//
-//
-//		Intent intentShare = new Intent(context, CitationsWidgetProvider.class);
-//		intentShare.setAction(SHARE_GENERIC);
-//		PendingIntent pendingIntentShare = PendingIntent.getBroadcast(context,
-//				0, intentShare, 0);
-//
-//		layoutAppWidget.setOnClickPendingIntent(R.id.layout_appwidgetImageButtonShare,
-//				pendingIntentShare);
+		/* Connect the button that change the category  */
+		Intent intentChangeCategory = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentChangeCategory.setAction(SET_NEXT_CATEGORY);
+		PendingIntent pendingIntentChangeCategory = PendingIntent.getBroadcast(
+				context, 0, intentChangeCategory, 0);
+		
+		layoutAppWidget.setOnClickPendingIntent(R.id.widget_category_button,
+				pendingIntentChangeCategory);
 
 		// Open Application
 		Intent intentOpenApp = new Intent(context,
@@ -158,9 +117,9 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		String[] citation = settings.getString(CITATION_STRING, "-")
 				.split("-");
 		String categoryType = settings.getString(CATEGORY_TYPE, "");
-
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
+		setColorsOnButtons(context, layoutAppWidget, categoryType);
 
 		Log.d("Widget-onReceive",
 				String.format(
@@ -168,71 +127,9 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 						citation[0] + citation[1], categoryType,
 						intent.getAction()));
 
-		if (intent.getAction().equals(SET_PREVIOUS_CATEGORY))
-		{
-
-			categoryNumber--;
-			// Enter one of these alternatives, set the color of the background,
-			// change the one of the active button and restore the previous one
-			// to the default
-			if (categoryNumber < 0)
-			{
-				categoryType = "funCategory";
-				categoryNumber = 4;
-				citation = citationsData
-						.getRandomStringInCategory(categoryType).split("-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(layoutAppWidget, 0, 4);
-
-			} else if (categoryNumber == 3)
-			{
-				categoryType = "loveCategory";
-				citation = citationsData
-						.getRandomStringInCategory(categoryType).split("-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(layoutAppWidget, 4, 3);
-
-			} else if (categoryNumber == 2)
-			{
-				categoryType = "politicsCategory";
-				citation = citationsData
-						.getRandomStringInCategory(categoryType).split("-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(layoutAppWidget, 3, 2);
-
-			} else if (categoryNumber == 1)
-			{
-				categoryType = "lifeCategory";
-				citation = citationsData
-						.getRandomStringInCategory(categoryType).split("-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(layoutAppWidget, 2, 1);
-
-			} else if (categoryNumber == 0)
-			{
-				categoryType = "inspiringCategory";
-				citation = citationsData
-						.getRandomStringInCategory(categoryType).split("-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(layoutAppWidget, 1, 0);
-
-			}
-
-
-		}// end SET_PREVIOUS_CATEGORY
-
-		else if (intent.getAction().equals(SET_NEXT_CATEGORY))
-		{
+		
+		if (intent.getAction().equals(SET_NEXT_CATEGORY))
+		{	
 			categoryNumber++;
 			// Enter one of these alternatives, set the color of the background,
 			// change the one of the active button and restore the previous one
@@ -246,7 +143,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 				setText(layoutAppWidget, citation);
 
-				setColorsOnButtons(layoutAppWidget, 4, 0);
+				setColorsOnButtons(context, layoutAppWidget, categoryType);
 
 			} else if (categoryNumber == 4)
 			{
@@ -256,7 +153,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 				setText(layoutAppWidget, citation);
 
-				setColorsOnButtons(layoutAppWidget, 3, 4);
+				setColorsOnButtons(context, layoutAppWidget, categoryType);
 
 			} else if (categoryNumber == 3)
 			{
@@ -266,7 +163,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 				setText(layoutAppWidget, citation);
 
-				setColorsOnButtons(layoutAppWidget, 2, 3);
+				setColorsOnButtons(context, layoutAppWidget, categoryType);
 
 			} else if (categoryNumber == 2)
 			{
@@ -276,7 +173,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 				setText(layoutAppWidget, citation);
 
-				setColorsOnButtons(layoutAppWidget, 1, 2);
+				setColorsOnButtons(context, layoutAppWidget, categoryType);
 
 			} else if (categoryNumber == 1)
 			{
@@ -286,7 +183,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 				setText(layoutAppWidget, citation);
 
-				setColorsOnButtons(layoutAppWidget, 0, 1);
+				setColorsOnButtons(context, layoutAppWidget, categoryType);
 			}
 
 		}// end SET_NEXT_CATEGORY
@@ -304,26 +201,6 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 					citation[1]);
 
 		}// end SET_RANDOM_CITATION
-
-		else if (intent.getAction().equals(SHARE_ON_TWITTER))
-		{
-
-			citationsData.shareOnTwitter(context, citation);
-
-		}// end SHARE_ON_TWITTER
-
-		else if (intent.getAction().equals(SHARE_ON_FACEBOOK))
-		{
-			citationsData.shareOnFacebook(context, citation, categoryType);
-
-
-		}// end SHARE_ON_FACEBOOK
-
-		else if (intent.getAction().equals(SHARE_GENERIC))
-		{
-			citationsData.shareGeneric(context, citation);
-
-		}// end SHARE_GENERIC
 
 
 		else if (intent.getAction().equals(OPEN_APP))
@@ -366,12 +243,19 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	 * 
 	 *            set the proper colors on the small point in the widget
 	 */
-	private void setColorsOnButtons(RemoteViews layoutAppWidget, int previous,
-			int current)
+	private void setColorsOnButtons(Context context, RemoteViews layoutAppWidget, String categoryType)
 	{
-		
+		layoutAppWidget.setImageViewBitmap(R.id.widget_category_button, CitationsManager.getCategoryBitmap(categoryType));
 	}// end setColorsOnButtons
 
+	
+	private void nextCategory() {
+		
+	}
+	
+	private void nextCitation() {
+		
+	}
 	/**
 	 * @param layoutAppWidget
 	 *            set the proper text on the widget
