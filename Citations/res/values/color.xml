@@ -16,4 +16,6 @@
  	<color name="politicsCategoryColorActive">#60FFFF00</color>
  	<color name="funCategoryColorActive">#60008000</color>
     
+ 	
+ 	<color name="widgetBackground">#80191919</color>
 </resources>

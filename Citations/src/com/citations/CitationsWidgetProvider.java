@@ -34,10 +34,10 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds)
 	{
+		Log.d("Widget-onUpdate", "Starting onUpdate");
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
-
-		Log.d("Widget-onUpdate", "Called onUpdate");
-
+		Log.d("Widget-onUpdate", "Called super");
+		
 		CitationsManager citationsData = new CitationsManager(context);
 		int categoryNumber = 0;
 		String[] citation = citationsData.getRandomStringInCategory(
@@ -53,7 +53,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
 		editor.putString(CATEGORY_TYPE, "inspiringCategory");
 		editor.commit();
-
+		
 		Log.d("Widget-onUpdate", "citation saved in SharedPreferences");
 
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
@@ -108,24 +108,33 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
+		Log.d("Widget-onReceive", "Entering onreceive");
 		super.onReceive(context, intent);
-
+		
+		Log.d("Widget-onReceive", "Starting action "+intent.getAction());
+		
+		Log.d("Widget-onReceive", "Create and manage preferences");
 		CitationsManager citationsData = new CitationsManager(context);
+		Log.d("Widget-onReceive", "Stop1");
 		SharedPreferences settings = context.getSharedPreferences(
 				SHARED_PREF_CITATIONS, 0);
+		Log.d("Widget-onReceive", "Stop2");
 		int categoryNumber = settings.getInt(CATEGORY_NUMBER, 0);
 		String[] citation = settings.getString(CITATION_STRING, "-")
 				.split("-");
+
 		String categoryType = settings.getString(CATEGORY_TYPE, "");
+		Log.d("Widget-onReceive", "Stop4");
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
+		Log.d("Widget-onReceive", "Stop5");
 		setColorsOnButtons(context, layoutAppWidget, categoryType);
-
-		Log.d("Widget-onReceive",
-				String.format(
-						"Called onReceive, before the action the variables' values are: citation: %s category: %s action: %s",
-						citation[0] + citation[1], categoryType,
-						intent.getAction()));
+		Log.d("Widget-onReceive", "Stop6");
+//		Log.d("Widget-onReceive",
+//				String.format(
+//						"Called onReceive, before the action the variables' values are: citation: %s category: %s action: %s",
+//						citation[0] + citation[1], categoryType,
+//						intent.getAction()));
 
 		
 		if (intent.getAction().equals(SET_NEXT_CATEGORY))
@@ -229,7 +238,6 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				CitationsWidgetProvider.class);
 		AppWidgetManager.getInstance(context).updateAppWidget(componentName,
 				layoutAppWidget);
-
 	}// end onReceive
 
 	/**
