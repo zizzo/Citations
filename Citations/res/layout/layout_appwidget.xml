@@ -69,6 +69,41 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/refresh_icon" />
 
+            <ImageButton
+                android:id="@+id/widget_share_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentTop="false"
+                android:layout_toLeftOf="@id/widget_refresh_button"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/share" />
+
+            <ImageButton
+                android:id="@+id/widget_twitter_button"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/widget_share_button"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/twitter" />
+
+            <ImageButton
+                android:id="@+id/ImageButton01"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/widget_twitter_button"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/facebook" />
+
         </RelativeLayout>
 
     </LinearLayout>

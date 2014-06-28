@@ -30,6 +30,7 @@ import android.os.Environment;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.Log;
 
 /**
  * @author luigi
@@ -207,7 +208,7 @@ public class CitationsManager
 			String categoryInUse)
 	{
 
-		Bitmap bitmap = Bitmap.createBitmap(500, 300, Bitmap.Config.ARGB_8888);
+		Bitmap bitmap = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_8888);
 		Canvas c = new Canvas(bitmap);
 
 		// Paint paint = new Paint();
@@ -216,19 +217,20 @@ public class CitationsManager
 
 		c.drawColor(getCategoryInUseColor(categoryInUse));
 
-		String bitmapText = citation[0] + "\n" + citation[1];
+		String bitmapText = citation[0] + "\n\n" + citation[1];
 
 		TextPaint tp = new TextPaint();
 		tp.setColor(Color.BLACK);
-		tp.setTextSize(20);
-		tp.setTextAlign(Align.CENTER);
+		tp.setTextSize(40);
+		tp.setTextAlign(Align.LEFT);
 		tp.setAntiAlias(true);
-		StaticLayout sl = new StaticLayout(bitmapText, tp, 500,
-				Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+		StaticLayout sl = new StaticLayout(bitmapText, tp, 600,
+				Layout.Alignment.ALIGN_CENTER, 1, 0, false);
 
-		// c.translate(250, 150);
+		c.save();
+		c.translate(100, 200);
 		sl.draw(c);
-
+		c.restore();
 		// c.drawText(bitmapText, 250, 150, paint);
 
 		c.drawBitmap(bitmap, 0, 0, null);
@@ -248,6 +250,10 @@ public class CitationsManager
 
 		File f = new File(Environment.getExternalStorageDirectory()
 				+ File.separator + filename);
+		
+	    if (f.exists())
+	        f.delete();
+	    
 		try
 		{
 			f.createNewFile();
@@ -266,6 +272,8 @@ public class CitationsManager
 
 	public void shareOnFb(String imagePath, Context context)
 	{
+		
+		Log.d("CitationsManager-ShareOnFb", "sharing the image");
 		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
 		shareIntent.setType("image/png");
 		shareIntent.putExtra(Intent.EXTRA_STREAM,
@@ -275,7 +283,10 @@ public class CitationsManager
 				0);
 		for (final ResolveInfo app : activityList)
 		{
-			if ((app.activityInfo.name).contains("facebook.katana"))
+			
+			Log.d("CitationsManager-ShareOnFb", app.activityInfo.name);
+			if ((app.activityInfo.name).contains("facebook.katana") ||
+					(app.activityInfo.name).contains("facebook.composer.shareintent"))
 			{
 				final ActivityInfo activity = app.activityInfo;
 				final ComponentName name = new ComponentName(
