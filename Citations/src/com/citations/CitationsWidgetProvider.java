@@ -113,6 +113,15 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		
 		Log.d("Widget-onReceive", "Starting action "+intent.getAction());
 		
+		if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_ENABLED)) {
+			return;
+		}
+		
+		else if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_DELETED))
+		{
+			return;
+		}
+		
 		Log.d("Widget-onReceive", "Create and manage preferences");
 		CitationsManager citationsData = new CitationsManager(context);
 		Log.d("Widget-onReceive", "Stop1");
