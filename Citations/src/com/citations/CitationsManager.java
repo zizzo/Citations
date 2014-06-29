@@ -188,9 +188,7 @@ public class CitationsManager
 			String categoryType)
 	{
 		Bitmap bitmap = drawBitmap(context, citation, categoryType);
-		storeImage(bitmap, "imageToShare.png");
-		String imagePath = Environment.getExternalStorageDirectory().toString()
-				+ File.separator + "imageToShare.png";
+		String imagePath = storeImage(bitmap);
 		shareOnFb(imagePath, context);
 	}
 
@@ -243,20 +241,16 @@ public class CitationsManager
 		return colormap.get(categoryInUse);
 	}
 
-	public void storeImage(Bitmap bitmap, String filename)
+	public String storeImage(Bitmap bitmap)
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes);
 
-		File f = new File(Environment.getExternalStorageDirectory()
-				+ File.separator + filename);
 		
-	    if (f.exists())
-	        f.delete();
-	    
+		File f = null;
 		try
 		{
-			f.createNewFile();
+			f = File.createTempFile("citationsImg", ".png", context.getExternalCacheDir());
 			FileOutputStream fo = new FileOutputStream(f);
 			fo.write(bytes.toByteArray());
 			fo.close();
@@ -268,12 +262,13 @@ public class CitationsManager
 			e.printStackTrace();
 		}
 
+		return f.getAbsolutePath();
 	}// end storeImage
 
 	public void shareOnFb(String imagePath, Context context)
 	{
 		
-		Log.d("CitationsManager-ShareOnFb", "sharing the image");
+		Log.d("CitationsManager-ShareOnFb", "sharing the image "+ imagePath);
 		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
 		shareIntent.setType("image/png");
 		shareIntent.putExtra(Intent.EXTRA_STREAM,
