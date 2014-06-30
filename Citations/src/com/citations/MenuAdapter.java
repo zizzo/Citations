@@ -24,21 +24,21 @@ public class MenuAdapter extends ArrayAdapter<Integer> {
 	private static final List<String> strList = Arrays.asList("Love", 
 			                                                  "Politics",
 			                                                  "Fun",
-			                                                  "Inspiring",
-			                                                  "Life");
+			                                                  "Life",
+			                                                  "Inspiring");
 	private static final List<Integer> iconList = Arrays.asList(
 			R.drawable.love_cat,
 			R.drawable.politics_cat,
 			R.drawable.fun_cat,
-			R.drawable.inspiring_cat,
-			R.drawable.life_cat);
+			R.drawable.life_cat,
+			R.drawable.inspiring_cat);
 	
 	private static final List<Integer> colorList = Arrays.asList(
 			R.color.loveCategoryColor,
 			R.color.politicsCategoryColor,
 			R.color.funCategoryColor,
-			R.color.inspiringCategoryColor,
-			R.color.lifeCategoryColor);
+			R.color.lifeCategoryColor,
+			R.color.inspiringCategoryColor);
 	
 	
     public MenuAdapter(Context ctx, int layoutResourceId, Integer[] data) {

@@ -24,6 +24,8 @@ import android.view.View.OnTouchListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -58,7 +60,7 @@ public class MainActivity extends Activity
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 		
 		citationsData = new CitationsManager(getApplicationContext());
-
+		
 		drawLayout();
 	}
 
@@ -82,8 +84,10 @@ public class MainActivity extends Activity
 				float velocityX, float velocityY)
 		{
 
-			float dxAbs = Math.abs(event2.getX() - event1.getX());
-			float dyAbs = Math.abs(event2.getY() - event1.getY());
+			float dx = event2.getX() - event1.getX();
+			float dy = event2.getY() - event1.getY();
+			float dxAbs = Math.abs(dx);
+			float dyAbs = Math.abs(dy);
 
 			Log.d("MainActivityOnFling", "onFling: dx = " + dxAbs);
 			Log.d("MainActivityOnFling", "onFling: dy = " + dyAbs);
@@ -100,13 +104,24 @@ public class MainActivity extends Activity
 				setCitation(CitationChangeType.SWIPE_LEFT);
 			}
 			// swipe up/down
+			
+			
 			else if (dyAbs / dxAbs > SWIPE_RATIO)
 			{
 				String[] citAndCat = citationsData.getRandomString();
-				citation = citAndCat[0].split("-");
-				categoryType = citAndCat[1];
+				
+				String cat;
+				if (dy < 0)
+					cat = citationsData.prevCategory(categoryType);
+				else
+					cat = citationsData.nextCategory(categoryType);
+				
+				citation = citationsData.getRandomStringInCategory(cat).split("-");
+				categoryType = cat;
 				setCitation(CitationChangeType.INIT);
+				
 			}
+			
 			// swipe not valid
 			else
 			{
@@ -261,15 +276,18 @@ public class MainActivity extends Activity
                 R.layout.drawer_list_item, catList));
 		
         
-//        // Set the touch listener to handle touches
-//        mDrawerLayout.setOnTouchListener(new View.OnTouchListener() {
-//			private boolean isOnDrawer = false;
-//			@Override
-//			public boolean onTouch(View v, MotionEvent event) {
-//				// Don't pass the event down
-//				return false;
-//			}
-//		});
+        mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView parent, View view, int position,
+					long id) {
+						String cat = CitationsManager.getCategories().get(position);
+						MainActivity.this.changeCategory(cat);
+						mDrawerLayout.closeDrawers();
+				
+			}
+        	
+		});
 
 	}// end drawLayout
 
@@ -334,6 +352,28 @@ public class MainActivity extends Activity
 
 	}// end setCitation
 
+	public void changeCategory(String catId) {
+		
+		categoryType = catId;
+		citation = citationsData
+				.getRandomStringInCategory(
+				categoryType)
+				.split("-");
+		setCitation(CitationChangeType.INIT);
+		
+        // Set the proper background1
+        Integer startColor = currentColor;
+		Integer endColor = citationsData.getCategoryInUseColor(categoryType);
+        ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout), "backgroundColor",
+                startColor, endColor);
+        anim.setDuration(500);
+        anim.setEvaluator(new ArgbEvaluator());
+        anim.start();
+
+        currentColor = endColor;
+		
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{

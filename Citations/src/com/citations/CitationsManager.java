@@ -91,7 +91,6 @@ public class CitationsManager
 		bitmapMap.put(FUN_CATEGORY,
 				BitmapFactory.decodeResource(context.getResources(), R.drawable.fun_cat));
 		
-		
 	}
 
 	
@@ -202,6 +201,23 @@ public class CitationsManager
 				.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 	}
 
+	public String nextCategory(String cat) {
+		List<String> keyIndex = new ArrayList<String>(categories.keySet());
+		int i = keyIndex.indexOf(cat);
+		return keyIndex.get((i + 1) % keyIndex.size());
+	}
+	
+	public String prevCategory(String cat) {
+		List<String> keyIndex = new ArrayList<String>(categories.keySet());
+		int i = keyIndex.indexOf(cat);
+		if (i == 0) {
+			return keyIndex.get(keyIndex.size() - 1);
+		}
+		else {
+			return keyIndex.get(i - 1);
+		}
+	}
+	
 	public Bitmap drawBitmap(Context context, String[] citation,
 			String categoryInUse)
 	{
