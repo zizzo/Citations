@@ -94,7 +94,7 @@
                 android:src="@drawable/twitter" />
 
             <ImageButton
-                android:id="@+id/ImageButton01"
+                android:id="@+id/widget_facebook_button"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="42dp"
                 android:layout_height="42dp"

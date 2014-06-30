@@ -87,6 +87,35 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		
 		layoutAppWidget.setOnClickPendingIntent(R.id.widget_category_button,
 				pendingIntentChangeCategory);
+		
+		// Sharing on the social networks
+		Intent intentTwitter = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentTwitter.setAction(SHARE_ON_TWITTER);
+		PendingIntent pendingIntentTwitter = PendingIntent.getBroadcast(
+				context, 0, intentTwitter, 0);
+
+		layoutAppWidget.setOnClickPendingIntent(R.id.widget_twitter_button,
+				pendingIntentTwitter);
+
+
+		Intent intentFacebook = new Intent(context,
+				CitationsWidgetProvider.class);
+		intentFacebook.setAction(SHARE_ON_FACEBOOK);
+		PendingIntent pendingIntentFacebook = PendingIntent.getBroadcast(
+				context, 0, intentFacebook, 0);
+
+		layoutAppWidget.setOnClickPendingIntent(R.id.widget_facebook_button,
+				pendingIntentFacebook);
+
+
+		Intent intentShare = new Intent(context, CitationsWidgetProvider.class);
+		intentShare.setAction(SHARE_GENERIC);
+		PendingIntent pendingIntentShare = PendingIntent.getBroadcast(context,
+				0, intentShare, 0);
+
+		layoutAppWidget.setOnClickPendingIntent(R.id.widget_share_button,
+				pendingIntentShare);
 
 		// Open Application
 		Intent intentOpenApp = new Intent(context,
@@ -206,6 +235,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		}// end SET_NEXT_CATEGORY
 
+		
 		else if (intent.getAction().equals(SET_RANDOM_CITATION))
 		{
 			citation = citationsData.getRandomStringInCategory(categoryType)
@@ -234,6 +264,23 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 					| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			context.startActivity(appIntent);
 		}
+		
+		else if (intent.getAction().equals(SHARE_ON_TWITTER))
+		{
+			citationsData.shareOnTwitter(context, citation);
+		}// end SHARE_ON_TWITTER
+
+		else if (intent.getAction().equals(SHARE_ON_FACEBOOK))
+		{
+			citationsData.shareOnFacebook(context, citation, categoryType);
+		}// end SHARE_ON_FACEBOOK
+
+		else if (intent.getAction().equals(SHARE_GENERIC))
+		{
+			citationsData.shareGeneric(context, citation);
+
+		}// end SHARE_GENERIC
+
 
 		// Update SharedPreferences
 		SharedPreferences.Editor editor = settings.edit();
