@@ -125,8 +125,10 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				context, 0, intentOpenApp, 0);
 
 		layoutAppWidget.setOnClickPendingIntent(
-				R.id.layout_appwidget_linearLayoutText, pendingIntentOpenApp);
-
+				R.id.layout_appwidget_TextViewSentence, pendingIntentOpenApp);
+		
+		layoutAppWidget.setOnClickPendingIntent(
+				R.id.layout_appwidget_TextViewAuthor, pendingIntentOpenApp);
 
 		// Update any modification
 		appWidgetManager.updateAppWidget(appWidgetIds, layoutAppWidget);
