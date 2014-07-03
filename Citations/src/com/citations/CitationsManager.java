@@ -47,7 +47,7 @@ public class CitationsManager
 	private final Context context;
 
     private final LinkedHashMap<String, String[]> categories = new LinkedHashMap<String, String[]>();
-    private final HashMap<String, Integer> colormap = new HashMap<String, Integer>();
+    private static final HashMap<String, Integer> colormap = new HashMap<String, Integer>();
     private static final HashMap<String, Bitmap> bitmapMap = new HashMap<String, Bitmap>();
     
 	public static final String LOVE_CATEGORY = "loveCategory";
@@ -115,6 +115,9 @@ public class CitationsManager
 		return bitmapMap.get(categoryString);
 	}
 	
+	public static Integer getCategoryColor(String categoryString) {
+		return colormap.get(categoryString);
+	}
 	// @SuppressWarnings("serial")
 	/**
 	 * @return a random string within the category in use

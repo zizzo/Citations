@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -314,6 +315,11 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	private void setColorsOnButtons(Context context, RemoteViews layoutAppWidget, String categoryType)
 	{
 		layoutAppWidget.setImageViewBitmap(R.id.widget_category_button, CitationsManager.getCategoryBitmap(categoryType));
+		
+		int c = CitationsManager.getCategoryColor(categoryType);
+		layoutAppWidget.setInt(R.id.widget_textwrapper, "setBackgroundColor", 
+				Color.argb(204, Color.red(c), Color.green(c), Color.blue(c)));
+	
 	}// end setColorsOnButtons
 
 	
