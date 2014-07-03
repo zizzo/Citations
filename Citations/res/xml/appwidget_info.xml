@@ -2,7 +2,7 @@
     android:minWidth="250dp"
     android:minHeight="110dp"
     android:minResizeHeight="110dp"
-    android:updatePeriodMillis="30000" 
+    android:updatePeriodMillis="0" 
     android:previewImage="@drawable/preview"
     android:initialLayout="@layout/layout_appwidget"
     android:resizeMode="horizontal|vertical"
@@ -10,4 +10,4 @@
     android:initialKeyguardLayout="@layout/layout_keyguard">
 </appwidget-provider>
 
- <!-- Minimum update is 30seconds for battery reasons. We leave 30000ms just because it seems to work with the old Samsung widget bug!-->
+ 
