@@ -139,10 +139,12 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	@Override
 	public void onReceive(Context context, Intent intent)
 	{
+		Log.d("Widget-onReceive", "Starting action "+intent.getAction());
+		
 		Log.d("Widget-onReceive", "Entering onreceive");
 		super.onReceive(context, intent);
 		
-		Log.d("Widget-onReceive", "Starting action "+intent.getAction());
+
 		
 		if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_ENABLED)) {
 			return;
