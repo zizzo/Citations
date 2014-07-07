@@ -45,7 +45,7 @@ public class MainActivity extends Activity
 	
 	private final int ANIMATION_DURATION = 200;
     private Integer currentColor;
-	private final double SWIPE_RATIO = 4.5;
+	private final double SWIPE_RATIO = 0.5;
 
 	
     public enum CitationChangeType {INIT, SWIPE_LEFT, SWIPE_RIGHT};
@@ -101,32 +101,37 @@ public class MainActivity extends Activity
 						.getRandomStringInCategory(
 						categoryType)
 						.split("-");
-				setCitation(CitationChangeType.SWIPE_LEFT);
+				
+				if (dx > 0)
+					setCitation(CitationChangeType.SWIPE_RIGHT);
+				else
+					setCitation(CitationChangeType.SWIPE_LEFT);
+				
 			}
 			// swipe up/down
 			
-			
-			else if (dyAbs / dxAbs > SWIPE_RATIO)
-			{
-				String[] citAndCat = citationsData.getRandomString();
-				
-				String cat;
-				if (dy < 0)
-					cat = citationsData.prevCategory(categoryType);
-				else
-					cat = citationsData.nextCategory(categoryType);
-				
-				citation = citationsData.getRandomStringInCategory(cat).split("-");
-				categoryType = cat;
-				setCitation(CitationChangeType.INIT);
-				
-			}
+//			
+//			else if (dyAbs / dxAbs > SWIPE_RATIO)
+//			{
+//				String[] citAndCat = citationsData.getRandomString();
+//				
+//				String cat;
+//				if (dy < 0)
+//					cat = citationsData.prevCategory(categoryType);
+//				else
+//					cat = citationsData.nextCategory(categoryType);
+//				
+//				citation = citationsData.getRandomStringInCategory(cat).split("-");
+//				categoryType = cat;
+//				setCitation(CitationChangeType.INIT);
+//				
+//			}
 			
 			// swipe not valid
-			else
-			{
-
-			}
+//			else
+//			{
+//
+//			}
 
 			return true;
 		}
@@ -305,10 +310,19 @@ public class MainActivity extends Activity
         }
 
 
-        if (mode == CitationChangeType.SWIPE_LEFT) {
-            final Animation slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text);
-            final Animation slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in);
-
+        if (mode == CitationChangeType.SWIPE_LEFT || 
+        	mode == CitationChangeType.SWIPE_RIGHT) {
+        	
+        	final Animation slidein, slideout;
+        	
+        	if (mode == CitationChangeType.SWIPE_LEFT) {
+        		slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text_left);
+        		slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in_left);
+        	}
+        	else {
+        		slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text_right);
+                slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in_right);
+        	}
 
             slidein.setDuration(100);
             slideout.setDuration(100);
