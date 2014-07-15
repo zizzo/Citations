@@ -411,7 +411,7 @@
 		<string name="politicsGlasow1">"An idea not coupled with action will never get any bigger than the brain cell it occupied - A. H. Glasow"</string>
 		<string name="politicsGlass1">"A liberal is a man who is willing to spend somebody else's money - C. Glass"</string>
 		<string name="politicsGoldman1">"If voting changed anything, they'd make it illegal - E. Goldman"</string>
-		<string name="politicsGoldman2">"No real social change has ever been brought about without a revolution&#8230; revolution is but thought carried into action - E. Goldman"</string>
+		<string name="politicsGoldman2">"No real social change has ever been brought about without a revolution; revolution is but thought carried into action - E. Goldman"</string>
 		<string name="politicsGregory1">"In most places in the country, voting is looked upon as a right and a duty, but in Chicago it's a sport - D. Gregory"</string>
 		<string name="politicsGross1">"We live in a world in which politics has replaced philosophy - M. L. Gross"</string>
 		<string name="politicsHamilton1">"Those who stand for nothing fall for anything - A. Hamilton"</string>
@@ -438,7 +438,6 @@
 		<string name="politicsLavater1">"The public seldom forgive twice - J. K. Lavater"</string>
 		<string name="politicsLevant1">"The only difference between the Democrats and the Republicans is that the Democrats allow the poor to be corrupt, too - O. Levant"</string>
 		<string name="politicsLiebling1">"Freedom of the press is guaranteed only to those who own one - A. J. Liebling"</string>
-		<string name="politicsLuce1">"The politicians were talking themselves red, white and blue in the face - C. B. Luce"</string>
 		<string name="politicsLuce2">"They say women talk too much. If you have worked in Congress you know that the filibuster was invented by men - C. B. Luce"</string>
 		<string name="politicsMachiavelli1">"Politics have no relation to morals - N. Machiavelli"</string>
 		<string name="politicsMarcos1">"When they see me holding fish, they can see that I am comfortable with kings as well as with paupers - I. Marcos"</string>
@@ -543,7 +542,7 @@
 		<string name="lifeCicero1">"While there's life, there's hope - M. T. Cicero"</string>
 		<string name="lifeColette1">"What a wonderful life I've had! I only wish I'd realized it sooner - S. G. Colette"</string>
 		<string name="lifeConfucius1">"Life is really simple, but we insist on making it complicated - Confucius"</string>
-		<string name="lifeCovey1">"There are three constants in life&#8230; change, choice and principles - S. Covey"</string>
+		<string name="lifeCovey1">"There are three constants in life: change, choice and principles - S. Covey"</string>
 		<string name="lifeCurie1">"Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less - M. Curie"</string>
 		<string name="lifeDarwin1">"A man who dares to waste one hour of time has not discovered the value of life - C. Darwin"</string>
 		<string name="lifeDeBono1">"Often we are able of seeing an opportunity only after someone has picked it up - E. De Bono"</string>
