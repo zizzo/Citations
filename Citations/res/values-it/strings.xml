@@ -31,13 +31,13 @@
 <!--     PLEASE MIND THE ALPHABETICAL ORDER!!! -->
 
 	<!-- 	LOVE -->
-		<string name="loveAndrews1">"Tutto l'amore si sposta e cambia. Non so se si può essere in amore tutto il tempo - J. Andrews"</string>
+		<string name="loveAndrews1">"Tutto l'amore si sposta e cambia. Non so se si può essere innamorati tutto il tempo - J. Andrews"</string>
 		<string name="loveAngelis1">"Non perdi mai amando. Perdi sempre restando fermo - B. de Angelis"</string>
 		<string name="loveAniston1">"Amo la sensazione di essere innamorato, le farfalle nello stomaco quando ti alzi la mattina. È speciale - J. Aniston"</string>
 		<string name="loveAquinas1">"L'amore entra dove non c'è la conoscenza - T. D'Aquino"</string>
-		<string name="loveAristotle1">"L'amore è composto da una singola anima che abita due corpi - Aristotele"</string>
+		<string name="loveAristotle1">"L'amore è composto da una singola anima che inabita due corpi - Aristotele"</string>
 		<string name="loveAssisi1">"Signore, fa che non cerchi di essere amato tanto quanto di amare - Francesco d'Assisi"</string>
-		<string name="loveAugustine1">"L'amore è la bellezza dell'anima - S. Augustine"</string>
+		<string name="loveAugustine1">"L'amore è la bellezza dell'anima - S. Agostino"</string>
 		<string name="loveBach1">"Possono i kilometri veramente separarti dai tuoi amici? Se vuoi essere con qualcuno che ami, non sei già lì? - R. Bach"</string>
 		<string name="loveBaldwin1">"L'amore non inizia e finisce come crediamo. L'amore è una battaglia, l'amore è una guerra; l'amore è una crescita - J. A. Baldwin"</string>
 		<string name="loveBaldwin2">"L'amore rimuove maschere senza le quali temiamo di non poter vivere e con le quali sappiamo di non poter vivere - J. A. Baldwin"</string>
@@ -148,7 +148,7 @@
 		<string name="loveRand1">"Per dire 'Io ti amo' una persona deve prima saper dire 'Io' - A. Rand"</string>
 		<string name="loveRilke1">"L'amore consiste in questo, che due esseri solitari si proteggano e accolgano reciprocamente - R. M. Rilke"</string>
 		<string name="loveRobbins1">"Sprechiamo tempo cercando il partner perfetto invece di creare l'amore perfetto - T. Robbins"</string>
-		<string name="loveRochefoucauld1">"L'assenza diminuisce la passioni mediocri e aumenta le grandi, come il vento spegne le candele e alimenta gli incendi- F. d. L. Rochefoucauld"</string>
+		<string name="loveRochefoucauld1">"L'assenza diminuisce le passioni mediocri e aumenta le grandi, come il vento spegne le candele e alimenta gli incendi- F. d. L. Rochefoucauld"</string>
 		<string name="loveRochefoucauld2">"Il vero amore è come i fantasmi, di cui ognuno parla ma ne pochi hanno esperienza - F. d. L. Rochefoucauld"</string>
 		<string name="loveRochefoucauld3">"Non c'è maschera che possa nascondere l'amore per lungo tempo dove esiste, o simularlo dove non esiste - F. d. L. Rochefoucauld"</string>
 		<string name="loveRochefoucauld4">"C'è solo un tipo di amore, ma migliaia di imitazioni - F. d. L. Rochefoucauld"</string>
