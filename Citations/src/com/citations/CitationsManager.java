@@ -527,6 +527,7 @@ public class CitationsManager
 			context.getString(R.string.lifeColette1),
 			context.getString(R.string.lifeConfucius1),
 			context.getString(R.string.lifeCovey1),
+			context.getString(R.string.lifeCummings1),
 			context.getString(R.string.lifeCurie1),
 			context.getString(R.string.lifeDarwin1),
 			context.getString(R.string.lifeDeBono1),
@@ -590,6 +591,7 @@ public class CitationsManager
 			context.getString(R.string.lifeLee1), context.getString(R.string.lifeLeigh1),
 			context.getString(R.string.lifeLennon1),
 			context.getString(R.string.lifeLeopardi1),
+			context.getString(R.string.lifeLeopardi2),
 			context.getString(R.string.lifeLindbergh1),
 			context.getString(R.string.lifeLongworth1),
 			context.getString(R.string.lifeMarley1),
@@ -649,8 +651,7 @@ public class CitationsManager
 			context.getString(R.string.lifeWilde2),
 			context.getString(R.string.lifeWilde3),
 			context.getString(R.string.lifeWilde4),
-			context.getString(R.string.lifeWright1),
-			context.getString(R.string.lifecummings1), };
+			context.getString(R.string.lifeWright1), };
 
 		return lifeStrings;
 	}
@@ -762,7 +763,6 @@ public class CitationsManager
 			context.getString(R.string.politicsLevant1),
 			context.getString(R.string.politicsLiebling1),
 			context.getString(R.string.politicsLuce1),
-			context.getString(R.string.politicsLuce2),
 			context.getString(R.string.politicsMachiavelli1),
 			context.getString(R.string.politicsMarcos1),
 			context.getString(R.string.politicsMarshall1),
@@ -921,6 +921,7 @@ public class CitationsManager
 			context.getString(R.string.loveKeller1),
 			context.getString(R.string.loveKesey1),
 			context.getString(R.string.loveLamartine1),
+			context.getString(R.string.loveLeopardi1),
 			context.getString(R.string.loveLennon1),
 			context.getString(R.string.loveLennon2),
 			context.getString(R.string.loveLewis1),
@@ -1013,7 +1014,6 @@ public class CitationsManager
 			context.getString(R.string.funBombeck1),
 			context.getString(R.string.funBombeck2),
 			context.getString(R.string.funBombeck3),
-			context.getString(R.string.funBombeck4),
 			context.getString(R.string.funBrenner1),
 			context.getString(R.string.funBrooks1),
 			context.getString(R.string.funBuffett1),
@@ -1050,7 +1050,6 @@ public class CitationsManager
 			context.getString(R.string.funHedberg2),
 			context.getString(R.string.funHedberg3),
 			context.getString(R.string.funHedberg4),
-			context.getString(R.string.funHedberg5),
 			context.getString(R.string.funHepburn1),
 			context.getString(R.string.funHerford1),
 			context.getString(R.string.funHope1),
@@ -1058,7 +1057,6 @@ public class CitationsManager
 			context.getString(R.string.funHugo1),
 			context.getString(R.string.funKissinger1),
 			context.getString(R.string.funLamarr1),
-			context.getString(R.string.funLevant1),
 			context.getString(R.string.funLewis1), context.getString(R.string.funLewis2),
 			context.getString(R.string.funMarcos1),
 			context.getString(R.string.funMarquis1),
@@ -1098,7 +1096,6 @@ public class CitationsManager
 			context.getString(R.string.funSchwarzenegger1),
 			context.getString(R.string.funSchwarzenegger2),
 			context.getString(R.string.funSeinfeld1),
-			context.getString(R.string.funSeinfeld2),
 			context.getString(R.string.funShaw1), context.getString(R.string.funShaw2),
 			context.getString(R.string.funSkelton1),
 			context.getString(R.string.funSowell1),
@@ -1122,7 +1119,6 @@ public class CitationsManager
 			context.getString(R.string.funWright3),
 			context.getString(R.string.funWright4),
 			context.getString(R.string.funWright5),
-			context.getString(R.string.funWright6),
 			context.getString(R.string.funYoungman1), };
 
 		return funCategory;

@@ -116,6 +116,7 @@
 		<string name="loveKeller1">"Quello che abbiamo una volta apprezzato, non possiamo perderlo. Tutto quello che amiamo profondamente diventa parte di noi - H. Keller"</string>
 		<string name="loveKesey1">"Le persone pensano che l'amore sia un'emozione. L'amore è buon senso - K. Kesey"</string>
 		<string name="loveLamartine1">"C'è una donna all'inizio di ogni grande cosa - A. d. Lamartine"</string>
+		<string name="loveLeopardi1">"Lingua mortal non dice quel ch'io sentiva in seno - G. Leopardi"</string>
 		<string name="loveLennon1">"L'amore è il fiore che ti è stato dato da coltivare - J. Lennon"</string>
 		<string name="loveLennon2">"Tutto è più chiaro quando sei innamorato - J. Lennon"</string>
 		<string name="loveLewis1">"L'affetto è responsabile per il 90% della felicità nella nostra vita - C. S. Lewis"</string>
@@ -206,7 +207,7 @@
       <string name="funBerra1">"Un bronzino non vale più una lira - Y. Berra"</string>
       <string name="funBerra2">"Non ho mai detto la maggior parte delle cose che ho detto - Y. Berra"</string>
       <string name="funBillings1">"Ci sono tante persone che confondono la loro immaginazione con la loro memoria - J. Billings"</string>
-      <string name="funBombeck1">"Un amico non si mette a dieta perchè tu sei in sovrappeso - E. Bombeck"</string>
+      <string name="funBombeck1">"Un amico non si mette a dieta perché tu sei in sovrappeso - E. Bombeck"</string>
       <string name="funBombeck2">"Colpa: un dono che continua ad essere elargito - E. Bombeck"</string>
       <string name="funBombeck3">"Mai avere più bambini che finestrini della macchina - E. Bombeck"</string>
       <string name="funBrenner1">"Un vegetariano è una persona che non mangia nulla che può avere bambini - D. Brenner"</string>
@@ -229,7 +230,7 @@
       <string name="funDangerfield2">"Non ho parlato a mia moglie per anni. Non volevo interromperla - R. Dangerfield"</string>
       <string name="funDangerfield3">"Ho osservato il mio albero genealogico e ho concluso che ne fossi la linfa - R. Dangerfield"</string>
       <string name="funDawkins1">"In ogni caso bisogna avere una mentalità aperta, ovviamente non così tanto da far fuoriuscire il cervello - R. Dawkins"</string>
-      <string name="funDiller1">"Le pulizie di casa non possono uccidere, ma perchè provare? - P. Diller"</string>
+      <string name="funDiller1">"Le pulizie di casa non possono uccidere, ma perché provare? - P. Diller"</string>
       <string name="funDiller2">"Il miglior modo di liberarsi dell'odore di cucinato: mangiare fuori - P. Diller"</string>
       <string name="funDiller3">"La sola volta che ho veramente amato stirare è stato il giorno in cui ho accidentalmente messo il gin nel ferro a vapore - P. Diller"</string>
       <string name="funDisney1">"Amo Topolino molto di più di qualsiasi donna abbia mai conosciuto - W. Disney"</string>
@@ -243,7 +244,7 @@
       <string name="funGabor1">"Mi ha insegnato come mantenere una casa; quando divorzio me la tengo - Z. Z. Gabor"</string>
       <string name="funGuisewite1">"Cibo, amore, carriera e madri, i quattro più grandi colpevoli - C. Guisewite"</string>
       <string name="funHackett1">"Da bambino il menù a casa consisteva in due scelte: prendi o lascia - B. Hackett"</string>
-      <string name="funHedberg1">"Le mie piante finte sono morte perchè non facevo finta di innaffiarle - M. Hedberg"</string>
+      <string name="funHedberg1">"Le mie piante finte sono morte perché non facevo finta di innaffiarle - M. Hedberg"</string>
       <string name="funHedberg2">"Un waffle è come un pancake con trappole per lo sciroppo - M. Hedberg"</string>
       <string name="funHedberg3">"Ho bevuto dell'acqua bollente perché volevo fischiettare - M. Hedberg"</string>
       <string name="funHedberg4">"Porto una collana perché voglio sapere quando sono sottosopra - M. Hedberg"</string>
@@ -291,14 +292,14 @@
       <string name="funRogers4">"Non mi sarei mai aspettato di arrivare al giorno in cui le donne sono capaci di scottarsi nei posti dove si scottano oggi - W. Rogers"</string>
       <string name="funRoth1">"Avevo l'abitudine di rinfrescarmi ma i cubetti di ghiaccio continuavano a fuoriuscire da mio bicchiere - D. L. Roth"</string>
       <string name="funRudner1">"Quando ho incontrato il Sig. Ragione non avevo idea che il suo nome fosse Sempre - R. Rudner"</string>
-      <string name="funRussell1">"Non morirei mai per le mie idee poichè potrebbero essere sbagliate - B. Russell"</string>
+      <string name="funRussell1">"Non morirei mai per le mie idee poiché potrebbero essere sbagliate - B. Russell"</string>
       <string name="funRussell2">"Il mondo è pieno di cose magiche che attendono pazientemente che il nostro ingegno si acuisca - B. Russell"</string>
       <string name="funSahl1">"La mia vita necessita di essere rivista - M. Sahl"</string>
       <string name="funSandburg1">"Sono un idealista. Non so dove sto andando ma sono sulla strada giusta - C. Sandburg"</string>
       <string name="funSchulz1">"Ho una nuova filosofia. Avrò paura solo una volta al giorno - C. M. Schulz"</string>
       <string name="funSchwarzenegger1">"Ho visto una donna indossare una felpa con su scritto Guess. Le ho chiesto, problemi di Tiroide? - A. Schwarzenegger"</string>
       <string name="funSchwarzenegger2">"E' semplice, se oscilla è grasso - A. Schwarzenegger"</string>
-      <string name="funSeinfeld2">"E' incredibile come la quantità di notizie che accade nel mondo ogni giorno riesca sempre ad entrare perfettamente all'interno del giornale - J. Seinfeld"</string>
+      <string name="funSeinfeld1">"E' incredibile come la quantità di notizie che accade nel mondo ogni giorno riesca sempre ad entrare perfettamente all'interno del giornale - J. Seinfeld"</string>
       <string name="funShaw1">"Un governo che deruba Peter per pagare Paul può sempre contare sull'appoggio di Paul - G. B. Shaw"</string>
       <string name="funShaw2">"Se non riesci a liberarti dello scheletro nell'armadio, faresti meglio ad insegnargli a ballare - G. B. Shaw"</string>
       <string name="funSkelton1">"Qualsiasi bambino farebbe qualsiasi cosa, se glielo chiedi quando deve andare a dormire - R. Skelton"</string>
@@ -324,8 +325,8 @@
       <string name="funWright1">"Molte persone hanno paura dell'altezza. Non io, io temo la larghezza - S. Wright"</string>
       <string name="funWright2">"Intendo vivere per sempre. Fin qui tutto bene - S. Wright"</string>
       <string name="funWright3">"Sto scrivendo un libro. Ho appena finito di numerare le pagine - S. Wright"</string>
-      <string name="funWright5">"Ho comprato alcune batterie, ma non erano incluse - S. Wright"</string>
-      <string name="funWright6">"Lo sci di fondo è fantastico se abiti in un piccolo paese - S. Wright"</string>
+      <string name="funWright4">"Ho comprato alcune batterie, ma non erano incluse - S. Wright"</string>
+      <string name="funWright5">"Lo sci di fondo è fantastico se abiti in un piccolo paese - S. Wright"</string>
       <string name="funYoungman1">"Se stasera farai qualcosa per cui ti pentirai domattina, vai a dormire tardi - H. Youngman"</string>
 
  	
@@ -334,12 +335,12 @@
 		<string name="politicsAdams1">"In politica non esistono mezze misure - J. Adams"</string>
 		<string name="politicsAdams2">"Anche colui che solamente sta lì e saluta, senza apparentemente fare nulla, serve una certa causa - H. Adams"</string>
 		<string name="politicsAdams3">"Devo studiare politica e guerra affinchè i miei figli abbiano la libertà di studiare matematica e filosofia - J. Adams"</string>
-		<string name="politicsAesop1">"Impicchiamo i ladri piccoli mentre per quelli grandi riserviamo le poltrone pubbliche - Aesop"</string>
+		<string name="politicsAesop1">"Impicchiamo i ladri piccoli mentre per quelli grandi riserviamo le poltrone pubbliche - Esopo"</string>
 		<string name="politicsAgnew1">"Messi davanti alla scelta, gli Americani opterebbero per il manganello del poliziotto alla bomba dell'anarchico - S. T. Agnew"</string>
 		<string name="politicsAlighieri1">"I luoghi più bui dell'inferno sono riservati agli ignavi - D. Alighieri"</string>
 		<string name="politicsAlighieri2">"Il segreto di ottenere qualcosa è agire! - D. Alighieri"</string>
-		<string name="politicsAristotle1">"La democrazia è quando sono gli indigenti e non i proprietari a dettare le regole - Aristotle"</string>
-		<string name="politicsAristotle2">"Dunque, il bene dell'uomo deve coincidere con la fine della scienza della politica - Aristotle"</string>
+		<string name="politicsAristotle1">"La democrazia è quando sono gli indigenti e non i proprietari a dettare le regole - Aristotele"</string>
+		<string name="politicsAristotle2">"Dunque, il bene dell'uomo deve coincidere con la fine della scienza della politica - Aristotele"</string>
 		<string name="politicsArmour1">"Mi sembra che la politica, per anni, o comunque per troppo tempo, si è preoccupata di destra e sinistra anzichè di giusto o sbagliato - R. Armour"</string>
 		<string name="politicsBaldwin1">"Fino a quando avremo abbastanza persone in questo paese disposte a lottare per i propri diritti, saremo chiamati una democrazia - R. N. Baldwin"</string>
 		<string name="politicsBaruch1">"Vota per l'uomo che promette di meno; è colui che deluderà di meno - B. Baruch"</string>
@@ -353,7 +354,7 @@
 		<string name="politicsBrandeis2">"Il più importante seggio politico è quello del privato cittadino - L. D. Brandeis"</string>
 		<string name="politicsBush1">"Si può pensare che il presidente abbia tutto il potere, ma non è così. Ha bisogno di essere costantemente guidato da Dio - B. Bush"</string>
 		<string name="politicsByrne1">"La democrazia consiste nell'avere il permesso di votare per il meno peggio - R. Byrne"</string>
-		<string name="politicsCamus1">"Non sono fatto per la politica perchè sono incapace di volere o accettare la morte dell'avversario - A. Camus"</string>
+		<string name="politicsCamus1">"Non sono fatto per la politica perché sono incapace di volere o accettare la morte dell'avversario - A. Camus"</string>
 		<string name="politicsCarter1">"I Repubblicani sono uomini dalle vedute ristrette, che hanno paura del futuro - J. Carter"</string>
 		<string name="politicsCastro1">"I profitti delle aziende statali Cubane sono impiegati esclusivamente per il benessere delle persone, alle quali appartengono - F. Castro"</string>
 		<string name="politicsCastro2">"La rivoluzione è la dittatura dello sfruttato contro lo sfruttatore - F. Castro"</string>
@@ -366,7 +367,7 @@
 		<string name="politicsChurchill4">"In guerra, puoi essere ucciso una sola volta, in politica, molte - W. Churchill"</string>
 		<string name="politicsChurchill5">"La politica è come la guerra. Potremmo anche trovarci nell'eventualità di utilizzare del gas letale a volte - W. Churchill"</string>
 		<string name="politicsChurchill6">"E' un bel gioco da giocare, il gioco della politica, e vale veramente la pena di avere una buona mano prima di rischiare - W. Churchill"</string>
-		<string name="politicsClarke1">"Ho una visione in cui Ted Turner è eletto Presidente ma rifiuta perchè non vuole rinunciare al potere - A. C. Clarke"</string>
+		<string name="politicsClarke1">"Ho una visione in cui Ted Turner è eletto Presidente ma rifiuta perché non vuole rinunciare al potere - A. C. Clarke"</string>
 		<string name="politicsCleveland1">"Ogni tuo elettore, esattamente come il tuo magistrato capo, esercita un atto di pubblica fiducia - G. Cleveland"</string>
 		<string name="politicsClift1">"Le persone vogliono il cambiamento ma non troppo. Trovare questo equilibrio è particolarmente complicato per ogni politico - E. Clift"</string>
 		<string name="politicsColeridge1">"In politica, quello che comincia con la paura generalmente termina con il fallimento - S. T. Coleridge"</string>
@@ -430,16 +431,17 @@
 		<string name="politicsLavater1">"Il pubblico raramente perdona due volte - J. K. Lavater"</string>
 		<string name="politicsLevant1">"La sola differenza tra Democratici e Repubblicani è che i Democratici consentono anche ai poveri di essere corrotti - O. Levant"</string>
 		<string name="politicsLiebling1">"La libertà della stampa è garantita solo a chi ne possiede una - A. J. Liebling"</string>
-		<string name="politicsLuce2">"Dicono che le donne parlano troppo. Se aveste mai lavorato al Congresso vi sareste resi conto che l'ostruzionismo è stato inventato dagli uomini - C. B. Luce"</string>
+		<string name="politicsLuce1">"Dicono che le donne parlano troppo. Se aveste mai lavorato al Congresso vi sareste resi conto che l'ostruzionismo è stato inventato dagli uomini - C. B. Luce"</string>
 		<string name="politicsMachiavelli1">"La politica non ha alcuna relazione con la morale - N. Machiavelli"</string>
 		<string name="politicsMarcos1">"Quando mi vedono maneggiare il pesce, si rendono conto che sono a mio agio sia con i re che con gli indigenti - I. Marcos"</string>
 		<string name="politicsMarshall1">"La nostra intera eredità costituzionale si ribella al pensiero di dare al governo il potere di controllare la mente delle persone - T. Marshall"</string>
 		<string name="politicsMarx1">"La politica è l'arte di cercare guai, trovarli ovunque, diagnosticarli erroneamente ed applicare le contromisure sbagliate - G. Marx"</string>
 		<string name="politicsMencken1">"In questo mondo di pena e peccato c'è sempre qualcosa di cui essere grati; per quanto mi riguarda, gioisco di non essere Repubblicano - H. L. Mencken"</string>
+		<string name="funMencken2">"Il matrimonio è una bellissima istituzione. Ma chi vorrebbe vivere in un'istituzione? - H. L. Mencken"</string>
 		<string name="politicsMill1">"I Conservatori non sono necessariamente stupidi, ma la maggior parte dgli stupidi è conservatrice - J. S. Mill"</string>
 		<string name="politicsMiller1">"Ricordo quando i Democratici credevano che fosse compito dell'America lottare per la libertà contro la tirannia - Z. Miller"</string>
 		<string name="politicsMorley1">"Non si converte un uomo mettendolo a tacere - J. Morley"</string>
-		<string name="politicsMorris1">"Quello che i politici vogliono generare è il cambiamento irreversibile poichè quando si lascia il proprio ufficio qualcuno lo riporta a prima che ci si entrasse - E. Morris"</string>
+		<string name="politicsMorris1">"Quello che i politici vogliono generare è il cambiamento irreversibile poiché quando si lascia il proprio ufficio qualcuno lo riporta a prima che ci si entrasse - E. Morris"</string>
 		<string name="politicsNader1">"Prenditela con la politica o la politica se la prenderà con te - R. Nader"</string>
 		<string name="politicsOConnor1">"E' difficile discernere una seria minaccia alla libertà religiosa da una stanza piena di scolari silenziosi e pensierosi - S. D. O'Connor"</string>
 		<string name="politicsONeill1">"Dovresti goderti i sigari buoni. Non otterrai molto altro da questo lavoro - T. P. O'Neill"</string>
@@ -449,7 +451,7 @@
 		<string name="politicsPerot1">"L'attivista non è colui che dice che il fiume è sporco. L'attivista è colui che lo pulisce - R. Perot"</string>
 		<string name="politicsPickering1">"Una democrazia in salute necessita una società decente; necessita che siamo onorevoli, generosi, tolleranti e rispettosi - C. W. Pickering"</string>
 		<string name="politicsPike1">"Una guerra per un grande principio nobilita una nazione - A. Pike"</string>
-		<string name="politicsPlato1">"Una delle principali conseguenze del non partecipare alla vita politica è che si finisce con l'essere governati dai propri inferiori - Plato"</string>
+		<string name="politicsPlato1">"Una delle principali conseguenze del non partecipare alla vita politica è che si finisce con l'essere governati dai propri inferiori - Platone"</string>
 		<string name="politicsPollack1">"Penso sia vergognoso che la politica sia scesa alla stregua dell'industria dello spettacolo - S. Pollack"</string>
 		<string name="politicsQuayle1">"La mia agenda politica consiste nell'avere meno restrizioni possibile - D. Quayle"</string>
 		<string name="politicsRandolph1">"Un politico farebbe qualsiasi cosa per tenere il proprio lavoro, anche diventare patriottico - W. Randolph"</string>
@@ -507,8 +509,8 @@
 		<string name="lifeAllen2">"Il settanta percento del successo nella vita è farsi notare - W. Allen"</string>
 		<string name="lifeAngelou1">"La vita ama chi la vive - M. Angelou"</string>
 		<string name="lifeAsimov1">"La vita è gradevole. La morte è pacificatrice. E’ il passaggio tra le due ad essere problematico - I. Asimov"</string>
-		<string name="lifeAurelius1">"La nostra vita è quello che ne fanno i nostri pensieri - M. Aurelius"</string>
-		<string name="lifeAurelius2">"L’arte del vivere si avvicina di più alla lotta libera che non alla danza - M. Aurelius"</string>
+		<string name="lifeAurelius1">"La nostra vita è quello che ne fanno i nostri pensieri - M. Aurelio"</string>
+		<string name="lifeAurelius2">"L’arte del vivere si avvicina di più alla lotta libera che non alla danza - M. Aurelio"</string>
 		<string name="lifeBach1">"Ecco il test per verificare se la tua missione sulla terra è finita: se sei vivo, non lo è - R. Bach"</string>
 		<string name="lifeBacon1">"La speranza è un’ottima colazione ma una amara cena - F. Bacon"</string>
 		<string name="lifeBarrie1">"La vita è una lunga lezione di umiltà - J. M. Barrie"</string>
@@ -517,7 +519,7 @@
 		<string name="lifeBerlin1">"La vita è 10 percento quello che fai e 90 percento come lo fai - I. Berlin"</string>
 		<string name="lifeBillings1">"La vita non consiste nell’avere buone carte ma nel giocarsi bene quelle che si hanno - J. Billings"</string>
 		<string name="lifeBronte1">"La vita mi sembra troppo breve per essere trascorsa a nutrire le ostilità o contare gli errori - C. Bronte"</string>
-		<string name="lifeBuddha1">"Per vivere una vita completamente altruista, non si deve contare nient’altro che su sè stessi nel mezzo dell’abbondanza - Buddha"</string>
+		<string name="lifeBuddha1">"Per vivere una vita completamente altruista, non si deve contare nient’altro che su sé stessi nel mezzo dell’abbondanza - Buddha"</string>
 		<string name="lifeBuddha2">"Non combattere col passato, non sognare il futuro, concentrati sul presente - Buddha"</string>
 		<string name="lifeButler1">"La maggior parte delle persone non ha mai capito che uno dei principali scopi della vita è quello di godersela - S. Butler"</string>
 		<string name="lifeButler2">"La vita non è una scienza esatta, è un’arte - S. Butler"</string>
@@ -533,8 +535,9 @@
 		<string name="lifeChesterton1">"Il vero obiettivo di tutta la vita umana è giocare. La terra è terreno di allenamento; il paradiso terreno di gioco - G. K. Chesterton"</string>
 		<string name="lifeCicero1">"Finchè c’è vita, c’è speranza - M. T. Cicerone"</string>
 		<string name="lifeColette1">"Che vita straordinaria che ho avuto! Speravo solamente si essermene resa conto prima - S. G. Colette"</string>
-		<string name="lifeConfucius1">"La vita è veramente semplice, siamo noi che ci ostiniamo a renderla complicata - Confucius"</string>
+		<string name="lifeConfucius1">"La vita è veramente semplice, siamo noi che ci ostiniamo a renderla complicata - Confucio"</string>
 		<string name="lifeCovey1">"Ci sono tre costanti nella vita: cambiamento, scelta e principi - S. Covey"</string>
+		<string name="lifeCummings1">"Non essere morti non vuol dire essere vivi - E. E. Cummings"</string>
 		<string name="lifeCurie1">"Nulla nella vita deve essere temuto, deve essere solo compreso. E’ arrivata l’ora di capire di più, al fine di temere di meno - M. Curie"</string>
 		<string name="lifeDarwin1">"Un uomo che osa sprecare un’ora di tempo non ha scoperto il valore della vita - C. Darwin"</string>
 		<string name="lifeDeBono1">"Spesso siamo in grado di vedere un’opportunità solo quando qualcuno l’ha già colta - E. De Bono"</string>
@@ -549,8 +552,8 @@
 		<string name="lifeEmerson4">"Con il passato non c’entro nulla; neanche col futuro. Io vivo ora - R. W. Emerson"</string>
 		<string name="lifeEmerson5">"La vita consiste in quello che un uomo pensa tutti i giorni - R. W. Emerson"</string>
 		<string name="lifeEminem1">"La verità è che non sai quello che accadrà domani. La vita è una folle corsa in cui nulla è garantito - Eminem"</string>
-		<string name="lifeEuripides1">"Il più grande piacere della vita è l’amore - Euripides"</string>
-		<string name="lifeEuripides2">"C’è solo una vita per ciascuno di noi: la nostra - Euripides"</string>
+		<string name="lifeEuripides1">"Il più grande piacere della vita è l’amore - Euripide"</string>
+		<string name="lifeEuripides2">"C’è solo una vita per ciascuno di noi: la nostra - Euripide"</string>
 		<string name="lifeEvans1">"Non permettere che la vita ti scoraggi; tutti coloro che sono arrivati dove sono ora hanno cominciato dove erano - R. L. Evans"</string>
 		<string name="lifeFeather1">"Un modo di ottenere il meglio dalla vita è di guardarla come un’avventura - W. Feather"</string>
 		<string name="lifeForster1">"Dobbiamo essere disposti a lasciare andare la vita che abbiamo pianificato in maniera tale da accogliere la vita che ci attende - E. M. Forster"</string>
@@ -573,9 +576,9 @@
 		<string name="lifeHerbert1">"La vità è già per metà trascorsa prima che sappiamo di cosa si tratta - G. Herbert"</string>
 		<string name="lifeHill1">"Non possiamo pianificare la vita. Tutto quello che possiamo fare è renderci disponibili per essa - L. Hill"</string>
 		<string name="lifeHoltz1">"La vita è dieci percento cosa ti capita e novanta percento come reagisci - L. Holtz"</string>
-		<string name="lifeHopkins1">"Amo la vita poichè cosa ci può essere di più? - A. Hopkins"</string>
-		<string name="lifeHorace1">"Quando il cammino della vita si fa ripido ricorda di mantenere la mente piana - Horace"</string>
-		<string name="lifeHorace2">"La vita è in larga misura una questione di aspettative - Horace"</string>
+		<string name="lifeHopkins1">"Amo la vita poiché cosa ci può essere di più? - A. Hopkins"</string>
+		<string name="lifeHorace1">"Quando il cammino della vita si fa ripido ricorda di mantenere la mente piana - Orazio"</string>
+		<string name="lifeHorace2">"La vita è in larga misura una questione di aspettative - Orazio"</string>
 		<string name="lifeHorney1">"Fortunatamente l’analisi non è il solo modo di risolvere conflitti interiori. La vita stessa rimane ancora un terapista molto efficace - K. Horney"</string>
 		<string name="lifeHoward1">"Hai avuto successo nella vita quando quello che vuoi veramente è solamente quello di cui hai bisogno - V. Howard"</string>
 		<string name="lifeHubbard1">"Una vita di grandezza passa solo attraverso un grande amore - E. Hubbard"</string>
@@ -584,7 +587,7 @@
 		<string name="lifeJames2">"La più grande scoperta della mia generazione è che un essere umano può modificare la propria vita modificando le proprie attitudini - W. James"</string>
 		<string name="lifeJames3">"Il più grande fine della vita è di viverla per qualcosa che riecheggierà dopo la sua fine - W. James"</string>
 		<string name="lifeJames4">"Per cambiare la propria vita: comincia immediatamente. Fallo al massimo - W. James"</string>
-		<string name="lifeJames5">"Questa vita vale la pena di essere vissuta, poichè, diciamo, è il risultato di quello che ne facciamo - W. James"</string>
+		<string name="lifeJames5">"Questa vita vale la pena di essere vissuta, poiché, diciamo, è il risultato di quello che ne facciamo - W. James"</string>
 		<string name="lifeJames6">"Una catena non è più forte del suo anello più debole, e la vita, dopo tutto, è una catena - W. James"</string>
 		<string name="lifeJung1">"La scarpa che sta bene ad uno non calza ad un altro; non c’è una singola ricetta della vita che vada bene per tutti - C. Jung"</string>
 		<string name="lifeKeller1">"La vita è un susseguirsi di lezioni che devono essere vissute per essere capite - H. Keller"</string>
@@ -596,10 +599,11 @@
 		<string name="lifeKierkegaard2">"La vita non è un problema da risolvere, ma una realtà da vivere - S. Kierkegaard"</string>
 		<string name="lifeLangtry1">"Non rimpiango nessun istante dela mia vita - L. Langtry"</string>
 		<string name="lifeLebowitz1">"La vita è qualcosa da fare quando non riesci a dormire - F. Lebowitz"</string>
-		<string name="lifeLee1">"Se ami la vita, non perdere tempo, perchè il tempo è ciò di cui è fatta la vita - B. Lee"</string>
+		<string name="lifeLee1">"Se ami la vita, non perdere tempo, perché il tempo è ciò di cui è fatta la vita - B. Lee"</string>
 		<string name="lifeLeigh1">"La vita è troppo breve per lavorare duramente - V. Leigh"</string>
 		<string name="lifeLennon1">"La vita è quello che capita mentre sei impegnato a fare altri piani - J. Lennon"</string>
 		<string name="lifeLeopardi1">"La vita più felice è anche quella più occupata - G. Leopardi"</string>
+		<string name="lifeLeopardi2">"Virtù non luce in disadorno ammanto - G. Leopardi"</string>
 		<string name="lifeLindbergh1">"La cosa più faticosa nella vita è non essere sinceri - A. M. Lindbergh"</string>
 		<string name="lifeLongworth1">"Ho una filosofia semplice: riempi ciò che è vuoto. Svuota ciò che è pieno. Graffia lì dove irrita - A. R. Longworth"</string>
 		<string name="lifeMarley1">"Apri gli occhi, guarda. Sei soddisfatto della vita che stai vivendo? - B. Marley"</string>
@@ -611,11 +615,11 @@
 		<string name="lifeMoses1">"Guardo indietro alla mia vita come ad un buon giorno di lavoro, è terminato e ne sono soddisfatto - G. Moses"</string>
 		<string name="lifeMoses2">"La vita è quello che ne facciamo, è sempre stato così e così sempre sarà - G. Moses"</string>
 		<string name="lifeNewman1">"Vivere è cambiare, e per essere perfetto è necessario cambiare spesso - J. H. Newman"</string>
-		<string name="lifeNietzsche1">"Colui che ha un perchè alla vita può sopportare quasi tutti i come - F. Nietzsche"</string>
+		<string name="lifeNietzsche1">"Colui che ha un perché alla vita può sopportare quasi tutti i come - F. Nietzsche"</string>
 		<string name="lifeNin1">"Le persone che vivono intensamente non hanno paura della morte - A. Nin"</string>
 		<string name="lifeOsler1">"Siamo qui per aggiungere quello che possiamo alla vita, non per prendere quello che riusciamo da essa - W. Osler"</string>
 		<string name="lifeOsteen1">"La vita è una lotta. E’ una bella lotta di fede - J. Osteen"</string>
-		<string name="lifePlato1">"La vita deve essere vissuta come un’opera teatrale - Plato"</string>
+		<string name="lifePlato1">"La vita deve essere vissuta come un’opera teatrale - Platone"</string>
 		<string name="lifeRobinson1">"La vita non è importante eccetto per quanto riguarda l’impatto che ha sulle vite degli altri - J. Robinson"</string>
 		<string name="lifeRogers1">"Siamo tutti qui per incantesimo, accumula tutte le migliori risate che puoi - W. Rogers"</string>
 		<string name="lifeRoosevelt1">"Se la vita fosse prevedibile cesserebbe di essere vita, e sarebbe completamente insapore - E. Roosevelt"</string>
@@ -631,11 +635,11 @@
 		<string name="lifeSeneca2">"Mentre posticipiamo, la vita passa - L. A. Seneca"</string>
 		<string name="lifeSeneca3">"La vita è come un’opera teatrale: non è la lunghezza ma il livello della recitazione che conta - L. A. Seneca"</string>
 		<string name="lifeShaw1">"Una vita passata a commettere errori non è solamente più onorevole ma anche più utile di una vita trascorsa a non fare nulla - G. B. Shaw"</string>
-		<string name="lifeShaw2">"La vita non cessa di essere divertente quando le persone muoiono, più di quanto non non cessi di essere seria quando le persone ridono - G. B. Shaw"</string>
+		<string name="lifeShaw2">"La vita non cessa di essere divertente quando le persone muoiono, più di quanto non cessi di essere seria quando le persone ridono - G. B. Shaw"</string>
 		<string name="lifeSinger1">"La gentilezza, ho scoperto, è tutto nella vita - I. B. Singer"</string>
 		<string name="lifeSmiles1">"La vita sarà sempre in larghissima misura ciò che ne facciamo - S. Smiles"</string>
-		<string name="lifeSocrates1">"Diffida dell'aridità di una vita piena d'impegni - Socrates"</string>
-		<string name="lifeSocrates2">"Non la vita, ma una buona vita deve essere principalmente valutata - Socrates"</string>
+		<string name="lifeSocrates1">"Diffida dell'aridità di una vita piena d'impegni - Socrate"</string>
+		<string name="lifeSocrates2">"Non la vita, ma una buona vita deve essere principalmente valutata - Socrate"</string>
 		<string name="lifeStein1">"Il primo passo indispensabile per ottenere ciò che vuoi nella vita è decidere quello che vuoi - B. Stein"</string>
 		<string name="lifeSterne1">"Ho una visione semplice della vita. Consiste nel tenere gli occhi aperti ed andare avanti così - L. Sterne"</string>
 		<string name="lifeStevenson1">"Uno scopo nella vita è l'unica fortuna che vale la pena trovare - R. L. Stevenson"</string>
@@ -662,18 +666,18 @@
 		<string name="lifeWilde3">"A volte è meglio rimanere in silenzio e sembrare stupidi che parlare e togliere ogni dubbio - O. Wilde"</string>
 		<string name="lifeWilde4">"La vita è una cosa troppo importante per poterne mai parlare seriamente - O. Wilde"</string>
 		<string name="lifeWright1">"Dammi i lussi dellavita e farò volentieri a meno delle necessità - F. L. Wright"</string>
-		<string name="lifecummings1">"Non essere morti non vuol dire essere vivi - E. E. Cummings"</string>		
+				
 		
 					
 	<!-- INSPIRING -->
 		<string name="inspiringAlcott1">"I nostri ideali rappresentano il meglio di noi stessi - A. B. Alcott"</string>
 		<string name="inspiringAli1">"Odiavo ogni singolo minuto dell'allenamento, ma mi dicevo, 'Non mollare. Soffri ora e vivi il resto della vita da campione.' - M. Ali"</string>
-		<string name="inspiringAnonymous1">"Ad augusta per angusta - Anonymous"</string>
-		<string name="inspiringAristophanes1">"Lascia che ogni uomo eserciti l'arte che gli compete - Aristophanes"</string>
-		<string name="inspiringAristotle1">"Siamo quello che facciamo ogni giorno, dunque l'eccellenza non risiede in un singolo atto ma nel comportamento complessivo - Aristotle"</string>
-		<string name="inspiringAristotle2">"La speranza è un sogno ad occhi aperti - Aristotle"</string>
+		<string name="inspiringAnonymous1">"Ad augusta per angusta - Anonimo"</string>
+		<string name="inspiringAristophanes1">"Lascia che ogni uomo eserciti l'arte che gli compete - Aristofane"</string>
+		<string name="inspiringAristotle1">"Siamo quello che facciamo ogni giorno, dunque l'eccellenza non risiede in un singolo atto ma nel comportamento complessivo - Aristotele"</string>
+		<string name="inspiringAristotle2">"La speranza è un sogno ad occhi aperti - Aristotele"</string>
 		<string name="inspiringAshe1">"Comincia da dove sei. Usa quello che hai. Fai quello che puoi - A. Ashe"</string>
-		<string name="inspiringAurelius1">"Guarda all'interno. All'interno risiede la fonte del bene, e sgorgherà sempre, se sarai in grado di scavare - M. Aurelius"</string>
+		<string name="inspiringAurelius1">"Guarda all'interno. All'interno risiede la fonte del bene, e sgorgherà sempre, se sarai in grado di scavare - M. Aurelio"</string>
 		<string name="inspiringBach1">"Sei sempre libero di cambiare idea e scegliere un futuro diverso, o un passato differente - R. Bach"</string>
 		<string name="inspiringBacon1">"I monumenti all'intelligenza sopravvivono ai monumenti al potere - F. Bacon"</string>
 		<string name="inspiringBaker1">"Dona la luce ed il mondo troverà la via - E. Baker"</string>
@@ -688,8 +692,8 @@
 		<string name="inspiringBrooks1">"La felicità è lo sbocciare naturale del dovere - P. Brooks"</string>
 		<string name="inspiringBuddha1">"La salute è il regalo più grande, la gioia la più grande ricchezza, la fedeltà la migliore relazione - Buddha"</string>
 		<string name="inspiringBurnett1">"Quando hai un sogno, ti ci devi aggrappare e non lasciarlo mai andare - C. Burnett"</string>
-		<string name="inspiringCaesar1">"Veni, vidi, vici - Caesar"</string>
-		<string name="inspiringCaesar2">"Alea iacta est - Caesar"</string>
+		<string name="inspiringCaesar1">"Veni, vidi, vici - Cesare"</string>
+		<string name="inspiringCaesar2">"Alea iacta est - Cesare"</string>
 		<string name="inspiringCampbell1">"Trova un luogo dentro di te dove risiede la gioia ed essa dilaverà il dolore - J. Campbell"</string>
 		<string name="inspiringCampbell2">"Segui la beatitudine e l'universo aprirà porte dove c'erano solamente muri - J. Campbell"</string>
 		<string name="inspiringCamus1">"L'uomo deve vivere e creare. Vivi fino alle lacrime - A. Camus"</string>
@@ -697,13 +701,13 @@
 		<string name="inspiringCheGuevara2">"Indietreggiare? Neanche per prendere la rincorsa! - Che Guevara"</string>
 		<string name="inspiringChesterfield1">"Tutto quello che vale la pena di essere fatto, merita di essere fatto bene - P. D. S. Chesterfield"</string>
 		<string name="inspiringChesterton1">"Senza un'istruzione corriamo il rischio di prendere sul serio tutte le persone istruite - G. K. Chesterton"</string>
-		<string name="inspiringChurchill1">"Il coraggio è il primo delle qualità umane, perchè rende tutte le altre possibili - W. Churchill"</string>
+		<string name="inspiringChurchill1">"Il coraggio è il primo delle qualità umane, perché rende tutte le altre possibili - W. Churchill"</string>
 		<string name="inspiringChurchill2">"Un pessimista vede le difficoltà in ogni opportunità; un ottimista vede un'opportunità in ogni difficoltà - W. Churchill"</string>
 		<string name="inspiringCoelho1">"Solo una cosa rende un sogno impossibile. La paura di fallire - P. Coelho"</string>
 		<string name="inspiringCopeland1">"Cerca di essere come la tartaruga, a proprio agio nel suo guscio - B. Copeland"</string>
 		<string name="inspiringDayne1">"I gusti ed gli artisti ai quali mi sono maggiormente ispirato sono sempre stati decisamente eclettici ed alternativi - T. Dayne"</string>
 		<string name="inspiringDean1">"Non posso cambiare la direzione del vento, ma posso sistemare le vele per raggiungere sempre la destinazione - J. Dean"</string>
-		<string name="inspiringDemocritus1">"La felicità non risiede nel possedere, e non nel denaro, la felicità si fa largo nell'anima - Democritus"</string>
+		<string name="inspiringDemocritus1">"La felicità non risiede nel possedere, e non nel denaro, la felicità si fa largo nell'anima - Democrito"</string>
 		<string name="inspiringDeshimaru1">"Pensa con tutto il tuo corpo - T. Deshimaru"</string>
 		<string name="inspiringDiamandis1">"Lo spazio è quella fonte di ispirazione che ti consente di pensare in grande - P. Diamandis"</string>
 		<string name="inspiringDickinson1">"Gli insegnanti devono essere in grado di coinvolgere di più. Ma sta anche all'ingegneria di rendersi più interessante - B. Dickinson"</string>
@@ -712,7 +716,7 @@
 		<string name="inspiringEdison1">"Se facessimo tutti ciò di cui siamo veramente capaci, ci stupiremmo di noi stessi - T. A. Edison"</string>
 		<string name="inspiringEinstein1">"L'immaginazione è più importante della conoscenza - A. Einstein"</string>
 		<string name="inspiringEliot1">"Non è mai troppo tardi per essere quello che saresti potuto essere - G. Eliot"</string>
-		<string name="inspiringElliot1">"Dio dà sempre il meglio di sè con coloro che lo scelgono - J. Elliot"</string>
+		<string name="inspiringElliot1">"Dio dà sempre il meglio di sé con coloro che lo scelgono - J. Elliot"</string>
 		<string name="inspiringErasmus1">"Dona la luce e l'oscurità scomparirà da sola - D. Erasmus"</string>
 		<string name="inspiringEsopo1">"E' facile essere coraggiosi a distanza di sicurezza - Esopo"</string>
 		<string name="inspiringFord1">"Incontrarsi è un inizio, restare insieme un passo in avanti, lavorare assieme un successo - H. Ford"</string>
@@ -740,7 +744,7 @@
 		<string name="inspiringJordan1">"Se accetti le aspettative degli altri, specialmente quelle negative, non cambierai mai il risultato - M. Jordan"</string>
 		<string name="inspiringKeller1">"Le cose migliori e più belle del mondo non possono essere nè viste nè toccate, devono essere sentite col cuore - H. Keller"</string>
 		<string name="inspiringKelly1">"Sono consapevole di chi sono come artista e come persona fonte di ispirazione - R. Kelly"</string>
-		<string name="inspiringKennedy1">"Molte persone vedono come vanno le cose e chiedono: perchè? Io vedo come le cose potrebbero andare e chiedo: perchè no? - R. Kennedy"</string>
+		<string name="inspiringKennedy1">"Molte persone vedono come vanno le cose e chiedono: perché? Io vedo come le cose potrebbero andare e chiedo: perché no? - R. Kennedy"</string>
 		<string name="inspiringKeynes1">"Le idee plasmano il corso della storia - J. M. Keynes"</string>
 		<string name="inspiringKincade1">"Vedo l'arte come uno strumento da cui trarre ispirazione tool - T. Kincade"</string> 
 		<string name="inspiringKing1">"Non mi spaventano le parole dei violenti ma il silezio degli onesti - M. L. King"</string>
@@ -757,12 +761,12 @@
 		<string name="inspiringOnassis1">"E' nei nostri momenti più oscuri che dobbiamo concentrarci per vedere la luce - A. Onassis"</string>
 		<string name="inspiringPaine1">"E' nel nostro potere di ricominciare il mondo da capo - T. Paine"</string>
 		<string name="inspiringPascal1">"Le nobili azioni nascoste sono le più pregiate - B. Pascal"</string>
-		<string name="inspiringPauling1">"Il miglior modo di avere una buona idea è di avere tante idee - L. Pauling"</string>
+		<string name="inspiringPauling1">"Il miglior modo di avere una buona idea è avere tante idee - L. Pauling"</string>
 		<string name="inspiringPeale1">"Cambia il modo di pensare e cambierai il tuo mondo - N. V. Peale"</string>
 		<string name="inspiringPele1">"Lo sport è una grande fonte di ispirazione per i giovani - Pele"</string>
-		<string name="inspiringPlato1">"Pensare: il parlare dell'anima con sè stessa - Plato"</string>
-		<string name="inspiringPlutarch1">"I nostri successi interiori finiscono per cambiare il mondo che ci circonda - Plutarch"</string>
-		<string name="inspiringPopeJohnXXIII1">"Ho guardato nei tuoi occhi con i miei occhi. Ho messo il mio cuore vicino al tuo - Pope John XXIII"</string>
+		<string name="inspiringPlato1">"Pensare: il parlare dell'anima con sé stessa - Platone"</string>
+		<string name="inspiringPlutarch1">"I nostri successi interiori finiscono per cambiare il mondo che ci circonda - Plutarco"</string>
+		<string name="inspiringPopeJohnXXIII1">"Ho guardato nei tuoi occhi con i miei occhi. Ho messo il mio cuore vicino al tuo - Papa Giovanni XXIII"</string>
 		<string name="inspiringPrior1">"La speranza non è altro che il sogno di chi si sveglia - M. Prior"</string>
 		<string name="inspiringProudhon1">"Quando parlano i fatti, le parole non valgono nulla - P. Proudhon"</string>
 		<string name="inspiringQuarles1">"La mia mente è il mio regno - F. Quarles"</string>

@@ -116,6 +116,7 @@
 		<string name="loveKeller1">"What we have once enjoyed we can never lose. All that we love deeply becomes a part of us - H. Keller"</string>
 		<string name="loveKesey1">"People think love is an emotion. Love is good sense - K. Kesey"</string>
 		<string name="loveLamartine1">"There is a woman at the beginning of all great things - A. d. Lamartine"</string>
+		<string name="loveLeopardi1">"No mortal tongue could speak, the feelings in my breast - G. Leopardi"</string>
 		<string name="loveLennon1">"Love is the flower you've got to let grow - J. Lennon"</string>
 		<string name="loveLennon2">"Everything is clearer when you're in love - J. Lennon"</string>
 		<string name="loveLewis1">"Affection is responsible for nine tenths of whatever solid and durable happiness there is in our lives - C. S. Lewis"</string>
@@ -268,7 +269,7 @@
 		<string name="funMarx4">"All people are born alike except Republicans and Democrats - G. Marx"</string>
 		<string name="funMead1">"Always remember that you are absolutely unique. Just like everyone else - M. Mead"</string>
 		<string name="funMencken1">"Nobody ever went broke underestimating the taste of the American public - H. L. Mencken"</string>
-		<string name="funMencken3">"Marriage is a wonderful institution, but who would want to live in an institution? - H. L. Mencken"</string>
+		<string name="funMencken2">"Marriage is a wonderful institution, but who would want to live in an institution? - H. L. Mencken"</string>
 		<string name="funMilligan1">"My Father had a profound influence on me. He was a lunatic - S. Milligan"</string>
 		<string name="funMilligan2">"A sure cure for seasickness is to sit under a tree - S. Milligan"</string>
 		<string name="funORourke1">"Because of their size, parents may be difficult to discipline properly - P. J. O'Rourke"</string>
@@ -299,7 +300,7 @@
 		<string name="funSchulz1">"I have a new philosophy. I'm only going to dread one day at a time - C. M. Schulz"</string>
 		<string name="funSchwarzenegger1">"I saw a woman wearing a sweatshirt with Guess on it. I said, Thyroid problem? - A. Schwarzenegger"</string>
 		<string name="funSchwarzenegger2">"It's simple, if it jiggles, it's fat - A. Schwarzenegger"</string>
-		<string name="funSeinfeld2">"It's amazing that the amount of news that happens in the world every day always just exactly fits the newspaper - J. Seinfeld"</string>
+		<string name="funSeinfeld1">"It's amazing that the amount of news that happens in the world every day always just exactly fits the newspaper - J. Seinfeld"</string>
 		<string name="funShaw1">"A government that robs Peter to pay Paul can always depend on the support of Paul - G. B. Shaw"</string>
 		<string name="funShaw2">"If you can't get rid of the skeleton in your closet, you'd best teach it to dance - G. B. Shaw"</string>
 		<string name="funSkelton1">"Any kid will run any errand for you, if you ask at bedtime - R. Skelton"</string>
@@ -325,8 +326,8 @@
 		<string name="funWright1">"A lot of people are afraid of heights. Not me, I'm afraid of widths - S. Wright"</string>
 		<string name="funWright2">"I intend to live forever. So far, so good - S. Wright"</string>
 		<string name="funWright3">"I'm writing a book. I've got the page numbers done - S. Wright"</string>
-		<string name="funWright5">"I bought some batteries, but they weren't included - S. Wright"</string>
-		<string name="funWright6">"Cross country skiing is great if you live in a small country - S. Wright"</string>
+		<string name="funWright4">"I bought some batteries, but they weren't included - S. Wright"</string>
+		<string name="funWright5">"Cross country skiing is great if you live in a small country - S. Wright"</string>
 		<string name="funYoungman1">"If you're going to do something tonight that you'll be sorry for tomorrow morning, sleep late - H. Youngman"</string>
 		
 		
@@ -431,7 +432,7 @@
 		<string name="politicsLavater1">"The public seldom forgive twice - J. K. Lavater"</string>
 		<string name="politicsLevant1">"The only difference between the Democrats and the Republicans is that the Democrats allow the poor to be corrupt, too - O. Levant"</string>
 		<string name="politicsLiebling1">"Freedom of the press is guaranteed only to those who own one - A. J. Liebling"</string>
-		<string name="politicsLuce2">"They say women talk too much. If you have worked in Congress you know that the filibuster was invented by men - C. B. Luce"</string>
+		<string name="politicsLuce1">"They say women talk too much. If you have worked in Congress you know that the filibuster was invented by men - C. B. Luce"</string>
 		<string name="politicsMachiavelli1">"Politics have no relation to morals - N. Machiavelli"</string>
 		<string name="politicsMarcos1">"When they see me holding fish, they can see that I am comfortable with kings as well as with paupers - I. Marcos"</string>
 		<string name="politicsMarshall1">"Our whole constitutional heritage rebels at the thought of giving government the power to control men's minds - T. Marshall"</string>
@@ -536,6 +537,7 @@
 		<string name="lifeColette1">"What a wonderful life I've had! I only wish I'd realized it sooner - S. G. Colette"</string>
 		<string name="lifeConfucius1">"Life is really simple, but we insist on making it complicated - Confucius"</string>
 		<string name="lifeCovey1">"There are three constants in life: change, choice and principles - S. Covey"</string>
+		<string name="lifeCummings1">"Unbeing dead isn't being alive - e. e. cummings"</string>
 		<string name="lifeCurie1">"Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less - M. Curie"</string>
 		<string name="lifeDarwin1">"A man who dares to waste one hour of time has not discovered the value of life - C. Darwin"</string>
 		<string name="lifeDeBono1">"Often we are able of seeing an opportunity only after someone has picked it up - E. De Bono"</string>
@@ -601,6 +603,7 @@
 		<string name="lifeLeigh1">"Life is too short to work so hard - V. Leigh"</string>
 		<string name="lifeLennon1">"Life is what happens while you are busy making other plans - J. Lennon"</string>
 		<string name="lifeLeopardi1">"The most busy life is the most happy - G. Leopardi"</string>
+		<string name="lifeLeopardi2">"Virtue does not shine in an unadorned robe - G. Leopardi"</string>
 		<string name="lifeLindbergh1">"The most exhausting thing in life is being insincere - A. M. Lindbergh"</string>
 		<string name="lifeLongworth1">"I have a simple philosophy: Fill what's empty. Empty what's full. Scratch where it itches - A. R. Longworth"</string>
 		<string name="lifeMarley1">"Open your eyes, look within. Are you satisfied with the life you're living? - B. Marley"</string>
@@ -663,7 +666,7 @@
 		<string name="lifeWilde3">"Sometimes it is better to be silent and looks stupid rather then talking, taking off every doubt - O. Wilde"</string>
 		<string name="lifeWilde4">"Life is far too important a thing ever to talk seriously about - O. Wilde"</string>
 		<string name="lifeWright1">"Give me the luxuries of life and I will willingly do without the necessities - F. L. Wright"</string>
-		<string name="lifecummings1">"Unbeing dead isn't being alive - e. e. cummings"</string>		
+				
 		
 					
 	<!-- INSPIRING -->
