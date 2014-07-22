@@ -268,7 +268,7 @@
       <string name="funMarx4">"Tutte le persone sono nate uguali, eccetto i Repubblicani ed i Democratici - G. Marx"</string>
       <string name="funMead1">"Ricorda sempre che sei assolutamente unico. Come qualsiasi altro - M. Mead"</string>
       <string name="funMencken1">"Nessuno si è mai rovinato sottostimando i gusti del pubblico Americano - H. L. Mencken"</string>
-      <string name="funMencken3">"Il matrimonio è una magnifica istituzione, ma chi vorrebbe vivere in una istituzione? - H. L. Mencken"</string>
+      <string name="funMencken2">"Il matrimonio è una magnifica istituzione, ma chi vorrebbe vivere in una istituzione? - H. L. Mencken"</string>
       <string name="funMilligan1">"Mio padre aveva una profonda influenza su di me. Era lunatico - S. Milligan"</string>
       <string name="funMilligan2">"Un rimedio sicuro contro il mal di mare è sedersi sotto ad un albero - S. Milligan"</string>
       <string name="funORourke1">"A causa della loro età, potrebbe essere complicato educare propriamente i genitori - P. J. O'Rourke"</string>
@@ -321,7 +321,6 @@
       <string name="funWest2">"Avevo l'abitudine di essere Bianca Neve, ma poi ho deviato - M. West"</string>
       <string name="funWhite1">"La prossima volta che hai un pensiero lascialo andare - R. White"</string>
       <string name="funWhitman1">"Senza dubbio mi sono meritato i miei nemici, ma non penso altrettanto degli amici - W. Whitman"</string>
-      <string name="funWilliams2">"Mi dispiace, se avessi ragione, sarei d'accordo con te - R. Williams"</string>
       <string name="funWright1">"Molte persone hanno paura dell'altezza. Non io, io temo la larghezza - S. Wright"</string>
       <string name="funWright2">"Intendo vivere per sempre. Fin qui tutto bene - S. Wright"</string>
       <string name="funWright3">"Sto scrivendo un libro. Ho appena finito di numerare le pagine - S. Wright"</string>
@@ -437,7 +436,6 @@
 		<string name="politicsMarshall1">"La nostra intera eredità costituzionale si ribella al pensiero di dare al governo il potere di controllare la mente delle persone - T. Marshall"</string>
 		<string name="politicsMarx1">"La politica è l'arte di cercare guai, trovarli ovunque, diagnosticarli erroneamente ed applicare le contromisure sbagliate - G. Marx"</string>
 		<string name="politicsMencken1">"In questo mondo di pena e peccato c'è sempre qualcosa di cui essere grati; per quanto mi riguarda, gioisco di non essere Repubblicano - H. L. Mencken"</string>
-		<string name="funMencken2">"Il matrimonio è una bellissima istituzione. Ma chi vorrebbe vivere in un'istituzione? - H. L. Mencken"</string>
 		<string name="politicsMill1">"I Conservatori non sono necessariamente stupidi, ma la maggior parte dgli stupidi è conservatrice - J. S. Mill"</string>
 		<string name="politicsMiller1">"Ricordo quando i Democratici credevano che fosse compito dell'America lottare per la libertà contro la tirannia - Z. Miller"</string>
 		<string name="politicsMorley1">"Non si converte un uomo mettendolo a tacere - J. Morley"</string>

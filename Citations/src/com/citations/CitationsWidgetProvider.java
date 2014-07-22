@@ -304,6 +304,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		else if (intent.getAction().equals(SET_RANDOM_CITATION))
 		{
+
 			citation = citationsData.getRandomStringInCategory(categoryType).split("-");
 
 			layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewSentence,
