@@ -78,7 +78,8 @@
                 android:layout_alignParentTop="true"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/refresh_icon" />
+                android:clickable="true"
+                android:src="@drawable/widget_refresh_button" />
 
             <ImageButton
                 android:id="@+id/widget_share_button"
