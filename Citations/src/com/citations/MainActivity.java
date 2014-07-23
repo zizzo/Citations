@@ -1,22 +1,26 @@
 package com.citations;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
+
 import java.util.List;
+
 
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,10 +30,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+
 
 public class MainActivity extends Activity
 {
@@ -42,13 +47,17 @@ public class MainActivity extends Activity
 	private final String CATEGORY_TYPE = "categoryType";
 	private final String CITATION_STRING = "citationString";
 	private DrawerLayout mDrawerLayout;
-	
+	private ActionBarDrawerToggle mDrawerToggle;
+
 	private final int ANIMATION_DURATION = 200;
-    private Integer currentColor;
+	private Integer currentColor;
 	private final double SWIPE_RATIO = 0.5;
 
-	
-    public enum CitationChangeType {INIT, SWIPE_LEFT, SWIPE_RIGHT};
+
+	public enum CitationChangeType
+	{
+		INIT, SWIPE_LEFT, SWIPE_RIGHT
+	};
 
 
 	@Override
@@ -56,11 +65,11 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-		
+
 		citationsData = new CitationsManager(getApplicationContext());
-		
+
 		drawLayout();
 	}
 
@@ -79,9 +88,10 @@ public class MainActivity extends Activity
 			return true;
 		}
 
+
 		@Override
-		public boolean onFling(MotionEvent event1, MotionEvent event2,
-				float velocityX, float velocityY)
+		public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX,
+			float velocityY)
 		{
 
 			float dx = event2.getX() - event1.getX();
@@ -97,45 +107,20 @@ public class MainActivity extends Activity
 			// swipe left/right
 			if (dxAbs / dyAbs > SWIPE_RATIO)
 			{
-				citation = citationsData
-						.getRandomStringInCategory(
-						categoryType)
-						.split("-");
-				
+				citation = citationsData.getRandomStringInCategory(categoryType).split(
+					"-");
+
 				if (dx > 0)
 					setCitation(CitationChangeType.SWIPE_RIGHT);
 				else
 					setCitation(CitationChangeType.SWIPE_LEFT);
-				
+
 			}
-			// swipe up/down
-			
-//			
-//			else if (dyAbs / dxAbs > SWIPE_RATIO)
-//			{
-//				String[] citAndCat = citationsData.getRandomString();
-//				
-//				String cat;
-//				if (dy < 0)
-//					cat = citationsData.prevCategory(categoryType);
-//				else
-//					cat = citationsData.nextCategory(categoryType);
-//				
-//				citation = citationsData.getRandomStringInCategory(cat).split("-");
-//				categoryType = cat;
-//				setCitation(CitationChangeType.INIT);
-//				
-//			}
-			
-			// swipe not valid
-//			else
-//			{
-//
-//			}
 
 			return true;
 		}
 	}
+
 
 	/**
 	 * Draw the layout for the main activity
@@ -143,25 +128,28 @@ public class MainActivity extends Activity
 	private void drawLayout()
 	{
 		View mainLayout = findViewById(R.id.main_layout);
-		
-		mainLayout.setOnTouchListener(new OnTouchListener () {
+
+		mainLayout.setOnTouchListener(new OnTouchListener()
+		{
 			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (mDetector.onTouchEvent(event)) {
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				if (mDetector.onTouchEvent(event))
+				{
 					return true;
 				}
 				return false;
 			}
-			
+
 		});
-		
+
 		textViewSentence = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textViewAuthor = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 
 
 		Intent widgetIntent = getIntent();
-		boolean startFromWidget = widgetIntent.getBooleanExtra(
-				"start_from_widget", false);
+		boolean startFromWidget = widgetIntent
+			.getBooleanExtra("start_from_widget", false);
 		if (startFromWidget)
 		{
 			categoryType = widgetIntent.getStringExtra(CATEGORY_TYPE);
@@ -170,8 +158,7 @@ public class MainActivity extends Activity
 		{
 			// The first String is going to come from the Inspiring category
 			categoryType = "inspiringCategory";
-			citation = citationsData.getRandomStringInCategory(categoryType)
-					.split("-");
+			citation = citationsData.getRandomStringInCategory(categoryType).split("-");
 		}
 		currentColor = citationsData.getCategoryInUseColor(categoryType);
 		setCitation(CitationChangeType.INIT);
@@ -206,7 +193,7 @@ public class MainActivity extends Activity
 				citationsData.shareGeneric(getApplicationContext(), citation);
 			}
 		});
-		
+
 		ImageButton buttonTwitter = (ImageButton) findViewById(R.id.activity_mainImageButtonTwitter);
 
 		buttonTwitter.setOnTouchListener(new OnTouchListener()
@@ -265,36 +252,110 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				citationsData.shareOnFacebook(getApplicationContext(),
-						citation, categoryType);
+				citationsData.shareOnFacebook(getApplicationContext(), citation,
+					categoryType);
 			}
 		});// end onClick
-		
+
 		/* Setup the navigation drawer with all the categories */
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        
-        List<String> categoryList = CitationsManager.getCategories();
-        Integer [] catList = {0, 1, 2, 3, 4};
-        // Set the adapter for the list view
-        mDrawerList.setAdapter(new MenuAdapter(this,
-                R.layout.drawer_list_item, catList));
-		
-        
-        mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		final ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+		List<String> categoryList = CitationsManager.getCategories();
+		Integer[] catList = { 0, 1, 2, 3, 4 };
+		// Set the adapter for the list view
+		mDrawerList.setAdapter(new MenuAdapter(this, R.layout.drawer_list_item, catList));
+
+
+		mDrawerList.setOnItemClickListener(new OnItemClickListener()
+		{
 
 			@Override
-			public void onItemClick(AdapterView parent, View view, int position,
-					long id) {
-						String cat = CitationsManager.getCategories().get(position);
-						MainActivity.this.changeCategory(cat);
-						mDrawerLayout.closeDrawers();
-				
+			public void onItemClick(AdapterView parent, View view, int position, long id)
+			{
+				String cat = CitationsManager.getCategories().get(position);
+				MainActivity.this.changeCategory(cat);
+				mDrawerLayout.closeDrawers();
+
 			}
-        	
+
 		});
 
+
+		mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
+		mDrawerLayout, /* DrawerLayout object */
+		R.drawable.citations, /* nav drawer icon to replace 'Up' caret */
+		R.string.app_name, /* "open drawer" description */
+		R.string.app_name /* "close drawer" description */
+		)
+		{
+
+			/** Called when a drawer has settled in a completely closed state. */
+			@Override
+			public void onDrawerClosed(View view)
+			{
+				super.onDrawerClosed(view);
+				getActionBar().setTitle(getString(R.string.app_name));
+			}
+
+
+			/** Called when a drawer has settled in a completely open state. */
+			@Override
+			public void onDrawerOpened(View drawerView)
+			{
+				super.onDrawerOpened(drawerView);
+				getActionBar().setTitle(getString(R.string.app_name));
+			}
+		};
+
+		// Set the drawer toggle as the DrawerListener
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+
+		// Hide the icon from the titlebar, in future releases we should use
+		// only actionbar
+		getActionBar().setIcon(
+			new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+
+
 	}// end drawLayout
+
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState)
+	{
+		super.onPostCreate(savedInstanceState);
+		// Sync the toggle state after onRestoreInstanceState has occurred.
+		mDrawerToggle.syncState();
+	}
+
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig)
+	{
+		super.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// Pass the event to ActionBarDrawerToggle, if it returns
+		// true, then it has handled the app icon touch event
+		if (mDrawerToggle.onOptionsItemSelected(item))
+		{
+			return true;
+		}
+		// Handle your other action bar items...
+
+		return super.onOptionsItemSelected(item);
+	}
+
+
 
 	/**
 	 * @param citation
@@ -304,90 +365,99 @@ public class MainActivity extends Activity
 	private void setCitation(CitationChangeType mode)
 	{
 
-        if (mode == CitationChangeType.INIT) {
-            textViewSentence.setText(citation[0]);
-            textViewAuthor.setText(citation[1]);
-        }
+		if (mode == CitationChangeType.INIT)
+		{
+			textViewSentence.setText(citation[0]);
+			textViewAuthor.setText(citation[1]);
+		}
 
 
-        if (mode == CitationChangeType.SWIPE_LEFT || 
-        	mode == CitationChangeType.SWIPE_RIGHT) {
-        	
-        	final Animation slidein, slideout;
-        	
-        	if (mode == CitationChangeType.SWIPE_LEFT) {
-        		slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text_left);
-        		slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in_left);
-        	}
-        	else {
-        		slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text_right);
-                slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in_right);
-        	}
+		if (mode == CitationChangeType.SWIPE_LEFT
+			|| mode == CitationChangeType.SWIPE_RIGHT)
+		{
 
-            slidein.setDuration(100);
-            slideout.setDuration(100);
-            final String[] cittext = citation;
+			final Animation slidein, slideout;
 
-            slideout.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
+			if (mode == CitationChangeType.SWIPE_LEFT)
+			{
+				slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text_left);
+				slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in_left);
+			} else
+			{
+				slideout = AnimationUtils.loadAnimation(this, R.anim.slide_text_right);
+				slidein = AnimationUtils.loadAnimation(this, R.anim.slide_in_right);
+			}
 
-                }
+			slidein.setDuration(100);
+			slideout.setDuration(100);
+			final String[] cittext = citation;
 
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    textViewSentence.setText(cittext[0]);
-                    textViewSentence.startAnimation(slidein);
-                    textViewAuthor.setText(cittext[1]);
-                }
+			slideout.setAnimationListener(new Animation.AnimationListener()
+			{
+				@Override
+				public void onAnimationStart(Animation animation)
+				{
 
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            });
-
-            textViewSentence.startAnimation(slideout);
-
-        }
+				}
 
 
-        // Set the proper background
+				@Override
+				public void onAnimationEnd(Animation animation)
+				{
+					textViewSentence.setText(cittext[0]);
+					textViewSentence.startAnimation(slidein);
+					textViewAuthor.setText(cittext[1]);
+				}
 
-        Integer startColor = currentColor;
+
+				@Override
+				public void onAnimationRepeat(Animation animation)
+				{
+
+				}
+			});
+
+			textViewSentence.startAnimation(slideout);
+
+		}
+
+
+		// Set the proper background
+
+		Integer startColor = currentColor;
 		Integer endColor = citationsData.getCategoryInUseColor(categoryType);
-        ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout), "backgroundColor",
-                startColor, endColor);
-        anim.setDuration(500);
-        anim.setEvaluator(new ArgbEvaluator());
-        anim.start();
+		ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout),
+			"backgroundColor", startColor, endColor);
+		anim.setDuration(500);
+		anim.setEvaluator(new ArgbEvaluator());
+		anim.start();
 
-        currentColor = endColor;
+		currentColor = endColor;
 
 	}// end setCitation
 
-	public void changeCategory(String catId) {
-		
-		categoryType = catId;
-		citation = citationsData
-				.getRandomStringInCategory(
-				categoryType)
-				.split("-");
-		setCitation(CitationChangeType.INIT);
-		
-        // Set the proper background1
-        Integer startColor = currentColor;
-		Integer endColor = citationsData.getCategoryInUseColor(categoryType);
-        ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout), "backgroundColor",
-                startColor, endColor);
-        anim.setDuration(500);
-        anim.setEvaluator(new ArgbEvaluator());
-        anim.start();
 
-        currentColor = endColor;
-		
+	public void changeCategory(String catId)
+	{
+
+		categoryType = catId;
+		citation = citationsData.getRandomStringInCategory(categoryType).split("-");
+		setCitation(CitationChangeType.INIT);
+
+		// Set the proper background1
+		Integer startColor = currentColor;
+		Integer endColor = citationsData.getCategoryInUseColor(categoryType);
+		ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout),
+			"backgroundColor", startColor, endColor);
+		anim.setDuration(500);
+		anim.setEvaluator(new ArgbEvaluator());
+		anim.start();
+
+		currentColor = endColor;
+
 	}
-	
+
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
