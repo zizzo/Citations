@@ -5,6 +5,12 @@
     <string name="action_settings">Impostazioni</string>
     
     <string name="crash_toast_text">Si è verificato un errore. Per favore inviaci una mail con i dettagli! :)</string>
+    <string name="ok">"OK"</string>
+    <string name="dont_show_again_checkbox">"Non mostrare più"</string>
+    <string name="dialog_usage_title">"Utilizzo"</string>
+    <string name="dialog_usage_message">"- muovi il dito sinistra/destra o destra/sinistra per cambiare citazione nella stessa categoria \n- muovi il dito sul lato sinistro dello schermo o premi l'icona dell'app per aprire il menù delle categorie"</string>
+    
+    
 
 <!--     CONTENT DESCRIPTION -->
     <string name="sharingButton">Condividi</string>

@@ -314,6 +314,7 @@ public class CitationsManager
 		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
 		shareIntent.setType("image/png");
 		shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(imagePath)));
+		// shareIntent.putExtra(Intent.EXTRA_TEXT, "http://www.google.com");
 		PackageManager pm = context.getPackageManager();
 		List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
 		for (final ResolveInfo app : activityList)

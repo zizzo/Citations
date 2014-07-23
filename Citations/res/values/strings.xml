@@ -5,6 +5,12 @@
     <string name="action_settings">Settings</string>
     
     <string name="crash_toast_text">A crash occurred, sorry. Please send us an email with the details :)</string>
+    
+    <string name="ok">"OK"</string>
+    <string name="dont_show_again_checkbox">"Don't show again"</string>
+    <string name="dialog_usage_title">"Usage"</string>
+    <string name="dialog_usage_message">"- swipe left/right or right/left to change citation in the same category \n- swipe on the left side or touch the app icon to get the menu with the categories"</string>
+    
 
 <!--     CONTENT DESCRIPTION -->
     <string name="sharingButton">Sharing</string>

@@ -8,13 +8,16 @@ import java.util.List;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -36,7 +39,7 @@ import android.widget.TextView;
 
 
 
-public class MainActivity extends Activity
+public class MainActivity extends FragmentActivity
 {
 	private CitationsManager citationsData;
 	private GestureDetectorCompat mDetector;
@@ -52,6 +55,8 @@ public class MainActivity extends Activity
 	private final int ANIMATION_DURATION = 200;
 	private Integer currentColor;
 	private final double SWIPE_RATIO = 0.5;
+
+	private final String PREFS_DIALOG = "dontShowAgainBool";
 
 
 	public enum CitationChangeType
@@ -128,6 +133,20 @@ public class MainActivity extends Activity
 	private void drawLayout()
 	{
 		View mainLayout = findViewById(R.id.main_layout);
+
+
+		SharedPreferences showDialogPrefs = getSharedPreferences(PREFS_DIALOG,
+			Context.MODE_MULTI_PROCESS);
+		boolean showDialog = showDialogPrefs.getBoolean("showDialog", true);
+
+		// Explain how to get the actions
+		if (showDialog)
+		{
+			Log.d("MainActivity-drawLayout", "Show dialog to explain usage");
+			DialogFragment dontShowAgain = new DontShowAgain();
+			dontShowAgain.show(getSupportFragmentManager(), "DontShowAgain Instructions");
+		}
+
 
 		mainLayout.setOnTouchListener(new OnTouchListener()
 		{
