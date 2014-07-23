@@ -426,7 +426,6 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		int c = CitationsManager.getCategoryColor(categoryType);
 		layoutAppWidget.setInt(R.id.widget_textwrapper, "setBackgroundColor",
 			Color.argb(204, Color.red(c), Color.green(c), Color.blue(c)));
-
 	}// end setColorsOnButtons
 
 
