@@ -36,6 +36,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	public static final String OPEN_APP = "openApp";
 
 
+
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 		int[] appWidgetIds)
@@ -109,18 +110,46 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		private RemoteViews buildRemoteView(Context context)
 		{
 			CitationsManager citationsData = new CitationsManager(context);
-			int categoryNumber = 0;
-			String[] citation = citationsData.getRandomStringInCategory(
-				"inspiringCategory").split("-");
+			int categoryNumber;
+			String categoryType;
+			String[] citation;
 
-			Log.d("Widget-onUpdate", "Got starting citation: %s");
+			Log.d("Widget-onUpdate", "Set citation");
 
+			// MODE_MULTI_PROCESS fundamental flag to have SharedPreferences in
+			// common for services and activities
 			SharedPreferences settings = context.getSharedPreferences(
-				SHARED_PREF_CITATIONS, 0);
+				SHARED_PREF_CITATIONS, Context.MODE_MULTI_PROCESS);
+
+			// Check if there is a previous citation and set that, otherwise
+			// start with the default
+			categoryNumber = settings.getInt(CATEGORY_NUMBER, -1);
+			if (categoryNumber != -1)
+			{
+				Log.d("Widget-onUpdate", "Try to get previous citation");
+				Log.d("Widget-onUpdate", "category number: " + categoryNumber);
+				categoryType = settings.getString(CATEGORY_TYPE, "inspiringCategory");
+				Log.d("Widget-onUpdate", "category type: " + categoryType);
+				citation = settings.getString(CITATION_STRING, "-").split("-");
+				Log.d("Widget-onUpdate", "citation: " + citation[0] + citation[1]);
+			} else
+			{
+				Log.d("Widget-onUpdate", "Exception, set first citation");
+				categoryNumber = 0;
+				Log.d("Widget-onUpdate", "category number: " + categoryNumber);
+				categoryType = "inspiringCategory";
+				Log.d("Widget-onUpdate", "category type: " + categoryType);
+				citation = citationsData.getRandomStringInCategory(categoryType).split(
+					"-");
+				Log.d("Widget-onUpdate", "citation: " + citation[0] + citation[1]);
+			}
+
+
+
 			SharedPreferences.Editor editor = settings.edit();
 			editor.putInt(CATEGORY_NUMBER, categoryNumber);
 			editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
-			editor.putString(CATEGORY_TYPE, "inspiringCategory");
+			editor.putString(CATEGORY_TYPE, categoryType);
 			editor.commit();
 
 			Log.d("Widget-onUpdate", "citation saved in SharedPreferences");
@@ -133,6 +162,18 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
 				citation[1]);
 
+			// Execute the code of setColorsOnButtons
+			// Method not called because it would need to be static and have
+			// some NullPointerException
+			// Issue to be fixed in future releases
+			// {
+			layoutAppWidget.setImageViewBitmap(R.id.widget_category_button,
+				CitationsManager.getCategoryBitmap(categoryType));
+
+			int c = CitationsManager.getCategoryColor(categoryType);
+			layoutAppWidget.setInt(R.id.widget_textwrapper, "setBackgroundColor",
+				Color.argb(204, Color.red(c), Color.green(c), Color.blue(c)));
+			// }
 
 			Log.d("Widget-onUpdate", "Correctly set citation");
 
@@ -198,7 +239,6 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 			return layoutAppWidget;
 		}
-
 	}// end Service
 
 
@@ -225,8 +265,10 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 		Log.d("Widget-onReceive", "Create and manage preferences");
 		CitationsManager citationsData = new CitationsManager(context);
 		Log.d("Widget-onReceive", "Stop1");
+		// MODE_MULTI_PROCESS fundamental flag to have SharedPreferences in
+		// common for services and activities
 		SharedPreferences settings = context.getSharedPreferences(SHARED_PREF_CITATIONS,
-			0);
+			Context.MODE_MULTI_PROCESS);
 		Log.d("Widget-onReceive", "Stop2");
 		int categoryNumber = settings.getInt(CATEGORY_NUMBER, 0);
 		String[] citation = settings.getString(CITATION_STRING, "-").split("-");
@@ -346,10 +388,14 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 
 		// Update SharedPreferences
+		Log.d("Widget-onReceive", "updated shared preferences");
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
+		Log.d("Widget-onReceive", "citation: " + citation[0] + citation[1]);
 		editor.putString(CATEGORY_TYPE, categoryType);
+		Log.d("Widget-onReceive", "categoryType: " + categoryType);
 		editor.putInt(CATEGORY_NUMBER, categoryNumber);
+		Log.d("Widget-onReceive", "categoryNumber: " + categoryNumber);
 		editor.commit();
 
 		// Update the widget
