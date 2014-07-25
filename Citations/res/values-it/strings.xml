@@ -8,7 +8,7 @@
     <string name="ok">"OK"</string>
     <string name="dont_show_again_checkbox">"Non mostrare più"</string>
     <string name="dialog_usage_title">"Utilizzo"</string>
-    <string name="dialog_usage_message">"- muovi il dito sinistra/destra o destra/sinistra per cambiare citazione nella stessa categoria \n- muovi il dito sul lato sinistro dello schermo o premi l'icona dell'app per aprire il menù delle categorie"</string>
+    <string name="dialog_usage_message">"Muovi il dito sinistra/destra o destra/sinistra per cambiare citazione nella stessa categoria\n\nMuovi il dito sul lato sinistro dello schermo o premi l'icona dell'app per aprire il menù delle categorie"</string>
     
     
 

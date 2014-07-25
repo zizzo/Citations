@@ -9,7 +9,7 @@
     <string name="ok">"OK"</string>
     <string name="dont_show_again_checkbox">"Don't show again"</string>
     <string name="dialog_usage_title">"Usage"</string>
-    <string name="dialog_usage_message">"- swipe left/right or right/left to change citation in the same category \n- swipe on the left side or touch the app icon to get the menu with the categories"</string>
+    <string name="dialog_usage_message">"Swipe left/right or right/left to change citation in the same category \n\nSwipe on the left side or touch the app icon to get the menu with the categories"</string>
     
 
 <!--     CONTENT DESCRIPTION -->
