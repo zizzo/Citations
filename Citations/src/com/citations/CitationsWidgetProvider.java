@@ -130,7 +130,17 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 				Log.d("Widget-onUpdate", "category number: " + categoryNumber);
 				categoryType = settings.getString(CATEGORY_TYPE, "inspiringCategory");
 				Log.d("Widget-onUpdate", "category type: " + categoryType);
-				citation = settings.getString(CITATION_STRING, "-").split("-");
+				
+				String citationString = settings.getString(CITATION_STRING, "-");
+				
+				// At Initialization time citationString may be empty
+				if (citationString != null) {
+					citation = citationString.split("-");	
+				}
+				else {
+					citation = citationsData.getRandomStringInCategory(categoryType).split("-");
+				}
+				
 				Log.d("Widget-onUpdate", "citation: " + citation[0] + citation[1]);
 			} else
 			{
