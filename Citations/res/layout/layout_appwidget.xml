@@ -79,7 +79,7 @@
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
                 android:clickable="true"
-                android:src="@drawable/refresh_icon" />
+                android:src="@drawable/widget_refresh_button_effect" />
 
             <ImageButton
                 android:id="@+id/widget_share_button"
@@ -92,7 +92,7 @@
                 android:layout_toLeftOf="@id/widget_refresh_button"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/share" />
+                android:src="@drawable/widget_share_button_effect" />
 
             <ImageButton
                 android:id="@+id/widget_twitter_button"
@@ -103,7 +103,7 @@
                 android:layout_toLeftOf="@+id/widget_share_button"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/twitter" />
+                android:src="@drawable/widget_twitter_button_effect" />
 
             <ImageButton
                 android:id="@+id/widget_facebook_button"
@@ -114,7 +114,7 @@
                 android:layout_toLeftOf="@+id/widget_twitter_button"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/facebook" />
+                android:src="@drawable/widget_facebook_button_effect" />
         </RelativeLayout>
     </LinearLayout>
 
