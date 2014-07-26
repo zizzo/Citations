@@ -112,7 +112,7 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			CitationsManager citationsData = new CitationsManager(context);
 			int categoryNumber;
 			String categoryType;
-			String[] citation;
+			String[] citation = new String[2];
 
 			Log.d("Widget-onUpdate", "Set citation");
 
@@ -123,36 +123,11 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 			// Check if there is a previous citation and set that, otherwise
 			// start with the default
-			categoryNumber = settings.getInt(CATEGORY_NUMBER, -1);
-			if (categoryNumber != -1)
-			{
-				Log.d("Widget-onUpdate", "Try to get previous citation");
-				Log.d("Widget-onUpdate", "category number: " + categoryNumber);
-				categoryType = settings.getString(CATEGORY_TYPE, "inspiringCategory");
-				Log.d("Widget-onUpdate", "category type: " + categoryType);
-				
-				String citationString = settings.getString(CITATION_STRING, "-");
-				
-				// At Initialization time citationString may be empty
-				if (citationString != null) {
-					citation = citationString.split("-");	
-				}
-				else {
-					citation = citationsData.getRandomStringInCategory(categoryType).split("-");
-				}
-				
-				Log.d("Widget-onUpdate", "citation: " + citation[0] + citation[1]);
-			} else
-			{
-				Log.d("Widget-onUpdate", "Exception, set first citation");
-				categoryNumber = 0;
-				Log.d("Widget-onUpdate", "category number: " + categoryNumber);
-				categoryType = "inspiringCategory";
-				Log.d("Widget-onUpdate", "category type: " + categoryType);
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
-				Log.d("Widget-onUpdate", "citation: " + citation[0] + citation[1]);
-			}
+			String[] values = initializeWidget(settings, citationsData);
+			categoryNumber = Integer.valueOf(values[0]);
+			categoryType = values[1];
+			citation[0] = values[2];
+			citation[1] = values[3];
 
 
 
@@ -274,22 +249,31 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		Log.d("Widget-onReceive", "Create and manage preferences");
 		CitationsManager citationsData = new CitationsManager(context);
-		Log.d("Widget-onReceive", "Stop1");
+		int categoryNumber;
+		String categoryType;
+		String[] citation = new String[2];
+
 		// MODE_MULTI_PROCESS fundamental flag to have SharedPreferences in
 		// common for services and activities
 		SharedPreferences settings = context.getSharedPreferences(SHARED_PREF_CITATIONS,
 			Context.MODE_MULTI_PROCESS);
-		Log.d("Widget-onReceive", "Stop2");
-		int categoryNumber = settings.getInt(CATEGORY_NUMBER, 0);
-		String[] citation = settings.getString(CITATION_STRING, "-").split("-");
 
-		String categoryType = settings.getString(CATEGORY_TYPE, "");
-		Log.d("Widget-onReceive", "Stop4");
+
+		// Check if there is a previous citation and set that, otherwise
+		// start with the default
+		String[] values = initializeWidget(settings, citationsData);
+		categoryNumber = Integer.valueOf(values[0]);
+		categoryType = values[1];
+		citation[0] = values[2];
+		citation[1] = values[3];
+
+
+		Log.d("Widget-onReceive", "Initialization complete");
 		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 			R.layout.layout_appwidget);
-		Log.d("Widget-onReceive", "Stop5");
+		Log.d("Widget-onReceive", "RemoteViews created");
 		setColorsOnButtons(context, layoutAppWidget, categoryType);
-		Log.d("Widget-onReceive", "Stop6");
+		Log.d("Widget-onReceive", "Color buttons set");
 
 
 
@@ -416,6 +400,51 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	}// end onReceive
 
 
+	private static String[] initializeWidget(SharedPreferences settings,
+		CitationsManager citationsData)
+	{
+		int categoryNumber;
+		String categoryType;
+		String[] citation;
+
+
+		categoryNumber = settings.getInt(CATEGORY_NUMBER, -1);
+		if (categoryNumber != -1)
+		{
+			Log.d("Widget-initializeWidget", "Try to get previous citation");
+			Log.d("Widget-initializeWidget", "category number: " + categoryNumber);
+			categoryType = settings.getString(CATEGORY_TYPE, "inspiringCategory");
+			Log.d("Widget-initializeWidget", "category type: " + categoryType);
+
+			String citationString = settings.getString(CITATION_STRING, "-");
+
+			// At Initialization time citationString may be empty
+			if (citationString != null)
+			{
+				citation = citationString.split("-");
+			} else
+			{
+				citation = citationsData.getRandomStringInCategory(categoryType).split(
+					"-");
+			}
+
+			Log.d("Widget-initializeWidget", "citation: " + citation[0] + citation[1]);
+		} else
+		{
+			Log.d("Widget-initializeWidget", "Exception, set first citation");
+			categoryNumber = 0;
+			Log.d("Widget-initializeWidget", "category number: " + categoryNumber);
+			categoryType = "inspiringCategory";
+			Log.d("Widget-initializeWidget", "category type: " + categoryType);
+			citation = citationsData.getRandomStringInCategory(categoryType).split("-");
+			Log.d("Widget-initializeWidget", "citation: " + citation[0] + citation[1]);
+		}
+
+		return new String[] { Integer.toString(categoryNumber), categoryType,
+			citation[0], citation[1] };
+	}
+
+
 	/**
 	 * @param layoutAppWidget
 	 * @param previous
@@ -430,8 +459,19 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	private void setColorsOnButtons(Context context, RemoteViews layoutAppWidget,
 		String categoryType)
 	{
+
 		layoutAppWidget.setImageViewBitmap(R.id.widget_category_button,
 			CitationsManager.getCategoryBitmap(categoryType));
+
+		Log.d("CitationsWidgetProvider-setColorButtons",
+			String.format("categoryType: %s", categoryType));
+
+		if (categoryType.length() <= 1)
+		{
+			categoryType = "inspiringCategory";
+			Log.d("CitationsWidgetProvider-setColorButtons",
+				String.format("categoryType: %s", categoryType));
+		}
 
 		int c = CitationsManager.getCategoryColor(categoryType);
 		layoutAppWidget.setInt(R.id.widget_textwrapper, "setBackgroundColor",

@@ -125,6 +125,9 @@ public class CitationsManager
 
 	public static Integer getCategoryColor(String categoryString)
 	{
+		Log.d("CitationsManager-getCategoryColor",
+			String.format("colorMap: %s", colormap));
+
 		return colormap.get(categoryString);
 	}
 
