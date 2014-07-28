@@ -250,10 +250,6 @@ public class CitationsManager
 		Bitmap bitmap = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_8888);
 		Canvas c = new Canvas(bitmap);
 
-		// Paint paint = new Paint();
-		// paint.setTextAlign(Align.CENTER);
-		// paint.setTextSize(18);
-
 		c.drawColor(getCategoryInUseColor(categoryInUse));
 
 		String bitmapText = citation[0] + "\n\n" + citation[1];
@@ -270,7 +266,6 @@ public class CitationsManager
 		c.translate(100, 200);
 		sl.draw(c);
 		c.restore();
-		// c.drawText(bitmapText, 250, 150, paint);
 
 		c.drawBitmap(bitmap, 0, 0, null);
 
@@ -315,9 +310,9 @@ public class CitationsManager
 
 		Log.d("CitationsManager-ShareOnFb", "sharing the image " + imagePath);
 		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-		shareIntent.setType("image/png");
+		shareIntent.setType("image/*");
+		// shareIntent.putExtra(Intent.EXTRA_TEXT, "www.google.com");
 		shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(imagePath)));
-		// shareIntent.putExtra(Intent.EXTRA_TEXT, "http://www.google.com");
 		PackageManager pm = context.getPackageManager();
 		List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
 		for (final ResolveInfo app : activityList)
