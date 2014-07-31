@@ -5,6 +5,7 @@ package com.citations;
 import java.util.List;
 
 
+
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
@@ -371,6 +372,11 @@ public class MainActivity extends FragmentActivity
 		}
 		// Handle your other action bar items...
 
+		int id = item.getItemId();
+		if (id == R.id.action_about) {
+			showAbout(); 
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -485,5 +491,10 @@ public class MainActivity extends FragmentActivity
 		return true;
 	}
 
+	public void showAbout() 
+	{
+		Intent intent = new Intent(this, AboutActivity.class);
+		startActivity(intent);
+	}
 
 }// end MainActivity
