@@ -319,9 +319,8 @@ public class CitationsManager
 		{
 
 			Log.d("CitationsManager-ShareOnFb", app.activityInfo.name);
-			if ((app.activityInfo.name).contains("facebook.katana")
-				|| (app.activityInfo.name).contains("facebook.composer.shareintent")
-				|| (app.activityInfo.name).contains("facebook.composer.activity"))
+			if ((app.activityInfo.name).contains("com.facebook")
+				&& !(app.activityInfo.name).contains("messenger"))
 			{
 				final ActivityInfo activity = app.activityInfo;
 				final ComponentName name = new ComponentName(
