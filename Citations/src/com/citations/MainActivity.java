@@ -299,10 +299,12 @@ public class MainActivity extends FragmentActivity
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
 		mDrawerLayout, /* DrawerLayout object */
-		android.R.color.transparent, /*
-									 * nav drawer icon. Set it to transparent to
-									 * use the ActionBar icon
-									 */
+		R.drawable.ic_navigation_drawer, /*
+										 * android.R.color.transparent nav
+										 * drawer icon. Set it to transparent to
+										 * use the ActionBar icon. Set it to
+										 * nav_drawer to have the menu indicator
+										 */
 		R.string.app_name, /* "open drawer" description */
 		R.string.app_name /* "close drawer" description */
 		)
