@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="40dp"
-        android:text="Citations 0.1"
+        android:text="@string/citations_version"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:text="Citations is a software created by Luigi Tiburzi and Gabriele Lanaro, with the collaboration of Francesco Pochetti."
+        android:text="@string/about_text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ImageView

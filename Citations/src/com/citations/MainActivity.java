@@ -2,10 +2,6 @@ package com.citations;
 
 
 
-import java.util.List;
-
-
-
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
@@ -13,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -281,7 +276,7 @@ public class MainActivity extends FragmentActivity
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		final ListView mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-		List<String> categoryList = CitationsManager.getCategories();
+		// List<String> categoryList = CitationsManager.getCategories();
 		Integer[] catList = { 0, 1, 2, 3, 4 };
 		// Set the adapter for the list view
 		mDrawerList.setAdapter(new MenuAdapter(this, R.layout.drawer_list_item, catList));
@@ -304,11 +299,15 @@ public class MainActivity extends FragmentActivity
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
 		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.citations, /* nav drawer icon to replace 'Up' caret */
+		android.R.color.transparent, /*
+									 * nav drawer icon. Set it to transparent to
+									 * use the ActionBar icon
+									 */
 		R.string.app_name, /* "open drawer" description */
 		R.string.app_name /* "close drawer" description */
 		)
 		{
+
 
 			/** Called when a drawer has settled in a completely closed state. */
 			@Override
@@ -325,6 +324,7 @@ public class MainActivity extends FragmentActivity
 			{
 				super.onDrawerOpened(drawerView);
 				getActionBar().setTitle(getString(R.string.app_name));
+				// drawerImageRes = R.drawable.citations_love;
 			}
 		};
 
@@ -335,13 +335,26 @@ public class MainActivity extends FragmentActivity
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
 
-		// Hide the icon from the titlebar, in future releases we should use
-		// only actionbar
-		getActionBar().setIcon(
-			new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-
+		// Set icon according to category
+		setIconForCategory(categoryType);
 
 	}// end drawLayout
+
+
+	private void setIconForCategory(String categoryType)
+	{
+		if (categoryType.equals("inspiringCategory"))
+			getActionBar().setIcon(R.drawable.citations_inspiring);
+		else if (categoryType.equals("loveCategory"))
+			getActionBar().setIcon(R.drawable.citations_love);
+		else if (categoryType.equals("lifeCategory"))
+			getActionBar().setIcon(R.drawable.citations_life);
+		else if (categoryType.equals("politicsCategory"))
+			getActionBar().setIcon(R.drawable.citations_politics);
+		else if (categoryType.equals("funCategory"))
+			getActionBar().setIcon(R.drawable.citations_fun);
+
+	}
 
 
 	@Override
@@ -373,8 +386,9 @@ public class MainActivity extends FragmentActivity
 		// Handle your other action bar items...
 
 		int id = item.getItemId();
-		if (id == R.id.action_about) {
-			showAbout(); 
+		if (id == R.id.action_about)
+		{
+			showAbout();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -478,6 +492,8 @@ public class MainActivity extends FragmentActivity
 		anim.setEvaluator(new ArgbEvaluator());
 		anim.start();
 
+		setIconForCategory(categoryType);
+
 		currentColor = endColor;
 
 	}
@@ -491,7 +507,8 @@ public class MainActivity extends FragmentActivity
 		return true;
 	}
 
-	public void showAbout() 
+
+	public void showAbout()
 	{
 		Intent intent = new Intent(this, AboutActivity.class);
 		startActivity(intent);

@@ -3,6 +3,9 @@
 
     <string name="app_name">Citazioni</string>
     <string name="action_settings">Impostazioni</string>
+    <string name="action_about">About</string>
+    <string name="citations_version">Versione 1.0</string>
+    <string name="about_text">"Citazioni è un'applicazione realizzata da Luigi Tiburzi e Gabriele Lanaro con la collaborazione di Francesco Pochetti.\nIl nostro obiettivo è fornire in ogni momento il miglior pensiero nella più splendida delle vesti"</string>
     
     <string name="crash_toast_text">Si è verificato un errore. Per favore inviaci una mail con i dettagli! :)</string>
     <string name="ok">"OK"</string>
