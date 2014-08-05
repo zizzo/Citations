@@ -203,11 +203,12 @@ public class CitationsManager
 	}
 
 
-	public void shareOnFacebook(Context context, String[] citation, String categoryType)
+	public Bitmap shareOnFacebook(Context context, String[] citation, String categoryType)
 	{
 		Bitmap bitmap = drawBitmap(context, citation, categoryType);
-		String imagePath = storeImage(bitmap);
-		shareOnFb(imagePath, context);
+		// String imagePath = storeImage(bitmap);
+		return bitmap;
+		// shareOnFb(imagePath, context);
 	}
 
 

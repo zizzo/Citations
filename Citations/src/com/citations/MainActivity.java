@@ -2,6 +2,10 @@ package com.citations;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
@@ -9,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -34,9 +39,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphObject;
+import com.facebook.model.OpenGraphAction;
+import com.facebook.widget.FacebookDialog;
+
+
 
 public class MainActivity extends FragmentActivity
 {
+	private UiLifecycleHelper uiHelper;
+
 	private CitationsManager citationsData;
 	private GestureDetectorCompat mDetector;
 	private TextView textViewSentence;
@@ -65,6 +78,10 @@ public class MainActivity extends FragmentActivity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+		uiHelper = new UiLifecycleHelper(this, null);
+		uiHelper.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_main);
 
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
@@ -72,6 +89,64 @@ public class MainActivity extends FragmentActivity
 		citationsData = new CitationsManager(getApplicationContext());
 
 		drawLayout();
+
+	}
+
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+
+		uiHelper.onActivityResult(requestCode, resultCode, data,
+			new FacebookDialog.Callback()
+			{
+				@Override
+				public void onError(FacebookDialog.PendingCall pendingCall,
+					Exception error, Bundle data)
+				{
+					Log.e("Activity", String.format("Error: %s", error.toString()));
+				}
+
+
+				@Override
+				public void onComplete(FacebookDialog.PendingCall pendingCall, Bundle data)
+				{
+					Log.i("Activity", "Success!");
+				}
+			});
+	}
+
+
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		uiHelper.onResume();
+	}
+
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		uiHelper.onSaveInstanceState(outState);
+	}
+
+
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		uiHelper.onPause();
+	}
+
+
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+		uiHelper.onDestroy();
 	}
 
 
@@ -267,8 +342,11 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-				citationsData.shareOnFacebook(getApplicationContext(), citation,
-					categoryType);
+
+				shareOnFacebook(citationsData, citation, categoryType);
+				// citationsData.shareOnFacebook(getApplicationContext(),
+				// citation,
+				// categoryType);
 			}
 		});// end onClick
 
@@ -340,7 +418,28 @@ public class MainActivity extends FragmentActivity
 		// Set icon according to category
 		setIconForCategory(categoryType);
 
+
 	}// end drawLayout
+
+
+	private void shareOnFacebook(CitationsManager citationsData, String[] citation,
+		String categoryType)
+	{
+		Bitmap bitmap = citationsData.shareOnFacebook(getApplicationContext(), citation,
+			categoryType);
+		OpenGraphAction action = GraphObject.Factory.create(OpenGraphAction.class);
+		action.setProperty("share", "https://www.google.com");
+
+		List<Bitmap> images = new ArrayList<Bitmap>();
+		images.add(bitmap);
+
+		FacebookDialog shareDialog = new FacebookDialog.OpenGraphActionDialogBuilder(
+			this, action, "Citations:Share", "Citation").setImageAttachmentsForAction(
+			images, true).build();
+		uiHelper.trackPendingDialogCall(shareDialog.present());
+
+	}
+
 
 
 	private void setIconForCategory(String categoryType)
