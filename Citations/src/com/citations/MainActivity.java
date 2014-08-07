@@ -434,8 +434,8 @@ public class MainActivity extends FragmentActivity
 		images.add(bitmap);
 
 		FacebookDialog shareDialog = new FacebookDialog.OpenGraphActionDialogBuilder(
-			this, action, "share", "Citation").setImageAttachmentsForAction(images, true)
-			.build();
+			this, action, "Citations:Share", "Citation").setImageAttachmentsForAction(
+			images, true).build();
 		uiHelper.trackPendingDialogCall(shareDialog.present());
 
 	}
