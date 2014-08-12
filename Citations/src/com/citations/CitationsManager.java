@@ -16,6 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.text.Layout;
 import android.text.StaticLayout;
@@ -263,10 +265,19 @@ public class CitationsManager
 			Layout.Alignment.ALIGN_CENTER, 1, 0, false);
 
 		c.save();
-		c.translate(100, 200);
+		c.translate(80, 200);
 		sl.draw(c);
 		c.restore();
 
+		tp = new TextPaint();
+		tp.setColor(Color.BLACK);
+		tp.setAlpha(100);
+		tp.setTypeface(Typeface.DEFAULT_BOLD);
+		tp.setTextSize(20);
+		tp.setAntiAlias(true);
+		
+		c.drawText(context.getString(R.string.bitmap_watermark), 500, 550, tp);
+		
 		c.drawBitmap(bitmap, 0, 0, null);
 
 		return bitmap;
