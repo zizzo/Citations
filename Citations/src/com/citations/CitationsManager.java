@@ -320,7 +320,8 @@ public class CitationsManager
 
 			Log.d("CitationsManager-ShareOnFb", app.activityInfo.name);
 			if ((app.activityInfo.name).contains("com.facebook")
-				&& !(app.activityInfo.name).contains("messenger"))
+				&& !(app.activityInfo.name).contains("messenger")
+				&& !(app.activityInfo.name).contains("pages"))
 			{
 				final ActivityInfo activity = app.activityInfo;
 				final ComponentName name = new ComponentName(
