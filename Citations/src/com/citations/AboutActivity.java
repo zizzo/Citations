@@ -5,6 +5,7 @@ package com.citations;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +53,10 @@ public class AboutActivity extends Activity
 		if (id == R.id.action_settings)
 		{
 			return true;
+		}
+		if (id == android.R.id.home) {
+	        super.onBackPressed(); // Make it behave like the back button
+	        return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

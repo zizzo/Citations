@@ -513,6 +513,7 @@ public class MainActivity extends FragmentActivity
 	public void showAbout()
 	{
 		Intent intent = new Intent(this, AboutActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
 
