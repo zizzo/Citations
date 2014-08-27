@@ -16,7 +16,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -275,9 +274,9 @@ public class CitationsManager
 		tp.setTypeface(Typeface.DEFAULT_BOLD);
 		tp.setTextSize(20);
 		tp.setAntiAlias(true);
-		
+
 		c.drawText(context.getString(R.string.bitmap_watermark), 500, 550, tp);
-		
+
 		c.drawBitmap(bitmap, 0, 0, null);
 
 		return bitmap;
