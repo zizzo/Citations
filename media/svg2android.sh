@@ -3,6 +3,9 @@
 # Sizes extracted from
 # http://developer.android.com/design/style/iconography.html
 
+#USAGE: bash svg2android.sh immagine.svg -w48 /path to Citations/Citations/res
+#svg image --> images for any resolution
+
 [ -z $2 ] && echo -e "ERROR: filename and one dimension (-w or -h) is required, for example:\nsvg2png -w48 icon.svg\n" && exit 1;
 FILENAME=$2
 DEST_FILENAME=`echo $2 | sed s/\.svg/\.png/`
