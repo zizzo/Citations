@@ -393,6 +393,13 @@ public class MainActivity extends FragmentActivity
 			showAbout();
 			return true;
 		}
+
+		if (id == R.id.action_tellfriend)
+		{
+			tellFriend();
+			return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -515,6 +522,17 @@ public class MainActivity extends FragmentActivity
 		Intent intent = new Intent(this, AboutActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
+	}
+
+
+	public void tellFriend()
+	{
+		Intent shareIntent = new Intent(Intent.ACTION_SEND);
+		shareIntent.setType("text/plain");
+		shareIntent.putExtra(Intent.EXTRA_TEXT,
+			getString(R.string.app_link).replace("%26", "&"));
+		startActivity(Intent.createChooser(shareIntent, "Share...").addFlags(
+			Intent.FLAG_ACTIVITY_NEW_TASK));
 	}
 
 }// end MainActivity
