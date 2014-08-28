@@ -2,8 +2,6 @@ package com.faraday.citations;
 
 
 
-import com.faraday.citations.R;
-
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
@@ -78,7 +76,7 @@ public class MainActivity extends FragmentActivity
 
 
 	/**
-	 * @author luigi Customized GestureListener for the Activity
+	 * Customized GestureListener for the Activity
 	 * 
 	 */
 	class MyGestureListener extends GestureDetector.SimpleOnGestureListener
