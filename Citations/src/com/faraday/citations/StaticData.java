@@ -1,4 +1,4 @@
-package com.citations;
+package com.faraday.citations;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.citations;
+package com.faraday.citations;
 
 
 
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.faraday.citations.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;

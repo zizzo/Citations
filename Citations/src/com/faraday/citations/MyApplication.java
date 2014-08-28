@@ -1,4 +1,4 @@
-package com.citations;
+package com.faraday.citations;
 
 
 
@@ -6,6 +6,7 @@ import org.acra.ACRA;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 
+import com.faraday.citations.R;
 
 import android.app.Application;
 

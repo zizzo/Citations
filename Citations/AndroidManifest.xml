@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.citations"
+    package="com.faraday.citations"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -17,13 +17,13 @@
         android:targetSdkVersion="19" />
 
     <application
-        android:name="com.citations.MyApplication"
+        android:name="com.faraday.citations.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/citations"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.citations.MainActivity"
+            android:name="com.faraday.citations.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -34,16 +34,16 @@
         </activity>
 
         <service
-            android:name="com.citations.CitationsWidgetProvider$MyUpdateService"
+            android:name="com.faraday.citations.CitationsWidgetProvider$MyUpdateService"
             android:configChanges="keyboardHidden|orientation"
             android:enabled="true"
             android:icon="@drawable/citations"
             android:isolatedProcess="false"
             android:label="@string/app_name"
-            android:process="com.citations.MainActivity" >
+            android:process="com.faraday.citations.MainActivity" >
         </service>
 
-        <receiver android:name="com.citations.CitationsWidgetProvider" >
+        <receiver android:name="com.faraday.citations.CitationsWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -54,12 +54,12 @@
         </receiver>
 
         <activity
-            android:name="com.citations.AboutActivity"
+            android:name="com.faraday.citations.AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName="com.citations.MainActivity" >
+            android:parentActivityName="com.faraday.citations.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.citations.MainActivity" />
+                android:value="com.faraday.citations.MainActivity" />
         </activity>
     </application>
 

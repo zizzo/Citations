@@ -1,6 +1,8 @@
-package com.citations;
+package com.faraday.citations;
 
 
+
+import com.faraday.citations.R;
 
 import android.app.PendingIntent;
 import android.app.Service;
