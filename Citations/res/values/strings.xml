@@ -13,7 +13,13 @@
     <string name="dialog_usage_title">"Usage"</string>
     <string name="dialog_usage_message">"Swipe left/right or right/left to change citation in the same category \n\nSwipe on the left side or touch the app icon to get the menu with the categories"</string>
 	<string name="bitmap_watermark">"Created with Citations App"</string>
-    
+
+	<string name="menu_lovecategory">"Love"</string>
+	<string name="menu_inspiringcategory">"Inspiring"</string>
+	<string name="menu_funcategory">"Fun"</string>
+	<string name="menu_politicscategory">"Politics"</string>
+	<string name="menu_lifecategory">"Life"</string>
+	
     
     <!-- CONTENT DESCRIPTION -->
     <string name="sharingButton">Sharing</string>

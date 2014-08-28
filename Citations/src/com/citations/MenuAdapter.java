@@ -1,62 +1,64 @@
 package com.citations;
 
-import java.util.List;
+
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MenuAdapter extends ArrayAdapter<Integer> {
 
-	private List<Integer> items;
-	private Context context;
-	private LayoutInflater mLayoutInflater;
-	private int layoutResourceId;
-	
-	private static final List<String> strList = Arrays.asList("Love", 
-			                                                  "Politics",
-			                                                  "Fun",
-			                                                  "Life",
-			                                                  "Inspiring");
-	private static final List<Integer> iconList = Arrays.asList(
-			R.drawable.love_cat,
-			R.drawable.politics_cat,
-			R.drawable.fun_cat,
-			R.drawable.life_cat,
-			R.drawable.inspiring_cat);
-	
+
+public class MenuAdapter extends ArrayAdapter<Integer>
+{
+
+	private final List<Integer> items;
+	private static Context context;
+	private final LayoutInflater mLayoutInflater;
+	private final int layoutResourceId;
+
+	private final List<Integer> strList = Arrays.asList(R.string.menu_lovecategory,
+		R.string.menu_politicscategory, R.string.menu_funcategory,
+		R.string.menu_lifecategory, R.string.menu_inspiringcategory);
+
+	private static final List<Integer> iconList = Arrays.asList(R.drawable.love_cat,
+		R.drawable.politics_cat, R.drawable.fun_cat, R.drawable.life_cat,
+		R.drawable.inspiring_cat);
+
 	private static final List<Integer> colorList = Arrays.asList(
-			R.color.loveCategoryColor,
-			R.color.politicsCategoryColor,
-			R.color.funCategoryColor,
-			R.color.lifeCategoryColor,
-			R.color.inspiringCategoryColor);
-	
-	
-    public MenuAdapter(Context ctx, int layoutResourceId, Integer[] data) {
-    	super(ctx, layoutResourceId, data);
-        this.items = new ArrayList<Integer>(Arrays.asList(data));
-        this.context = ctx;
-        this.mLayoutInflater = LayoutInflater.from(ctx);
-        this.layoutResourceId = layoutResourceId;
-    }
+		R.color.loveCategoryColor, R.color.politicsCategoryColor,
+		R.color.funCategoryColor, R.color.lifeCategoryColor,
+		R.color.inspiringCategoryColor);
+
+
+	public MenuAdapter(Context ctx, int layoutResourceId, Integer[] data)
+	{
+		super(ctx, layoutResourceId, data);
+		items = new ArrayList<Integer>(Arrays.asList(data));
+		context = ctx;
+		mLayoutInflater = LayoutInflater.from(ctx);
+		this.layoutResourceId = layoutResourceId;
+	}
+
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		if (convertView == null) {
+	public View getView(int position, View convertView, ViewGroup parent)
+	{
+		if (convertView == null)
+		{
 			convertView = mLayoutInflater.inflate(layoutResourceId, parent, false);
 		}
 		TextView textViewItem = (TextView) convertView.findViewById(R.id.nav_TextView);
 		textViewItem.setText(strList.get(position));
-		
+
 		ImageView imViewItem = (ImageView) convertView.findViewById(R.id.nav_ImageView);
 		imViewItem.setImageResource(iconList.get(position));
 

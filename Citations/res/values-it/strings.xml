@@ -13,6 +13,11 @@
     <string name="dialog_usage_title">"Utilizzo"</string>
     <string name="dialog_usage_message">"Muovi il dito sinistra/destra o destra/sinistra per cambiare citazione nella stessa categoria\n\nMuovi il dito sul lato sinistro dello schermo o premi l'icona dell'app per aprire il menù delle categorie"</string>
     
+	<string name="menu_lovecategory">"Amore"</string>
+	<string name="menu_inspiringcategory">"Ispirazione"</string>
+	<string name="menu_funcategory">"Divertimento"</string>
+	<string name="menu_politicscategory">"Politica"</string>
+	<string name="menu_lifecategory">"Vita"</string>
     
 
 <!--     CONTENT DESCRIPTION -->
