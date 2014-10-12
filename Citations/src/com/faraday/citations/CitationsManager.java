@@ -317,7 +317,6 @@ public class CitationsManager
 
 	public void shareOnFb(String imagePath, Context context)
 	{
-
 		Log.d("CitationsManager-ShareOnFb", "sharing the image " + imagePath);
 		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
 		shareIntent.setType("image/*");
