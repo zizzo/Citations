@@ -16,9 +16,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 
-
-import com.faraday.citations.R;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
