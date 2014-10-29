@@ -39,24 +39,25 @@ import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity
 {
-	private CitationsManager citationsData;
-	private GestureDetectorCompat mDetector;
-	private TextView textViewSentence;
-	private TextView textViewAuthor;
-	private String[] citation;
-	private String categoryType;
-	private final String CATEGORY_TYPE = "categoryType";
-	private final String CITATION_STRING = "citationString";
+
+	private Citation currentCitation;
+	private Category currentCategory;
+	private Integer currentColor;
+	
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
-
+	private TextView textViewSentence;
+	private TextView textViewAuthor;
+	private GestureDetectorCompat mDetector;
+	
 	private final int ANIMATION_DURATION = 200;
-	private Integer currentColor;
+
 	private final double SWIPE_RATIO = 0.5;
-
 	private final String PREFS_DIALOG = "dontShowAgainBool";
-
-
+	
+	private CitationsDB database;
+	private CategoryData categoryData;
+	
 	public enum CitationChangeType
 	{
 		INIT, SWIPE_LEFT, SWIPE_RIGHT
@@ -70,9 +71,8 @@ public class MainActivity extends FragmentActivity
 		setContentView(R.layout.activity_main);
 
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-
-		citationsData = new CitationsManager(getApplicationContext());
-
+		database = new CitationsDB(getApplicationContext());
+		categoryData = new CategoryData(getApplicationContext());
 		drawLayout();
 	}
 
@@ -110,14 +110,17 @@ public class MainActivity extends FragmentActivity
 			// swipe left/right
 			if (dxAbs / dyAbs > SWIPE_RATIO)
 			{
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
 
-				if (dx > 0)
-					setCitation(CitationChangeType.SWIPE_RIGHT);
-				else
-					setCitation(CitationChangeType.SWIPE_LEFT);
-
+				if (dx > 0) {
+					currentCitation = database.getRandomCitation(currentCategory);
+					changeCitationText(currentCitation,
+									   CitationChangeType.SWIPE_RIGHT);
+				}
+				else {
+					currentCitation = database.getRandomCitation(currentCategory);
+					changeCitationText(currentCitation,
+								       CitationChangeType.SWIPE_LEFT);
+				}
 			}
 
 			return true;
@@ -131,7 +134,6 @@ public class MainActivity extends FragmentActivity
 	private void drawLayout()
 	{
 		View mainLayout = findViewById(R.id.main_layout);
-
 
 		SharedPreferences showDialogPrefs = getSharedPreferences(PREFS_DIALOG,
 			Context.MODE_MULTI_PROCESS);
@@ -163,24 +165,26 @@ public class MainActivity extends FragmentActivity
 		textViewSentence = (TextView) findViewById(R.id.activity_main_TextViewSentence);
 		textViewAuthor = (TextView) findViewById(R.id.activity_main_TextViewAuthor);
 
-
 		Intent widgetIntent = getIntent();
 		boolean startFromWidget = widgetIntent
 			.getBooleanExtra("start_from_widget", false);
 		if (startFromWidget)
 		{
-			categoryType = widgetIntent.getStringExtra(CATEGORY_TYPE);
-			citation = widgetIntent.getStringExtra(CITATION_STRING).split("-");
+			// We get the citation Id
+			Integer citationId = Integer.parseInt(widgetIntent.getStringExtra("CITATION_ID"));
+			currentCitation = database.getCitation(citationId);
+			currentCategory = currentCitation.getCategory();
 		} else
 		{
 			// The first String is going to come from the Inspiring category
-			categoryType = "inspiringCategory";
-			citation = citationsData.getRandomStringInCategory(categoryType).split("-");
+			currentCategory = Category.INSPIRING;
+			currentCitation = database.getRandomCitation(currentCategory);
 		}
-		currentColor = citationsData.getCategoryInUseColor(categoryType);
-		setCitation(CitationChangeType.INIT);
-
-
+		
+		changeCitationText(currentCitation, CitationChangeType.INIT);		
+		changeBackgroundColor(categoryData.getColor(currentCategory),
+				              categoryData.getColor(currentCategory));
+		
 		ImageButton buttonShare = (ImageButton) findViewById(R.id.activity_mainImageButtonShare);
 		buttonShare.setOnTouchListener(new OnTouchListener()
 		{
@@ -207,7 +211,7 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-				citationsData.shareGeneric(getApplicationContext(), citation);
+				ShareHelper.shareGeneric(getApplicationContext(), currentCitation);
 			}
 		});
 
@@ -238,7 +242,7 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-				citationsData.shareOnTwitter(getApplicationContext(), citation);
+				ShareHelper.shareOnTwitter(getApplicationContext(), currentCitation);
 
 			}
 		});// end onClick
@@ -269,8 +273,7 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-				citationsData.shareOnFacebook(getApplicationContext(), citation,
-					categoryType);
+				ShareHelper.shareOnFacebook(getApplicationContext(), currentCitation);
 			}
 		});// end onClick
 
@@ -290,8 +293,7 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onItemClick(AdapterView parent, View view, int position, long id)
 			{
-				String cat = CitationsManager.getCategories().get(position);
-				MainActivity.this.changeCategory(cat);
+				MainActivity.this.changeCategory(Category.fromOrdinal(position));
 				mDrawerLayout.closeDrawers();
 
 			}
@@ -328,7 +330,6 @@ public class MainActivity extends FragmentActivity
 			{
 				super.onDrawerOpened(drawerView);
 				getActionBar().setTitle(getString(R.string.app_name));
-				// drawerImageRes = R.drawable.citations_love;
 			}
 		};
 
@@ -340,7 +341,7 @@ public class MainActivity extends FragmentActivity
 		getActionBar().setHomeButtonEnabled(true);
 
 		// Set icon according to category
-		setIconForCategory(categoryType);
+		// setIconForCategory(category);
 
 	}// end drawLayout
 
@@ -357,10 +358,10 @@ public class MainActivity extends FragmentActivity
 			getActionBar().setIcon(R.drawable.citations_politics);
 		else if (categoryType.equals("funCategory"))
 			getActionBar().setIcon(R.drawable.citations_fun);
-
 	}
 
 
+	
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState)
 	{
@@ -404,21 +405,18 @@ public class MainActivity extends FragmentActivity
 
 		return super.onOptionsItemSelected(item);
 	}
-
-
-
+	
+	
 	/**
-	 * @param citation
-	 *            to be set on the TextViews
+	 * Change the displayed citation text
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setCitation(CitationChangeType mode)
-	{
-
+	private void changeCitationText(final Citation citation, CitationChangeType mode)
+	{		
 		if (mode == CitationChangeType.INIT)
 		{
-			textViewSentence.setText(citation[0]);
-			textViewAuthor.setText(citation[1]);
+			textViewSentence.setText(citation.getText());
+			textViewAuthor.setText(citation.getAuthor());
 		}
 
 
@@ -440,7 +438,6 @@ public class MainActivity extends FragmentActivity
 
 			slidein.setDuration(100);
 			slideout.setDuration(100);
-			final String[] cittext = citation;
 
 			slideout.setAnimationListener(new Animation.AnimationListener()
 			{
@@ -450,13 +447,12 @@ public class MainActivity extends FragmentActivity
 
 				}
 
-
 				@Override
 				public void onAnimationEnd(Animation animation)
 				{
-					textViewSentence.setText(cittext[0]);
+					textViewSentence.setText(citation.getText());
 					textViewSentence.startAnimation(slidein);
-					textViewAuthor.setText(cittext[1]);
+					textViewAuthor.setText(citation.getAuthor());
 				}
 
 
@@ -470,41 +466,31 @@ public class MainActivity extends FragmentActivity
 			textViewSentence.startAnimation(slideout);
 
 		}
-
-
-		// Set the proper background
-
-		Integer startColor = currentColor;
-		Integer endColor = citationsData.getCategoryInUseColor(categoryType);
+	}
+	
+	/**
+	 * Change the background color for the app using a morphing animation
+	 * 
+	 */
+	private void changeBackgroundColor(Integer startColor, Integer endColor) {
 		ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout),
-			"backgroundColor", startColor, endColor);
-		anim.setDuration(500);
-		anim.setEvaluator(new ArgbEvaluator());
-		anim.start();
-
-		currentColor = endColor;
-
-	}// end setCitation
-
-
-	public void changeCategory(String catId)
+				"backgroundColor", startColor, endColor);
+			anim.setDuration(500);
+			anim.setEvaluator(new ArgbEvaluator());
+			anim.start();		
+	}
+	public void changeCategory(Category category)
 	{
-
-		categoryType = catId;
-		citation = citationsData.getRandomStringInCategory(categoryType).split("-");
-		setCitation(CitationChangeType.INIT);
-
+		this.changeCitationText(database.getRandomCitation(category),
+						 		CitationChangeType.INIT);
+		
 		// Set the proper background1
-		Integer startColor = currentColor;
-		Integer endColor = citationsData.getCategoryInUseColor(categoryType);
-		ObjectAnimator anim = ObjectAnimator.ofInt(findViewById(R.id.main_layout),
-			"backgroundColor", startColor, endColor);
-		anim.setDuration(500);
-		anim.setEvaluator(new ArgbEvaluator());
-		anim.start();
-
-		setIconForCategory(categoryType);
-
+		Integer startColor = categoryData.getColor(currentCategory);
+		Integer endColor = categoryData.getColor(category);
+		changeBackgroundColor(startColor, endColor);
+		
+		//setIconForCategory(categoryType);
+		currentCategory = category;
 		currentColor = endColor;
 
 	}

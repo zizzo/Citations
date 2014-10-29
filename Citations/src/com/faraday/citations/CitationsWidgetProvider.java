@@ -31,9 +31,8 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	public static final String SET_PREVIOUS_CATEGORY = "setPreviousCategory";
 
 	public static final String SHARED_PREF_CITATIONS = "sharedPrefsCitations";
-	public static final String CATEGORY_TYPE = "categoryType";
 	public static final String CATEGORY_NUMBER = "categoryNumber";
-	public static final String CITATION_STRING = "citationString";
+	public static final String CITATION_ID = "citationId";
 
 	public static final String OPEN_APP = "openApp";
 
@@ -111,60 +110,19 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 
 		private RemoteViews buildRemoteView(Context context)
 		{
-			CitationsManager citationsData = new CitationsManager(context);
-			int categoryNumber;
-			String categoryType;
-			String[] citation = new String[2];
-
-			Log.d("Widget-onUpdate", "Set citation");
-
+			CitationsDB database = new CitationsDB(context);
+			
 			// MODE_MULTI_PROCESS fundamental flag to have SharedPreferences in
 			// common for services and activities
 			SharedPreferences settings = context.getSharedPreferences(
 				SHARED_PREF_CITATIONS, Context.MODE_MULTI_PROCESS);
-
-			// Check if there is a previous citation and set that, otherwise
-			// start with the default
-			String[] values = initializeWidget(settings, citationsData);
-			categoryNumber = Integer.valueOf(values[0]);
-			categoryType = values[1];
-			citation[0] = values[2];
-			citation[1] = values[3];
-
-
-
-			SharedPreferences.Editor editor = settings.edit();
-			editor.putInt(CATEGORY_NUMBER, categoryNumber);
-			editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
-			editor.putString(CATEGORY_TYPE, categoryType);
-			editor.commit();
-
-			Log.d("Widget-onUpdate", "citation saved in SharedPreferences");
-
 			RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
 				R.layout.layout_appwidget);
-
-			layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewSentence,
-				citation[0]);
-			layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
-				citation[1]);
-
-			// Execute the code of setColorsOnButtons
-			// Method not called because it would need to be static and have
-			// some NullPointerException
-			// Issue to be fixed in future releases
-			// {
-			layoutAppWidget.setImageViewBitmap(R.id.widget_category_button,
-				CitationsManager.getCategoryBitmap(categoryType));
-
-			int c = CitationsManager.getCategoryColor(categoryType);
-			layoutAppWidget.setInt(R.id.widget_textwrapper, "setBackgroundColor",
-				Color.argb(204, Color.red(c), Color.green(c), Color.blue(c)));
-			// }
-
-			Log.d("Widget-onUpdate", "Correctly set citation");
-
-
+			
+			refreshWidget(context, database, settings, layoutAppWidget);
+			
+			
+			/* Linking the actions to the buttons */
 			Intent intentRandomCitation = new Intent(context,
 				CitationsWidgetProvider.class);
 			intentRandomCitation.setAction(SET_RANDOM_CITATION);
@@ -233,12 +191,14 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	public void onReceive(Context context, Intent intent)
 	{
 		Log.d("Widget-onReceive", "Starting action " + intent.getAction());
-
-		Log.d("Widget-onReceive", "Entering onreceive");
 		super.onReceive(context, intent);
 
-
-
+		CitationsDB database = new CitationsDB(context);
+		SharedPreferences settings = context.getSharedPreferences(SHARED_PREF_CITATIONS,
+																  Context.MODE_MULTI_PROCESS);
+		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
+													  R.layout.layout_appwidget);
+		
 		if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_ENABLED))
 		{
 			return;
@@ -249,201 +209,102 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 			return;
 		}
 
-		Log.d("Widget-onReceive", "Create and manage preferences");
-		CitationsManager citationsData = new CitationsManager(context);
-		int categoryNumber;
-		String categoryType;
-		String[] citation = new String[2];
-
-		// MODE_MULTI_PROCESS fundamental flag to have SharedPreferences in
-		// common for services and activities
-		SharedPreferences settings = context.getSharedPreferences(SHARED_PREF_CITATIONS,
-			Context.MODE_MULTI_PROCESS);
-
-
-		// Check if there is a previous citation and set that, otherwise
-		// start with the default
-		String[] values = initializeWidget(settings, citationsData);
-		categoryNumber = Integer.valueOf(values[0]);
-		categoryType = values[1];
-		citation[0] = values[2];
-		citation[1] = values[3];
-
-
-		Log.d("Widget-onReceive", "Initialization complete");
-		RemoteViews layoutAppWidget = new RemoteViews(context.getPackageName(),
-			R.layout.layout_appwidget);
-		Log.d("Widget-onReceive", "RemoteViews created");
-		setColorsOnButtons(context, layoutAppWidget, categoryType);
-		Log.d("Widget-onReceive", "Color buttons set");
-
-
-
-		if (intent.getAction().equals(SET_NEXT_CATEGORY))
-		{
-			categoryNumber++;
-			// Enter one of these alternatives, set the color of the background,
-			// change the one of the active button and restore the previous one
-			// to the default
-			if (categoryNumber > 4)
-			{
-				categoryType = "inspiringCategory";
-				categoryNumber = 0;
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(context, layoutAppWidget, categoryType);
-
-			} else if (categoryNumber == 4)
-			{
-				categoryType = "funCategory";
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(context, layoutAppWidget, categoryType);
-
-			} else if (categoryNumber == 3)
-			{
-				categoryType = "loveCategory";
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(context, layoutAppWidget, categoryType);
-
-			} else if (categoryNumber == 2)
-			{
-				categoryType = "politicsCategory";
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(context, layoutAppWidget, categoryType);
-
-			} else if (categoryNumber == 1)
-			{
-				categoryType = "lifeCategory";
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
-
-				setText(layoutAppWidget, citation);
-
-				setColorsOnButtons(context, layoutAppWidget, categoryType);
-			}
-
-		}// end SET_NEXT_CATEGORY
-
-
-		else if (intent.getAction().equals(SET_RANDOM_CITATION))
-		{
-
-			citation = citationsData.getRandomStringInCategory(categoryType).split("-");
-
-			layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewSentence,
-				citation[0]);
-			layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewAuthor,
-				citation[1]);
-
-		}// end SET_RANDOM_CITATION
-
-
+		else if (intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
+			refreshWidget(context, database, settings, layoutAppWidget);
+		}
 		else if (intent.getAction().equals(OPEN_APP))
 		{
+			// Get the current displayed citation
+
+			Integer citationId = settings.getInt(CITATION_ID, -1);
+			Citation citation = database.getCitation(citationId);
+			
+			// Creating and starting the intent
 			Intent appIntent = new Intent(context, MainActivity.class);
 			appIntent.putExtra("start_from_widget", true);
-			appIntent.putExtra(CITATION_STRING, citation[0] + "-" + citation[1]);
-			appIntent.putExtra(CATEGORY_TYPE, categoryType);
-
+			appIntent.putExtra("CITATION_ID", String.valueOf(citation.getId()));
+			
 			appIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 				| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
 				| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			context.startActivity(appIntent);
 		}
+		
+		else if (intent.getAction().equals(SET_NEXT_CATEGORY))
+		{
+			// Cycle categories
+			int categoryNumber = database.getCitation(settings.getInt(CITATION_ID, -1)).getCategory().ordinal();
+			categoryNumber = (categoryNumber + 1) % 5;
+			Citation citation = database.getRandomCitation(Category.fromOrdinal(categoryNumber));
+			setText(layoutAppWidget, citation.getText(), citation.getAuthor());
+			setColorsOnButtons(context, layoutAppWidget, citation.getCategory());
+			
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putInt(CITATION_ID, citation.getId());
+			editor.commit();
+		}
+		else if (intent.getAction().equals(SET_RANDOM_CITATION))
+		{
+			Category category = database.getCitation(settings.getInt(CITATION_ID, -1)).getCategory();
+			Citation citation = database.getRandomCitation(category);
+			setText(layoutAppWidget, citation.getText(), citation.getAuthor());
+			
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putInt(CITATION_ID, citation.getId());
+			editor.commit();
+		}
 
 		else if (intent.getAction().equals(SHARE_ON_TWITTER))
 		{
-			citationsData.shareOnTwitter(context, citation);
-		}// end SHARE_ON_TWITTER
+			Citation citation = database.getCitation(settings.getInt(CITATION_ID, -1));
+			ShareHelper.shareOnTwitter(context, citation);
+		}
 
 		else if (intent.getAction().equals(SHARE_ON_FACEBOOK))
 		{
-			citationsData.shareOnFacebook(context, citation, categoryType);
-		}// end SHARE_ON_FACEBOOK
+			Citation citation = database.getCitation(settings.getInt(CITATION_ID, -1));
+			ShareHelper.shareOnFacebook(context, citation);
+		}
 
 		else if (intent.getAction().equals(SHARE_GENERIC))
 		{
-			citationsData.shareGeneric(context, citation);
+			Citation citation = database.getCitation(settings.getInt(CITATION_ID, -1));
+			ShareHelper.shareGeneric(context, citation);
 
-		}// end SHARE_GENERIC
-
-
-		// Update SharedPreferences
-		Log.d("Widget-onReceive", "updated shared preferences");
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putString(CITATION_STRING, citation[0] + "-" + citation[1]);
-		Log.d("Widget-onReceive", "citation: " + citation[0] + citation[1]);
-		editor.putString(CATEGORY_TYPE, categoryType);
-		Log.d("Widget-onReceive", "categoryType: " + categoryType);
-		editor.putInt(CATEGORY_NUMBER, categoryNumber);
-		Log.d("Widget-onReceive", "categoryNumber: " + categoryNumber);
-		editor.commit();
+		}
 
 		// Update the widget
 		ComponentName componentName = new ComponentName(context,
 			CitationsWidgetProvider.class);
 		AppWidgetManager.getInstance(context).updateAppWidget(componentName,
 			layoutAppWidget);
-	}// end onReceive
+	}
 
 
-	private static String[] initializeWidget(SharedPreferences settings,
-		CitationsManager citationsData)
-	{
-		int categoryNumber;
-		String categoryType;
-		String[] citation;
-
-
-		categoryNumber = settings.getInt(CATEGORY_NUMBER, -1);
-		if (categoryNumber != -1)
+	private static void refreshWidget(Context context, CitationsDB database,
+			SharedPreferences settings, RemoteViews layoutAppWidget) {
+		// This is called at intervals (also when it starts)
+		
+		int citationId = settings.getInt(CITATION_ID, -1);
+		Citation citation;
+		// The widget was just opened because citationId was not defined
+		if (citationId == -1) 
 		{
-			Log.d("Widget-initializeWidget", "Try to get previous citation");
-			Log.d("Widget-initializeWidget", "category number: " + categoryNumber);
-			categoryType = settings.getString(CATEGORY_TYPE, "inspiringCategory");
-			Log.d("Widget-initializeWidget", "category type: " + categoryType);
-
-			String citationString = settings.getString(CITATION_STRING, "-");
-
-			// At Initialization time citationString may be empty
-			if (citationString != null)
-			{
-				citation = citationString.split("-");
-			} else
-			{
-				citation = citationsData.getRandomStringInCategory(categoryType).split(
-					"-");
-			}
-
-			Log.d("Widget-initializeWidget", "citation: " + citation[0] + citation[1]);
-		} else
-		{
-			Log.d("Widget-initializeWidget", "Exception, set first citation");
-			categoryNumber = 0;
-			Log.d("Widget-initializeWidget", "category number: " + categoryNumber);
-			categoryType = "inspiringCategory";
-			Log.d("Widget-initializeWidget", "category type: " + categoryType);
-			citation = citationsData.getRandomStringInCategory(categoryType).split("-");
-			Log.d("Widget-initializeWidget", "citation: " + citation[0] + citation[1]);
+			// Get a random string from a category
+			citation = database.getRandomCitation(Category.INSPIRING);
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putInt(CITATION_ID, citation.getId());
+			editor.commit();
 		}
-
-		return new String[] { Integer.toString(categoryNumber), categoryType,
-			citation[0], citation[1] };
+		else // The widget is just refreshing
+		{
+			citation = database.getCitation(citationId);
+		}
+		
+		// Make Interface Changes
+		
+		setColorsOnButtons(context, layoutAppWidget, citation.getCategory());	
+		setText(layoutAppWidget, citation.getText(), citation.getAuthor());
 	}
 
 
@@ -458,24 +319,16 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	 * 
 	 *            set the proper colors on the small point in the widget
 	 */
-	private void setColorsOnButtons(Context context, RemoteViews layoutAppWidget,
-		String categoryType)
+	private static void setColorsOnButtons(Context context, 
+									RemoteViews layoutAppWidget,
+									Category category)
 	{
-
+		CategoryData categoryData = new CategoryData(context);
+		
 		layoutAppWidget.setImageViewBitmap(R.id.widget_category_button,
-			CitationsManager.getCategoryBitmap(categoryType));
+			categoryData.getIcon(category));
 
-		Log.d("CitationsWidgetProvider-setColorButtons",
-			String.format("categoryType: %s", categoryType));
-
-		if (categoryType.length() <= 1)
-		{
-			categoryType = "inspiringCategory";
-			Log.d("CitationsWidgetProvider-setColorButtons",
-				String.format("categoryType: %s", categoryType));
-		}
-
-		int c = CitationsManager.getCategoryColor(categoryType);
+		int c = categoryData.getColor(category);
 		layoutAppWidget.setInt(R.id.widget_textwrapper, "setBackgroundColor",
 			Color.argb(204, Color.red(c), Color.green(c), Color.blue(c)));
 	}// end setColorsOnButtons
@@ -485,12 +338,12 @@ public class CitationsWidgetProvider extends AppWidgetProvider
 	 * @param layoutAppWidget
 	 *            set the proper text on the widget
 	 */
-	private void setText(RemoteViews layoutAppWidget, String[] citation)
+	private static void setText(RemoteViews layoutAppWidget, String text, String author)
 	{
 		layoutAppWidget.setTextViewText(R.id.layout_appwidget_TextViewSentence,
-			citation[0]);
+			text);
 		layoutAppWidget
-			.setTextViewText(R.id.layout_appwidget_TextViewAuthor, citation[1]);
+			.setTextViewText(R.id.layout_appwidget_TextViewAuthor, author);
 	}
 
 
