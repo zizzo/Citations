@@ -16,9 +16,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 
-
-import com.faraday.citations.R;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -223,6 +220,66 @@ public class CitationsManager
 	}
 
 
+<<<<<<< HEAD
+=======
+	public String storeImage(Bitmap bitmap)
+	{
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+
+
+		File f = null;
+		try
+		{
+			f = File
+				.createTempFile("citationsImg", ".png", context.getExternalCacheDir());
+			FileOutputStream fo = new FileOutputStream(f);
+			fo.write(bytes.toByteArray());
+			fo.close();
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		return f.getAbsolutePath();
+	}// end storeImage
+
+
+	public void shareOnFb(String imagePath, Context context)
+	{
+		Log.d("CitationsManager-ShareOnFb", "sharing the image " + imagePath);
+		Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+		shareIntent.setType("image/*");
+		// shareIntent.putExtra(Intent.EXTRA_TEXT, "www.google.com");
+		shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(imagePath)));
+		PackageManager pm = context.getPackageManager();
+		List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+		for (final ResolveInfo app : activityList)
+		{
+
+			Log.d("CitationsManager-ShareOnFb", app.activityInfo.name);
+			if ((app.activityInfo.name).contains("com.facebook")
+				&& !(app.activityInfo.name).contains("messenger")
+				&& !(app.activityInfo.name).contains("pages"))
+			{
+				final ActivityInfo activity = app.activityInfo;
+				final ComponentName name = new ComponentName(
+					activity.applicationInfo.packageName, activity.name);
+				shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+				shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+					| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+					| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				shareIntent.setComponent(name);
+				context.startActivity(shareIntent);
+				break;
+			}
+		}
+
+	}// end shareOnFb
+>>>>>>> 9116a22487a2f942835da61bb37217351ab1f95b
 
 
 	/**
