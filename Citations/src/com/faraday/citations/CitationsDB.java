@@ -1,5 +1,7 @@
 package com.faraday.citations;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import android.content.Context;
@@ -86,6 +88,14 @@ public class CitationsDB extends SQLiteAssetHelper {
 	private String getLanguage() 
 	{
 		return Locale.getDefault().getLanguage();
+	}
+
+	public List<Citation> getCitations(Category category) {
+		List<Citation> ret = new ArrayList<Citation>();
+		// We need to do a huge join here
+		
+		
+		return ret;
 	}
 
 }

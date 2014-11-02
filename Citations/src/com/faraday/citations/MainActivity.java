@@ -38,6 +38,7 @@ import android.widget.TextView;
 public class MainActivity extends FragmentActivity
 {
 
+	// State variables
 	private Citation currentCitation;
 	private Category currentCategory;
 	private Integer currentColor;
