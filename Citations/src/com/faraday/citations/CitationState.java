@@ -79,7 +79,7 @@ public class CitationState {
 		List<Citation> cits = citations.get(currentCategory);
 		// We have to find the citation and set it as current using the pointer
 		for (Integer i=0; i < cits.size(); i++) {
-			if (cits.get(i).getId() == citation.getId()) {
+			if (cits.get(i).getId().equals(citation.getId())) {
 				citationPointer.put(currentCategory, i);
 				break;
 			}

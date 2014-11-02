@@ -333,22 +333,23 @@ public class MainActivity extends FragmentActivity
 		getActionBar().setHomeButtonEnabled(true);
 
 		// Set icon according to category
-		// setIconForCategory(category);
+		setIconForCategory(state.getCurrentCategory());
 
 	}// end drawLayout
 
 
-	private void setIconForCategory(String categoryType)
+	private void setIconForCategory(Category category)
 	{
-		if (categoryType.equals("inspiringCategory"))
+		// TODO: this code should be moved in CategoryData
+		if (category.equals(Category.INSPIRING))
 			getActionBar().setIcon(R.drawable.citations_inspiring);
-		else if (categoryType.equals("loveCategory"))
+		else if (category.equals(Category.LOVE))
 			getActionBar().setIcon(R.drawable.citations_love);
-		else if (categoryType.equals("lifeCategory"))
+		else if (category.equals(Category.LIFE))
 			getActionBar().setIcon(R.drawable.citations_life);
-		else if (categoryType.equals("politicsCategory"))
+		else if (category.equals(Category.POLITICS))
 			getActionBar().setIcon(R.drawable.citations_politics);
-		else if (categoryType.equals("funCategory"))
+		else if (category.equals(Category.FUN))
 			getActionBar().setIcon(R.drawable.citations_fun);
 	}
 
@@ -482,7 +483,7 @@ public class MainActivity extends FragmentActivity
 		Integer endColor = categoryData.getColor(category);
 		changeBackgroundColor(startColor, endColor);
 		
-		//setIconForCategory(categoryType);
+		setIconForCategory(category);
 	}
 
 
