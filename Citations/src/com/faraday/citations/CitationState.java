@@ -14,10 +14,17 @@ import android.content.Context;
  */
 public class CitationState {
 	
-	CitationsDB db;
-	Map<Category, List<Citation>> citations;
-	Map<Category, Integer> citationPointer;
-	Category currentCategory;
+	/** the citation database */
+	private CitationsDB db; 
+	
+	/** For every category we have a list of citations to be displayed */
+	private Map<Category, List<Citation>> citations;
+	
+	/** For every category we have an integer that represent at which citation we're at */
+	private Map<Category, Integer> citationPointer;
+	
+	private Category currentCategory;
+	
 	
 	public CitationState(Context context) {
 		db = new CitationsDB(context);
@@ -33,9 +40,6 @@ public class CitationState {
 		
 	}
 	
-	public void setCategory(Category category) {
-		currentCategory = category;
-	}
 	
 	public Citation nextCitation() {
 		Integer newCitationPtr = citationPointer.get(currentCategory);
@@ -56,17 +60,24 @@ public class CitationState {
 		return getCurrentCitation();
 	}
 	
-	public Citation getCurrentCitation() {
-		return citations.get(currentCategory).get(citationPointer.get(currentCategory));
+	
+	public Category getCurrentCategory() {
+		return currentCategory;
 	}
 	
 	public void setCurrentCategory(Category category){
 		currentCategory = category;
 	}
+
+	
+	public Citation getCurrentCitation() {
+		return citations.get(currentCategory).get(citationPointer.get(currentCategory));
+	}
+	
 	public void setCurrentCitation(Citation citation) {
 		setCurrentCategory(citation.getCategory());
 		List<Citation> cits = citations.get(currentCategory);
-		// We have to find the citation
+		// We have to find the citation and set it as current using the pointer
 		for (Integer i=0; i < cits.size(); i++) {
 			if (cits.get(i).getId() == citation.getId()) {
 				citationPointer.put(currentCategory, i);
@@ -75,7 +86,5 @@ public class CitationState {
 		}
 	}
 
-	public Category getCurrentCategory() {
-		return currentCategory;
-	}
+	
 }
