@@ -16,18 +16,66 @@ public class CitationState {
 	
 	CitationsDB db;
 	Map<Category, List<Citation>> citations;
+	Map<Category, Integer> citationPointer;
+	Category currentCategory;
 	
 	public CitationState(Context context) {
 		db = new CitationsDB(context);
 		citations = new HashMap<Category, List<Citation>>();
+		citationPointer = new HashMap<Category, Integer>();
+		currentCategory = Category.INSPIRING; // Default
 		
-		// Initialize internal list of citations
+		// Initialize internal list of citations for each category
 		for (Category category : Category.values()) {
 			citations.put(category, db.getCitations(category));
+			citationPointer.put(category, 0);
 		}
-		
-		
 		
 	}
 	
+	public void setCategory(Category category) {
+		currentCategory = category;
+	}
+	
+	public Citation nextCitation() {
+		Integer newCitationPtr = citationPointer.get(currentCategory);
+		// Increase it by one and cycle it
+		newCitationPtr = (newCitationPtr + 1) % citations.get(currentCategory).size();
+		citationPointer.put(currentCategory, newCitationPtr);
+		
+		return getCurrentCitation();
+	}
+	
+	public Citation previousCitation() {
+		Integer newCitationPtr = citationPointer.get(currentCategory);
+		// Decrease by one and cycle it
+		Integer len = citations.get(currentCategory).size();
+		newCitationPtr = (newCitationPtr - 1 + len) % len;
+		citationPointer.put(currentCategory, newCitationPtr);
+		
+		return getCurrentCitation();
+	}
+	
+	public Citation getCurrentCitation() {
+		return citations.get(currentCategory).get(citationPointer.get(currentCategory));
+	}
+	
+	public void setCurrentCategory(Category category){
+		currentCategory = category;
+	}
+	public void setCurrentCitation(Citation citation) {
+		setCurrentCategory(citation.getCategory());
+		List<Citation> cits = citations.get(currentCategory);
+		// We have to find the citation
+		for (Integer i=0; i < cits.size(); i++) {
+			if (cits.get(i).getId() == citation.getId()) {
+				citationPointer.put(currentCategory, i);
+				break;
+			}
+		}
+	}
+
+	public Category getCurrentCategory() {
+		return currentCategory;
+	}
 }

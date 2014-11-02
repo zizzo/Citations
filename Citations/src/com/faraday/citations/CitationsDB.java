@@ -91,9 +91,25 @@ public class CitationsDB extends SQLiteAssetHelper {
 	}
 
 	public List<Citation> getCitations(Category category) {
+		SQLiteDatabase db = getReadableDatabase();
 		List<Citation> ret = new ArrayList<Citation>();
-		// We need to do a huge join here
 		
+		String lang = getLanguage();
+		// We need to do a huge query here
+		Cursor cursor = db.rawQuery(
+				"SELECT c.id, cdata.value, cdata.author, c.category_id FROM  CitationsData cdata" +
+				" JOIN Citations c on c.id = cdata.citation_id " +
+				"where cdata.language like ? and c.category_id = ? " +
+				"order by random()",
+				new String[] { lang + "%", Integer.toString(category.ordinal()) });
+		cursor.moveToFirst();
+		
+		do {
+			Integer id = cursor.getInt(0);
+			String text = cursor.getString(1);
+			String author = cursor.getString(2);
+			ret.add(new Citation(id, text, author, category));
+		} while (cursor.moveToNext());
 		
 		return ret;
 	}

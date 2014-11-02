@@ -38,10 +38,8 @@ import android.widget.TextView;
 public class MainActivity extends FragmentActivity
 {
 
-	// State variables
-	private Citation currentCitation;
-	private Category currentCategory;
-	private Integer currentColor;
+	// This is the model
+	private CitationState state;
 	
 	private DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -72,6 +70,8 @@ public class MainActivity extends FragmentActivity
 		mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 		database = new CitationsDB(getApplicationContext());
 		categoryData = new CategoryData(getApplicationContext());
+		state = new CitationState(getApplicationContext());
+		
 		drawLayout();
 	}
 
@@ -111,13 +111,11 @@ public class MainActivity extends FragmentActivity
 			{
 
 				if (dx > 0) {
-					currentCitation = database.getRandomCitation(currentCategory);
-					changeCitationText(currentCitation,
+					changeCitationText(state.nextCitation(),
 									   CitationChangeType.SWIPE_RIGHT);
 				}
 				else {
-					currentCitation = database.getRandomCitation(currentCategory);
-					changeCitationText(currentCitation,
+					changeCitationText(state.previousCitation(),
 								       CitationChangeType.SWIPE_LEFT);
 				}
 			}
@@ -171,18 +169,13 @@ public class MainActivity extends FragmentActivity
 		{
 			// We get the citation Id
 			Integer citationId = Integer.parseInt(widgetIntent.getStringExtra("CITATION_ID"));
-			currentCitation = database.getCitation(citationId);
-			currentCategory = currentCitation.getCategory();
-		} else
-		{
-			// The first String is going to come from the Inspiring category
-			currentCategory = Category.INSPIRING;
-			currentCitation = database.getRandomCitation(currentCategory);
+			Citation cit = database.getCitation(citationId);
+			state.setCurrentCitation(cit);
 		}
 		
-		changeCitationText(currentCitation, CitationChangeType.INIT);		
-		changeBackgroundColor(categoryData.getColor(currentCategory),
-				              categoryData.getColor(currentCategory));
+		changeCitationText(state.getCurrentCitation(), CitationChangeType.INIT);		
+		changeBackgroundColor(categoryData.getColor(state.getCurrentCategory()),
+				              categoryData.getColor(state.getCurrentCategory()));
 		
 		ImageButton buttonShare = (ImageButton) findViewById(R.id.activity_mainImageButtonShare);
 		buttonShare.setOnTouchListener(new OnTouchListener()
@@ -210,7 +203,7 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-				ShareHelper.shareGeneric(getApplicationContext(), currentCitation);
+				ShareHelper.shareGeneric(getApplicationContext(), state.getCurrentCitation());
 			}
 		});
 
@@ -241,7 +234,7 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-				ShareHelper.shareOnTwitter(getApplicationContext(), currentCitation);
+				ShareHelper.shareOnTwitter(getApplicationContext(), state.getCurrentCitation());
 
 			}
 		});// end onClick
@@ -272,7 +265,7 @@ public class MainActivity extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-				ShareHelper.shareOnFacebook(getApplicationContext(), currentCitation);
+				ShareHelper.shareOnFacebook(getApplicationContext(), state.getCurrentCitation());
 			}
 		});// end onClick
 
@@ -480,18 +473,16 @@ public class MainActivity extends FragmentActivity
 	}
 	public void changeCategory(Category category)
 	{
-		this.changeCitationText(database.getRandomCitation(category),
+		// Set the proper background1
+		Integer startColor = categoryData.getColor(state.getCurrentCategory());
+		state.setCurrentCategory(category);
+		this.changeCitationText(state.getCurrentCitation(),
 						 		CitationChangeType.INIT);
 		
-		// Set the proper background1
-		Integer startColor = categoryData.getColor(currentCategory);
 		Integer endColor = categoryData.getColor(category);
 		changeBackgroundColor(startColor, endColor);
 		
 		//setIconForCategory(categoryType);
-		currentCategory = category;
-		currentColor = endColor;
-
 	}
 
 
