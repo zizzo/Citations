@@ -1,11 +1,14 @@
 package com.faraday.citations;
 
+
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,22 +19,25 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.Paint.Align;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.Log;
 
+
+
 /**
  * Helper for the online sharing functionality
  * 
  * @author Gabriele Lanaro
- *
+ * 
  */
-public class ShareHelper {
-	
+public class ShareHelper
+{
+
 	public static void shareOnTwitter(Context context, Citation citation)
 	{
 		String tweetText = citation.getText() + "\n" + citation.getAuthor();
@@ -42,7 +48,8 @@ public class ShareHelper {
 		intentTweet.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intentTweet);
 	}
-	
+
+
 	public static void shareOnFacebook(Context context, Citation citation)
 	{
 		Bitmap bitmap = drawBitmap(context, citation);
@@ -61,12 +68,13 @@ public class ShareHelper {
 			Intent.FLAG_ACTIVITY_NEW_TASK));
 	}
 
+
 	private static Bitmap drawBitmap(Context context, Citation citation)
 	{
 		CategoryData categoryData = new CategoryData(context);
 
 		Bitmap bitmap = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_8888);
-		
+
 		Canvas c = new Canvas(bitmap);
 		c.drawColor(categoryData.getColor(citation.getCategory()));
 		String bitmapText = citation.getText() + "\n\n" + citation.getAuthor();
@@ -97,7 +105,8 @@ public class ShareHelper {
 
 		return bitmap;
 	}
-	
+
+
 	private static String storeImage(Context context, Bitmap bitmap)
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
